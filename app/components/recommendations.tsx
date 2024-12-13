@@ -3,6 +3,7 @@
 // @components
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
+import { RecommendationCard } from "@/components";
 
 export function Recommendations() {
   return (
@@ -15,32 +16,16 @@ export function Recommendations() {
       </div>
       <Marquee autoFill pauseOnHover>
         {new Array(10).fill(0).map((_, key) => (
-          <div
+          <RecommendationCard
             key={key}
-            className="rounded-2xl p-6 max-w-100 mr-6 shrink-0 w-full space-y-6 bg-background border border-secondary"
-          >
-            <div className="flex items-center gap-3">
-              <Image
-                src="/user.png"
-                alt="user"
-                width={512}
-                height={512}
-                className="size-10"
-              />
-              <div className="space-y-0.5">
-                <p className="text-base font-medium text-black">
-                  Alexandru Paduraru {key}
-                </p>
-                <p className="text-sm text-foreground">CEO at Creative Tim</p>
-              </div>
-            </div>
-            <p className="text-foreground text-base">
-              Working with Sajad was a pleasure. Their clear communication and
+            img="/user.png"
+            name="Alexandru Paduraru"
+            role="CEO at Creative Tim"
+            feedback="Working with Sajad was a pleasure. Their clear communication and
               well-defined project requirements made collaboration seamless and
               productive. I highly recommend them for their professionalism and
-              vision.
-            </p>
-          </div>
+              vision."
+          />
         ))}
       </Marquee>
     </section>
