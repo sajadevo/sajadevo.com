@@ -27,7 +27,7 @@ export function Hero() {
           alt="sajadevo avatar"
           width={1024}
           height={1024}
-          className="size-28 border border-secondary object-cover object-center rounded-full"
+          className="size-32 border border-secondary object-cover object-center rounded-full"
         />
         <h1 className="text-primary font-medium text-5xl mt-8 leading-tight">
           Hey, I&apos;m Sajad.

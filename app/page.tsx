@@ -1,6 +1,12 @@
 // @components
 import { Line } from "@/components";
-import { Hero, ProjectsCarousel, Story, Experience } from "./components";
+import {
+  Hero,
+  ProjectsCarousel,
+  Story,
+  Experience,
+  Recommendations,
+} from "./components";
 
 export default function Home() {
   return (
@@ -10,6 +16,8 @@ export default function Home() {
       <Story />
       <Line />
       <Experience />
+      <Line />
+      <Recommendations />
     </>
   );
 }
