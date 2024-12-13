@@ -26,24 +26,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} antialiased bg-background p-20 overflow-x-hidden`}
+        className={`${geistSans.variable} antialiased py-20 bg-background overflow-hidden`}
       >
-        <main className="max-w-7xl mx-auto bg-white min-h-screen relative p-20">
-          {/* lines */}
-          <div className="absolute z-0 top-0 h-px -left-20 bg-secondary w-[calc(100%+160px)] scale-x-200" />
-          <div className="absolute z-0 -top-20 h-[calc(100%+160px)] right-0 bg-secondary w-px" />
-          <div className="absolute z-0 -left-20 h-px bottom-0 bg-secondary w-[calc(100%+160px)] scale-x-200" />
-          <div className="absolute z-0 -top-20 h-[calc(100%+160px)] left-0 bg-secondary w-px" />
-
-          {/* dots */}
-          <div className="absolute z-10 top-0 left-0 size-[9px] bg-white border border-secondary -translate-y-[calc(50%-0.5px)] -translate-x-[calc(50%-0.5px)]" />
-          <div className="absolute z-10 top-0 right-0 size-[9px] bg-white border border-secondary -translate-y-[calc(50%-0.5px)] translate-x-[calc(50%-0.5px)]" />
-          <div className="absolute z-10 bottom-0 left-0 size-[9px] bg-white border border-secondary translate-y-[calc(50%-0.5px)] -translate-x-[calc(50%-0.5px)]" />
-          <div className="absolute z-10 bottom-0 right-0 size-[9px] bg-white border border-secondary translate-y-[calc(50%-0.5px)] translate-x-[calc(50%-0.5px)]" />
-
-          {/* content */}
-          <div className="max-w-3xl mx-auto">{children}</div>
-        </main>
+        <main className="min-h-screen relative">{children}</main>
       </body>
     </html>
   );
