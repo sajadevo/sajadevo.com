@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} antialiased py-20 bg-background overflow-hidden`}
+        className={`${geistSans.variable} antialiased py-20 bg-background overflow-x-hidden`}
       >
         <main className="min-h-screen relative">{children}</main>
       </body>
