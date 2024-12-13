@@ -1,6 +1,6 @@
 // @components
 import { Line } from "@/components";
-import { Hero, ProjectsCarousel, Story } from "./components";
+import { Hero, ProjectsCarousel, Story, Experience } from "./components";
 
 export default function Home() {
   return (
@@ -9,6 +9,7 @@ export default function Home() {
       <ProjectsCarousel />
       <Story />
       <Line />
+      <Experience />
     </>
   );
 }
