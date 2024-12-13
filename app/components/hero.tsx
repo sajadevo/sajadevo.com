@@ -15,12 +15,12 @@ export function Hero() {
         height={1024}
         className="size-28 border border-secondary object-cover object-center rounded-full"
       />
-      <h1 className="text-primary font-medium text-4xl mt-8 leading-tight">
+      <h1 className="text-primary font-medium text-5xl mt-8 leading-tight">
         Hey, I&apos;m Sajad.
         <br />
         Developer & Designer
       </h1>
-      <p className="text-foreground text-balance mt-4">
+      <p className="text-foreground text-balance text-lg mt-4">
         A web developer and designer with 7+ year experience helping startups
         and early-stage companies to build their websites and web applications.
       </p>
