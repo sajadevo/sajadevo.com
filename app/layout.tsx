@@ -1,3 +1,6 @@
+// @components
+import { Footer } from "@/components";
+
 // @fonts
 import localFont from "next/font/local";
 
@@ -29,6 +32,7 @@ export default function RootLayout({
         className={`${geistSans.variable} antialiased py-20 bg-background overflow-x-hidden`}
       >
         <main className="min-h-screen relative">{children}</main>
+        <Footer />
       </body>
     </html>
   );

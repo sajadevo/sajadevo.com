@@ -5,13 +5,6 @@ import { Button } from "@/components";
 // @icons
 import { Contra } from "@/icons";
 
-// {/* lines */}
-// <div className="absolute z-0 -left-20 h-px bottom-0 bg-secondary w-[calc(100%+160px)] scale-x-200" />
-
-// {/* dots */}
-// <div className="absolute z-10 bottom-0 left-0 size-[9px] bg-white border border-secondary translate-y-[calc(50%-0.5px)] -translate-x-[calc(50%-0.5px)]" />
-// <div className="absolute z-10 bottom-0 right-0 size-[9px] bg-white border border-secondary translate-y-[calc(50%-0.5px)] translate-x-[calc(50%-0.5px)]" />
-
 export function Hero() {
   return (
     <header className="max-w-7xl bg-white p-20 mx-auto relative">
