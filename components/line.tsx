@@ -8,7 +8,7 @@ export function Line({ className }: { className?: string }) {
     <div className="max-w-7xl mx-auto border-x border-secondary bg-white">
       <div
         className={cn(
-          "relative max-w-3xl mx-auto w-full h-px bg-secondary",
+          "relative max-w-2xl mx-auto w-full h-px bg-secondary",
           className
         )}
       >

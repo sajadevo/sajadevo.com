@@ -21,7 +21,7 @@ export function Hero() {
       <div className="absolute z-10 top-0 left-0 size-[9px] bg-white border border-secondary -translate-y-[calc(50%-0.5px)] -translate-x-[calc(50%-0.5px)]" />
       <div className="absolute z-10 top-0 right-0 size-[9px] bg-white border border-secondary -translate-y-[calc(50%-0.5px)] translate-x-[calc(50%-0.5px)]" />
 
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-2xl mx-auto">
         <Image
           src="/avatar.png"
           alt="sajadevo avatar"

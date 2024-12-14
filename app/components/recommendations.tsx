@@ -9,7 +9,7 @@ export function Recommendations() {
   return (
     <section className="relative">
       <div className="absolute inset-0 size-full max-w-7xl mx-auto bg-white before:absolute before:z-0 before:h-full before:left-0 before:bg-secondary before:w-px after:absolute after:z-0 after:h-full after:right-0 after:bg-secondary after:w-px" />
-      <div className="max-w-3xl relative z-10 mx-auto pt-20">
+      <div className="max-w-2xl relative z-10 mx-auto pt-20">
         <h2 className="text-2xl text-black font-medium mb-6">
           Recommendations
         </h2>

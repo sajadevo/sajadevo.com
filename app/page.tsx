@@ -6,6 +6,7 @@ import {
   Story,
   Experience,
   Recommendations,
+  Contact,
 } from "./components";
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
       <Experience />
       <Line />
       <Recommendations />
+      <Contact />
     </>
   );
 }
