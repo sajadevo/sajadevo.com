@@ -12,7 +12,10 @@ export function Footer() {
         &copy; {YEAR}. All rights reserved.
       </p>
       <div className="flex items-center justify-center gap-4 mt-6">
-        <Link href="https://x.com/sajadevo_">
+        <Link
+          href="https://x.com/sajadevo_"
+          aria-label="Sajad X/Twitter Profile"
+        >
           <svg
             viewBox="0 0 24 24"
             strokeWidth="1.5"
@@ -33,7 +36,10 @@ export function Footer() {
             />
           </svg>
         </Link>
-        <Link href="https://dribbble.com/sajadevo">
+        <Link
+          href="https://dribbble.com/sajadevo"
+          aria-label="Sajad Dribbble Profile"
+        >
           <svg
             strokeWidth="1.5"
             viewBox="0 0 24 24"
@@ -71,7 +77,10 @@ export function Footer() {
             />
           </svg>
         </Link>
-        <Link href="https://www.instagram.com/sajadevo/">
+        <Link
+          href="https://www.instagram.com/sajadevo/"
+          aria-label="Sajad Instagram Profile"
+        >
           <svg
             strokeWidth="1.5"
             viewBox="0 0 24 24"
@@ -100,7 +109,10 @@ export function Footer() {
             />
           </svg>
         </Link>
-        <Link href="https://layers.to/sajadevo">
+        <Link
+          href="https://layers.to/sajadevo"
+          aria-label="Sajad Layers Profile"
+        >
           <svg
             viewBox="0 0 20 20"
             fill="none"
