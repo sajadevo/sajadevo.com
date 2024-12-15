@@ -7,14 +7,8 @@ const YEAR = new Date().getFullYear();
 
 export function Footer() {
   return (
-    <footer className="pb-20 max-w-7xl relative mx-auto bg-white">
-      <div className="absolute z-0 -left-20 h-px bottom-0 bg-secondary w-[calc(100%+160px)] scale-x-200" />
-      <div className="absolute z-0 -top-20 h-[calc(100%+160px)] right-0 bg-secondary w-px" />
-      <div className="absolute z-0 -top-20 h-[calc(100%+160px)] left-0 bg-secondary w-px" />
-      <div className="absolute z-10 bottom-0 left-0 size-[9px] bg-white border border-secondary translate-y-[calc(50%-0.5px)] -translate-x-[calc(50%-0.5px)]" />
-      <div className="absolute z-10 bottom-0 right-0 size-[9px] bg-white border border-secondary translate-y-[calc(50%-0.5px)] translate-x-[calc(50%-0.5px)]" />
-
-      <p className="text-foreground text-lg text-center">
+    <footer className="p-10 lg:p-20">
+      <p className="text-foreground text-base text-center">
         &copy; {YEAR}. All rights reserved.
       </p>
       <div className="flex items-center justify-center gap-4 mt-6">

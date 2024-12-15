@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 export function Line({ className }: { className?: string }) {
   return (
-    <div className="max-w-7xl mx-auto border-x border-secondary bg-white">
+    <div className="px-10 lg:px-20">
       <div
         className={cn(
           "relative max-w-2xl mx-auto w-full h-px bg-secondary",

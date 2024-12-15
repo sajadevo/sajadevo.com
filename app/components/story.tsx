@@ -1,9 +1,11 @@
 export function Story() {
   return (
-    <section className="relative max-w-7xl py-20 mx-auto bg-white border-x border-secondary">
+    <section className="p-10 lg:p-20">
       <div className="max-w-2xl mx-auto">
-        <h2 className="text-2xl text-black font-medium mb-6">My Story</h2>
-        <p className="text-foreground text-lg text-balance max-w-2xl">
+        <h2 className="text-xl md:text-2xl text-black font-medium mb-6">
+          My Story
+        </h2>
+        <p className="text-foreground text-base md:text-lg text-balance">
           Crafting stunning web experiences and intuitive designs for over seven
           years, I&apos;m all about merging creativity with functionality, one
           line of code at a time.

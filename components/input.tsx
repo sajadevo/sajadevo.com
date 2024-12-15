@@ -16,5 +16,5 @@ export function Input({
     className
   );
 
-  return <input ref={ref} className={styles} {...props} />;
+  return <input ref={ref} className={styles} autoComplete="off" {...props} />;
 }

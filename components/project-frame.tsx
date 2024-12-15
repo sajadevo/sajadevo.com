@@ -20,7 +20,7 @@ export function ProjectFrame({
   return (
     <div
       className={cn(
-        "group/project relative shrink-0 snap-always snap-center w-auto h-128 mx-auto bg-white border border-secondary p-6 hover:border-primary transition-all duration-300 ease-in",
+        "group/project relative shrink-0 snap-always snap-center w-auto h-60 sm:h-80 md:h-104 lg:h-116 xl:h-128 mx-auto bg-white border border-secondary p-4 sm:p-6 hover:border-primary transition-all duration-300 ease-in",
         className
       )}
     >
@@ -28,7 +28,7 @@ export function ProjectFrame({
       <Dot className="top-0 right-0 -translate-y-1/2 translate-x-1/2" />
       <Dot className="bottom-0 left-0 translate-y-1/2 -translate-x-1/2" />
       <Dot className="bottom-0 right-0 translate-y-1/2 translate-x-1/2" />
-      <div className="relative size-full overflow-hidden rounded-xl border border-secondary">
+      <div className="relative size-full overflow-hidden rounded-lg md:rounded-xl border border-secondary">
         <Image
           src={img}
           alt={title}
@@ -37,8 +37,8 @@ export function ProjectFrame({
           className="size-full group-hover/project:blur-sm group-hover/project:scale-110 transition-all duration-300 ease-in"
         />
       </div>
-      <div className="absolute left-14 bottom-13 w-[calc(100%-80px)] opacity-0 translate-y-4 group-hover/project:translate-y-0 group-hover/project:opacity-100 transition-all duration-300 ease-in">
-        <h2 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
+      <div className="absolute left-10 bottom-9 sm:left-12 md:left-14 sm:bottom-11 md:bottom-13 w-[calc(100%-80px)] opacity-0 translate-y-4 group-hover/project:translate-y-0 group-hover/project:opacity-100 transition-all duration-300 ease-in">
+        <h2 className="text-base md:text-xl font-bold text-white mb-2 flex items-center gap-2">
           {title}
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -48,13 +48,13 @@ export function ProjectFrame({
             strokeWidth="2.5"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="size-6"
+            className="size-4 md:size-6"
           >
             <path d="M7 7h10v10" />
             <path d="M7 17 17 7" />
           </svg>
         </h2>
-        <p className="text-white/80 max-w-md text-base text-balance">
+        <p className="text-white/80 text-sm max-w-sm md:max-w-md md:text-base text-balance">
           {description}
         </p>
       </div>

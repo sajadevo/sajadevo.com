@@ -27,9 +27,9 @@ const EXPERIENCES = [
 
 export function Experience() {
   return (
-    <section className="relative max-w-7xl py-20 mx-auto bg-white border-x border-secondary">
+    <section className="p-10 lg:p-20">
       <div className="max-w-2xl mx-auto">
-        <h2 className="text-2xl text-black font-medium mb-10">
+        <h2 className="text-xl md:text-2xl text-black font-medium mb-10">
           Work Experience
         </h2>
         <div className="space-y-14">

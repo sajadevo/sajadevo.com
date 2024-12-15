@@ -6,15 +6,21 @@
   --color-foreground: #6b7280;
   --color-secondary: #e5e7eb;
   --color-primary: #030712;
+
+  /* breakpoints */
+  --breakpoint-xxl: 1400px;
+  --breakpoint-xs: 480px;
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
+::selection {
+  @apply bg-primary text-white;
+}
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
 .no-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

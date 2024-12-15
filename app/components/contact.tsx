@@ -3,13 +3,13 @@ import { Input, Textarea, Button } from "@/components";
 
 export function Contact() {
   return (
-    <section className="relative max-w-7xl py-20 mx-auto bg-white border-x border-secondary">
+    <section className="px-10 pt-10 lg:px-20 lg:pt-20">
       <div className="max-w-2xl mx-auto">
-        <h2 className="text-2xl text-black font-medium mb-6">
+        <h2 className="text-xl md:text-2xl text-black font-medium mb-6">
           Let&apos;s Connect
         </h2>
         <form action="#">
-          <div className="grid grid-cols-2 gap-6 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <Input placeholder="Your name" />
             <Input type="email" placeholder="Your email" />
           </div>
