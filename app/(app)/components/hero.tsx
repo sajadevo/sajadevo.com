@@ -23,8 +23,7 @@ export function Hero() {
         </h1>
         <p className="text-foreground text-balance text-base md:text-lg mt-4">
           A web developer and designer with 7+ year experience helping startups
-          and early-stage companies to build their websites and web
-          applications.
+          and early-stage companies to build their websites and apps.
         </p>
         <div className="flex items-center flex-col xs:flex-row gap-3 mt-8">
           <Button className="w-full xs:w-auto">Book a call</Button>

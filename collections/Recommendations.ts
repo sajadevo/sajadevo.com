@@ -1,25 +1,20 @@
 // @types
 import type { CollectionConfig } from "payload";
 
-export const Projects: CollectionConfig = {
-  slug: "projects",
+export const Recommendations: CollectionConfig = {
+  slug: "recommendations",
   fields: [
     {
-      name: "title",
+      name: "name",
       type: "text",
     },
     {
-      name: "description",
+      name: "role",
       type: "text",
     },
     {
-      name: "path",
+      name: "feedback",
       type: "text",
-    },
-    {
-      name: "status",
-      type: "select",
-      options: ["ongoing", "completed"],
     },
     {
       name: "image",

@@ -10,6 +10,8 @@ import sharp from "sharp";
 import { Users } from "./collections/Users";
 import { Media } from "./collections/Media";
 import { Projects } from "./collections/Projects";
+import { Experiences } from "./collections/Experiences";
+import { Recommendations } from "./collections/Recommendations";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -20,11 +22,8 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
-    livePreview: {
-      url: ({ data }) => `${process.env.NEXT_PUBLIC_PAYLOAD_URL}/${data.slug}`,
-    },
   },
-  collections: [Users, Projects, Media],
+  collections: [Users, Projects, Experiences, Recommendations, Media],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {

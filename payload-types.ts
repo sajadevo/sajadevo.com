@@ -13,6 +13,8 @@ export interface Config {
   collections: {
     users: User;
     projects: Project;
+    experiences: Experience;
+    recommendations: Recommendation;
     media: Media;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -22,6 +24,8 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     projects: ProjectsSelect<false> | ProjectsSelect<true>;
+    experiences: ExperiencesSelect<false> | ExperiencesSelect<true>;
+    recommendations: RecommendationsSelect<false> | RecommendationsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -85,6 +89,7 @@ export interface Project {
   title?: string | null;
   description?: string | null;
   path?: string | null;
+  status?: ('ongoing' | 'completed') | null;
   image?: (string | null) | Media;
   updatedAt: string;
   createdAt: string;
@@ -110,6 +115,32 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "experiences".
+ */
+export interface Experience {
+  id: string;
+  role?: string | null;
+  date?: string | null;
+  description?: string | null;
+  companyLogo?: (string | null) | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "recommendations".
+ */
+export interface Recommendation {
+  id: string;
+  name?: string | null;
+  role?: string | null;
+  feedback?: string | null;
+  image?: (string | null) | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -122,6 +153,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'projects';
         value: string | Project;
+      } | null)
+    | ({
+        relationTo: 'experiences';
+        value: string | Experience;
+      } | null)
+    | ({
+        relationTo: 'recommendations';
+        value: string | Recommendation;
       } | null)
     | ({
         relationTo: 'media';
@@ -192,6 +231,31 @@ export interface ProjectsSelect<T extends boolean = true> {
   title?: T;
   description?: T;
   path?: T;
+  status?: T;
+  image?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "experiences_select".
+ */
+export interface ExperiencesSelect<T extends boolean = true> {
+  role?: T;
+  date?: T;
+  description?: T;
+  companyLogo?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "recommendations_select".
+ */
+export interface RecommendationsSelect<T extends boolean = true> {
+  name?: T;
+  role?: T;
+  feedback?: T;
   image?: T;
   updatedAt?: T;
   createdAt?: T;

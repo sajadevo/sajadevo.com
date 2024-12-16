@@ -20,7 +20,7 @@ export function RecommendationCard({
   return (
     <div
       className={cn(
-        "rounded-2xl p-6 max-w-75 sm:max-w-100 mr-6 shrink-0 w-full space-y-6 bg-background border border-secondary",
+        "rounded-xl p-6 max-w-75 sm:max-w-100 mr-6 shrink-0 w-full space-y-6 bg-background border border-secondary",
         className
       )}
     >

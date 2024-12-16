@@ -9,12 +9,7 @@ import {
   Contact,
 } from "./components";
 
-import { getProjects } from "@/lib/payload";
-
 export default async function Home() {
-  const data = await getProjects();
-
-  console.log(data);
   return (
     <>
       <Hero />

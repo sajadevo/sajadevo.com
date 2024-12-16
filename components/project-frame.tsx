@@ -1,6 +1,7 @@
 "use client";
 
 // @components
+import Link from "next/link";
 import Image from "next/image";
 
 // @utils
@@ -9,16 +10,22 @@ import { cn } from "@/lib/utils";
 export function ProjectFrame({
   img,
   title,
+  status,
+  path,
   description,
   className,
 }: {
   img: string;
   title: string;
+  status: "ongoing" | "completed";
+  path: string;
   description: string;
   className?: string;
 }) {
   return (
-    <div
+    <Link
+      href={path}
+      target="_blank"
       className={cn(
         "group/project relative shrink-0 snap-always snap-center w-auto h-60 sm:h-80 md:h-104 lg:h-116 xl:h-128 mx-auto bg-white border border-secondary p-4 sm:p-6 hover:border-primary transition-all duration-300 ease-in",
         className
@@ -28,17 +35,17 @@ export function ProjectFrame({
       <Dot className="top-0 right-0 -translate-y-1/2 translate-x-1/2" />
       <Dot className="bottom-0 left-0 translate-y-1/2 -translate-x-1/2" />
       <Dot className="bottom-0 right-0 translate-y-1/2 translate-x-1/2" />
-      <div className="relative size-full overflow-hidden rounded-lg md:rounded-xl border border-secondary">
+      <div className="relative size-full overflow-hidden rounded-lg md:rounded-[10px] border border-secondary">
         <Image
           src={img}
           alt={title}
           width={1280}
           height={1280}
-          className="size-full group-hover/project:blur-sm group-hover/project:scale-110 transition-all duration-300 ease-in"
+          className="size-full group-hover/project:blur-xs group-hover/project:scale-110 group-hover/project:brightness-50 transition-all duration-300 ease-in"
         />
       </div>
       <div className="absolute left-10 bottom-9 sm:left-12 md:left-14 sm:bottom-11 md:bottom-13 w-[calc(100%-80px)] opacity-0 translate-y-4 group-hover/project:translate-y-0 group-hover/project:opacity-100 transition-all duration-300 ease-in">
-        <h2 className="text-base md:text-xl font-bold text-white mb-2 flex items-center gap-2">
+        <h2 className="text-base md:text-xl font-bold text-white mb-2 inline-flex items-center gap-2">
           {title}
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -58,7 +65,7 @@ export function ProjectFrame({
           {description}
         </p>
       </div>
-    </div>
+    </Link>
   );
 }
 
