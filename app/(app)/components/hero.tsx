@@ -4,6 +4,7 @@ import { Button } from "@/components";
 
 // @icons
 import { Contra } from "@/icons";
+import Link from "next/link";
 
 export function Hero() {
   return (
@@ -26,10 +27,22 @@ export function Hero() {
           and early-stage companies to build their websites and apps.
         </p>
         <div className="flex items-center flex-col xs:flex-row gap-3 mt-8">
-          <Button className="w-full xs:w-auto">Book a call</Button>
-          <Button variant="secondary" className="gap-2 w-full xs:w-auto">
-            <Contra className="size-4 shrink-0" /> Hire me on Contra
-          </Button>
+          <Link
+            href="https://cal.com/sajadevo/talk-with-sajad"
+            target="_blank"
+            className="w-full xs:w-auto"
+          >
+            <Button className="w-full">Book a call</Button>
+          </Link>
+          <Link
+            href="https://contra.com/sajadevo"
+            target="_blank"
+            className="w-full xs:w-auto"
+          >
+            <Button variant="secondary" className="gap-2 w-full">
+              <Contra className="size-4 shrink-0" /> Hire me on Contra
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

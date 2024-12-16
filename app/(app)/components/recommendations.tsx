@@ -14,7 +14,7 @@ export function Recommendations() {
           </h2>
         </div>
       </div>
-      <div className="-mx-96">
+      <div className="-mx-96 border-x border-secondary py-2">
         <Marquee autoFill pauseOnHover>
           {new Array(10).fill(0).map((_, key) => (
             <RecommendationCard
