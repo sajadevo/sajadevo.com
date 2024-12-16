@@ -22,10 +22,11 @@ export function ProjectFrame({
   description: string;
   className?: string;
 }) {
+  const isCompleted = status === "completed";
   return (
     <Link
-      href={path}
-      target="_blank"
+      href={isCompleted ? path : "#"}
+      target={isCompleted ? "_blank" : "_self"}
       className={cn(
         "group/project relative shrink-0 snap-always snap-center w-auto h-60 sm:h-80 md:h-104 lg:h-116 xl:h-128 mx-auto bg-white border border-secondary p-4 sm:p-6 hover:border-primary transition-all duration-300 ease-in",
         className
@@ -45,9 +46,9 @@ export function ProjectFrame({
         />
       </div>
       <div className="absolute left-10 bottom-9 sm:left-12 md:left-14 sm:bottom-11 md:bottom-13 w-[calc(100%-80px)] opacity-0 translate-y-4 group-hover/project:translate-y-0 group-hover/project:opacity-100 transition-all duration-300 ease-in">
-        <h2 className="text-base md:text-xl font-bold text-white mb-2 inline-flex items-center gap-2">
+        <h2 className="text-base md:text-xl font-medium text-white mb-2 inline-flex items-center gap-2">
           {title}
-          {status === "completed" ? (
+          {isCompleted ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -62,7 +63,9 @@ export function ProjectFrame({
               <path d="M7 17 17 7" />
             </svg>
           ) : (
-            "soon"
+            <span className="bg-white rounded-full text-primary font-medium text-xs px-2 py-[3px]">
+              Soon
+            </span>
           )}
         </h2>
         <p className="text-white/80 text-sm max-w-sm md:max-w-md md:text-base text-balance">
