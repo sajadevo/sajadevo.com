@@ -6,7 +6,7 @@ import { getExperiences } from "@/lib/payload";
 
 export async function Experience() {
   const { docs: experiences } = await getExperiences();
-  console.log(experiences);
+
   return (
     <section className="p-10 lg:p-20">
       <div className="max-w-2xl mx-auto">
