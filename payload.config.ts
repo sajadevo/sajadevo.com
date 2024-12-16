@@ -10,6 +10,7 @@ import sharp from "sharp";
 import { Users } from "./collections/Users";
 import { Media } from "./collections/Media";
 import { Projects } from "./collections/Projects";
+import { Inquiries } from "./collections/Inquiries";
 import { Experiences } from "./collections/Experiences";
 import { Recommendations } from "./collections/Recommendations";
 
@@ -23,7 +24,14 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Projects, Experiences, Recommendations, Media],
+  collections: [
+    Users,
+    Projects,
+    Experiences,
+    Recommendations,
+    Inquiries,
+    Media,
+  ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {

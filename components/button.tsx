@@ -14,7 +14,7 @@ export function Button({
   className?: string;
 }) {
   const styles = cn(
-    "h-12 rounded-[10px] px-5 border inline-flex items-center whitespace-nowrap overflow-hidden justify-center text-base text-center font-medium cursor-pointer transition-[color_opacity] duration-300",
+    "h-12 rounded-[10px] px-5 border inline-flex items-center whitespace-nowrap overflow-hidden justify-center text-base text-center font-medium cursor-pointer disabled:opacity-70 disabled:pointer-events-none transition-[color_opacity] duration-300",
     {
       "bg-primary text-white border-primary hover:opacity-85":
         variant === "primary",
