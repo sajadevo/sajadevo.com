@@ -17,6 +17,10 @@ export const Experiences: CollectionConfig = {
       type: "text",
     },
     {
+      name: "companyWebsite",
+      type: "text",
+    },
+    {
       name: "companyLogo",
       type: "upload",
       relationTo: "media",

@@ -122,6 +122,7 @@ export interface Experience {
   role?: string | null;
   date?: string | null;
   description?: string | null;
+  companyWebsite?: string | null;
   companyLogo?: (string | null) | Media;
   updatedAt: string;
   createdAt: string;
@@ -244,6 +245,7 @@ export interface ExperiencesSelect<T extends boolean = true> {
   role?: T;
   date?: T;
   description?: T;
+  companyWebsite?: T;
   companyLogo?: T;
   updatedAt?: T;
   createdAt?: T;

@@ -1,31 +1,38 @@
 // @components
+import Link from "next/link";
 import Image from "next/image";
 
 export function ExperienceTimeline({
-  img,
-  year,
+  date,
   role,
+  companyLogo,
+  companyWebsite,
   description,
 }: {
-  img: string;
-  year: string;
+  date: string;
   role: string;
+  companyLogo: string;
+  companyWebsite: string;
   description: string;
 }) {
   return (
     <div className="space-y-4">
       <div className="flex sm:items-center flex-col sm:flex-row gap-4 sm:gap-6">
-        <div className="size-10 shrink-0 rounded-full border border-secondary grid place-items-center">
+        <Link
+          href={companyWebsite}
+          target="_blank"
+          className="size-10 shrink-0 rounded-full border border-secondary grid place-items-center"
+        >
           <Image
-            src={img}
+            src={companyLogo}
             alt="company logo"
             width={256}
             height={256}
-            className="size-5"
+            className="size-5 object-cover object-center"
           />
-        </div>
+        </Link>
         <div className="space-y-1">
-          <p className="text-sm text-foreground">{year}</p>
+          <p className="text-sm text-foreground">{date}</p>
           <h3 className="text-lg font-medium text-black">{role}</h3>
         </div>
       </div>

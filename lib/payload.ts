@@ -9,3 +9,9 @@ export async function getProjects() {
     collection: "projects",
   });
 }
+
+export async function getExperiences() {
+  return await payload.find({
+    collection: "experiences",
+  });
+}

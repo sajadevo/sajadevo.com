@@ -1,31 +1,12 @@
 // @components
 import { ExperienceTimeline } from "@/components";
 
-const EXPERIENCES = [
-  {
-    img: "/reach.png",
-    year: "2024 - Today",
-    role: "Senior Frontend Engineer",
-    description:
-      "Led the development of scalable, high-performance frontend architectures for complex web applications, ensuring a seamless user experience across devices.",
-  },
-  {
-    img: "/mintra.png",
-    year: "2022 - 2024",
-    role: "Senior Frontend Engineer",
-    description:
-      "Developed an NFT marketplace with wallet integration for seamless user authentication and transactions. Implemented staking features, enabling users to earn rewards while enhancing platform engagement.",
-  },
-  {
-    img: "/creative-tim.png",
-    year: "2020 - 2022",
-    role: "Web Developer & Community Manager",
-    description:
-      "Built responsive websites and managed online communities, fostering engagement and enhancing user experiences across digital platforms.",
-  },
-];
+// @actions
+import { getExperiences } from "@/lib/payload";
 
-export function Experience() {
+export async function Experience() {
+  const { docs: experiences } = await getExperiences();
+  console.log(experiences);
   return (
     <section className="p-10 lg:p-20">
       <div className="max-w-2xl mx-auto">
@@ -33,9 +14,21 @@ export function Experience() {
           Work Experience
         </h2>
         <div className="space-y-14">
-          {EXPERIENCES.map((experience, key) => (
-            <ExperienceTimeline key={key} {...experience} />
-          ))}
+          {experiences.map(
+            (
+              { role, date, description, companyWebsite, companyLogo }: any,
+              key
+            ) => (
+              <ExperienceTimeline
+                key={key}
+                role={role}
+                date={date}
+                description={description}
+                companyLogo={companyLogo.url}
+                companyWebsite={companyWebsite}
+              />
+            )
+          )}
         </div>
       </div>
     </section>
