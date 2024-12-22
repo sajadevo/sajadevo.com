@@ -5,6 +5,10 @@ export const Projects: CollectionConfig = {
   slug: "projects",
   fields: [
     {
+      name: "priority",
+      type: "number",
+    },
+    {
       name: "title",
       type: "text",
     },

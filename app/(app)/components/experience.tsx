@@ -11,7 +11,7 @@ export async function Experience() {
     <section className="p-10 lg:p-20">
       <div className="max-w-2xl mx-auto">
         <h2 className="text-xl md:text-2xl text-black font-medium mb-10">
-          Work Experience
+          My Experiences
         </h2>
         <div className="space-y-14">
           {experiences.map(

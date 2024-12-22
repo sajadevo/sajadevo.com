@@ -4,8 +4,8 @@ import {
   Hero,
   ProjectsCarousel,
   Story,
+  Services,
   Experience,
-  Recommendations,
   Contact,
 } from "./components";
 
@@ -16,9 +16,11 @@ export default async function Home() {
       <ProjectsCarousel />
       <Story />
       <Line />
+      <Services />
+      <Line />
       <Experience />
       <Line />
-      <Recommendations />
+      {/* <Recommendations /> */}
       <Contact />
     </>
   );

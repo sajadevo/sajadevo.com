@@ -4,5 +4,6 @@ export * from "./textarea";
 export * from "./project-frame";
 export * from "./line";
 export * from "./footer";
+export * from "./service-card";
 export * from "./experience-timeline";
 export * from "./recommendation-card";

@@ -88,6 +88,7 @@ export interface User {
  */
 export interface Project {
   id: string;
+  priority?: number | null;
   title?: string | null;
   description?: string | null;
   path?: string | null;
@@ -247,6 +248,7 @@ export interface UsersSelect<T extends boolean = true> {
  * via the `definition` "projects_select".
  */
 export interface ProjectsSelect<T extends boolean = true> {
+  priority?: T;
   title?: T;
   description?: T;
   path?: T;

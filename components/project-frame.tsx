@@ -36,17 +36,17 @@ export function ProjectFrame({
       <Dot className="top-0 right-0 -translate-y-1/2 translate-x-1/2" />
       <Dot className="bottom-0 left-0 translate-y-1/2 -translate-x-1/2" />
       <Dot className="bottom-0 right-0 translate-y-1/2 translate-x-1/2" />
-      <div className="relative size-full overflow-hidden rounded-lg md:rounded-[10px] border border-secondary">
+      <div className="relative size-full overflow-hidden rounded-lg md:rounded-[10px] border border-secondary group-hover/project:border-transparent transition-colors">
         <Image
           src={img}
           alt={title}
           width={1280}
           height={1280}
-          className="size-full group-hover/project:blur-xs group-hover/project:scale-110 group-hover/project:brightness-50 transition-all duration-300 ease-in"
+          className="size-full group-hover/project:blur-xs group-hover/project:scale-105 group-hover/project:brightness-50 transition-all duration-300 ease-in"
         />
       </div>
       <div className="absolute left-10 bottom-9 sm:left-12 md:left-14 sm:bottom-11 md:bottom-13 w-[calc(100%-80px)] opacity-0 translate-y-4 group-hover/project:translate-y-0 group-hover/project:opacity-100 transition-all duration-300 ease-in">
-        <h2 className="text-base md:text-xl font-medium text-white mb-2 inline-flex items-center gap-2">
+        <h2 className="text-base md:text-xl font-medium text-white inline-flex items-center gap-2">
           {title}
           {isCompleted ? (
             <svg
@@ -68,7 +68,7 @@ export function ProjectFrame({
             </span>
           )}
         </h2>
-        <p className="text-white/80 text-sm max-w-sm md:max-w-md md:text-base text-balance">
+        <p className="text-white/80 text-sm max-w-sm md:max-w-md md:text-base text-balance mt-2 sm:block hidden">
           {description}
         </p>
       </div>
