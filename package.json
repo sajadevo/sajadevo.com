@@ -20,7 +20,7 @@
     "@tailwindcss/postcss": "next",
     "clsx": "2.1.1",
     "graphql": "16.8.1",
-    "lucide-react": "^0.469.0",
+    "lucide-react": "0.469.0",
     "next": "15.1.0",
     "payload": "latest",
     "react": "19.0.0",
