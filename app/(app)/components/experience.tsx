@@ -24,7 +24,7 @@ export async function Experience() {
                 role={role}
                 date={date}
                 description={description}
-                companyLogo={companyLogo.url}
+                companyLogo={`/media/${companyLogo?.filename}`}
                 companyWebsite={companyWebsite}
               />
             )
