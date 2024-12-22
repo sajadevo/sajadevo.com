@@ -1,5 +1,3 @@
-"use client";
-
 // @components
 import { ProjectFrame } from "@/components";
 
@@ -8,7 +6,7 @@ import { getProjects } from "@/lib/payload";
 
 export async function ProjectsCarousel() {
   const { docs: projects } = await getProjects();
-  console.log(projects);
+
   return (
     <section>
       <div className="-mx-55 lg:-mx-70 xl:-mx-80 xxl:-mx-96 flex gap-6 border-x border-secondary lg:gap-12 will-change-scroll relative overflow-x-auto snap-x snap-mandatory py-2 no-scrollbar">
