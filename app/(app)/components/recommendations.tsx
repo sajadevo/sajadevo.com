@@ -7,7 +7,7 @@ import { RecommendationCard } from "@/components";
 export function Recommendations() {
   return (
     <section>
-      <div className="px-10 pt-10 lg:px-20 lg:pt-20">
+      <div className="px-8 pt-8 sm:px-10 sm:pt-10 lg:px-20 lg:pt-20">
         <div className="max-w-2xl relative z-10 mx-auto">
           <h2 className="text-xl md:text-2xl text-black font-medium mb-6">
             Recommendations

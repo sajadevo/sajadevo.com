@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export function Hero() {
   return (
-    <section className="p-10 lg:p-20">
+    <section className="p-8 sm:p-10 lg:p-20">
       <div className="max-w-2xl mx-auto">
         <Image
           src="/avatar.png"

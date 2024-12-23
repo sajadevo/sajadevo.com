@@ -1,6 +1,6 @@
 export function Story() {
   return (
-    <section className="p-10 lg:p-20">
+    <section className="p-8 sm:p-10 lg:p-20">
       <div className="max-w-2xl mx-auto">
         <h2 className="text-xl md:text-2xl text-black font-medium mb-6">
           My Story
