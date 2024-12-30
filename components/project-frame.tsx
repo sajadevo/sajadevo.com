@@ -23,6 +23,7 @@ export function ProjectFrame({
   className?: string;
 }) {
   const isCompleted = status === "completed";
+
   return (
     <Link
       href={isCompleted ? path : "#"}
