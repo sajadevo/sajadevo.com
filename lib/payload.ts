@@ -10,7 +10,7 @@ export async function getProjects() {
   return await payload.find({
     collection: "projects",
     limit: 25,
-    sort: "priority",
+    sort: "-priority",
   });
 }
 

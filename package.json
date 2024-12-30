@@ -17,6 +17,7 @@
     "@payloadcms/next": "latest",
     "@payloadcms/payload-cloud": "latest",
     "@payloadcms/richtext-lexical": "latest",
+    "@radix-ui/react-tooltip": "^1.1.6",
     "@tailwindcss/postcss": "next",
     "clsx": "2.1.1",
     "graphql": "16.8.1",
