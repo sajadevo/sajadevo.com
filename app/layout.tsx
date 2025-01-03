@@ -1,5 +1,6 @@
 // @components
 import { Footer, FrameLines } from "@/components";
+import { OpenPanelComponent } from "@openpanel/nextjs";
 
 // @utils
 import { generateMetadata } from "@/lib/utils";
@@ -25,6 +26,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <OpenPanelComponent
+        clientId={process.env.OPENPANEL_CLIENT_ID!}
+        trackScreenViews={true}
+        trackAttributes={true}
+        trackOutgoingLinks={true}
+      />
       <body
         className={`${geistSans.variable} antialiased p-6 sm:p-10 lg:p-20 bg-background relative overflow-x-hidden`}
       >

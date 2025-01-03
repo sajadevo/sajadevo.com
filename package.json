@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "3.9.1",
+    "@openpanel/nextjs": "^1.0.7",
     "@radix-ui/react-tooltip": "1.1.6",
     "@tailwindcss/postcss": "next",
     "clsx": "2.1.1",
