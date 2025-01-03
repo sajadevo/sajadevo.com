@@ -46,7 +46,7 @@ export function Experience() {
                 role={role}
                 date={date}
                 description={description}
-                companyLogo={`/media/${companyLogo?.filename}`}
+                companyLogo={companyLogo}
                 companyWebsite={companyWebsite}
               />
             )

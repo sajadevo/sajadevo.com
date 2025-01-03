@@ -28,14 +28,14 @@ const projects = [
     description:
       "LookIntoHex is a Hex analytics visualization tool for checking data like ROI, Liquidity, Shares, Adoption, Inflation and Social.",
     url: "https://www.lookintohex.com/",
-    image: "/projects/lookintohext.png",
+    image: "/projects/lookintohex.png",
   },
   {
     title: "Reach App",
     description:
       "Simplified, automated, permissionless protocol for quality engagement rewarding.",
     url: "https://www.getreach.xyz/",
-    image: "/projects/reach.png",
+    image: "/projects/get-reach-app.png",
   },
   {
     title: "Gerardo Portfolio",
@@ -70,9 +70,9 @@ export function ProjectsCarousel() {
   return (
     <section className="w-full">
       <ScrollContainer className="flex gap-6 lg:gap-12 relative py-2 px-6 lg:px-12 overflow-x-auto no-scrollbar">
-        {projects.map(({ id, title, description, image, url }: any) => (
+        {projects.map(({ title, description, image, url }) => (
           <ProjectFrame
-            key={id}
+            key={title}
             img={image}
             url={url}
             title={title}
