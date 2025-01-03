@@ -13,6 +13,9 @@ import { z } from "zod";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 
+// @actions
+import { sendInquiry } from "@/lib/actions";
+
 const formSchema = z.object({
   name: z.string().min(3, {
     message: "Name must be at least 3 characters long",
@@ -47,26 +50,22 @@ export function Contact() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
 
-    const formData = new FormData();
+    const response = await sendInquiry(values);
 
-    formData.append("name", values.name);
-    formData.append("email", values.email);
-    formData.append("message", values.message);
+    if (response.sent) {
+      reset();
+      setError(null);
+      setIsSuccess(true);
+      setIsLoading(false);
 
-    // if (response.status === 200) {
-    //   reset();
-    //   setError(null);
-    //   setIsSuccess(true);
-    //   setIsLoading(false);
-
-    //   setTimeout(() => {
-    //     setIsSuccess(false);
-    //   }, 3000);
-    // } else {
-    //   setIsLoading(false);
-    //   setIsSuccess(false);
-    //   setError(response.message);
-    // }
+      setTimeout(() => {
+        setIsSuccess(false);
+      }, 3000);
+    } else {
+      setIsLoading(false);
+      setIsSuccess(false);
+      setError("Could not send message. Please try again later.");
+    }
   }
 
   return (

@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "3.9.1",
-    "@radix-ui/react-tooltip": "^1.1.6",
+    "@radix-ui/react-tooltip": "1.1.6",
     "@tailwindcss/postcss": "next",
     "clsx": "2.1.1",
     "lucide-react": "0.469.0",
@@ -24,6 +24,7 @@
     "react-dom": "19.0.0",
     "react-fast-marquee": "1.6.5",
     "react-hook-form": "7.54.1",
+    "resend": "4.0.1",
     "tailwind-merge": "2.5.5",
     "zod": "3.24.1"
   },
