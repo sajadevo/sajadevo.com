@@ -25,7 +25,7 @@ export function ProjectFrame({
       href={url}
       target="_blank"
       className={cn(
-        "group/project relative shrink-0 aspect-auto w-max h-60 sm:h-80 md:h-104 lg:h-116 xl:h-128 bg-white border border-secondary p-4 sm:p-6 hover:border-primary transition-all duration-300 ease-in",
+        "group/project relative shrink-0 aspect-[4/3] h-60 sm:h-80 md:h-104 lg:h-116 xl:h-128 bg-white border border-secondary p-4 sm:p-6 hover:border-primary transition-all duration-300 ease-in",
         className
       )}
     >
