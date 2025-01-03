@@ -35,3 +35,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# lock files
+yarn.lock
+bun.lockb
+pnpm-lock.yaml
+package-lock.json
+
+# env files (can opt-in for committing if needed)
+.env
+.env.local
+.env.development

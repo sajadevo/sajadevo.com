@@ -10,15 +10,13 @@ import { cn } from "@/lib/utils";
 export function ProjectFrame({
   img,
   title,
-  status,
-  path,
+  url,
   description,
   className,
 }: {
   img: string;
   title: string;
-  status: "ongoing" | "completed";
-  path: string;
+  url: string;
   description: string;
   className?: string;
 }) {
@@ -26,8 +24,8 @@ export function ProjectFrame({
 
   return (
     <Link
-      href={isCompleted ? path : "#"}
-      target={isCompleted ? "_blank" : "_self"}
+      href={url}
+      target="_blank"
       className={cn(
         "group/project relative shrink-0 aspect-auto w-max h-60 sm:h-80 md:h-104 lg:h-116 xl:h-128 bg-white border border-secondary p-4 sm:p-6 hover:border-primary transition-all duration-300 ease-in",
         className

@@ -1,29 +1,25 @@
 {
-  "name": "portfolio",
-  "version": "0.1.0",
+  "name": "sajadevo.com",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
+  "author": {
+    "name": "sajad",
+    "url": "https://twitter.com/sajadevo_"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "generate-types": "payload generate:types"
+    "lint": "next lint"
   },
   "dependencies": {
     "@hookform/resolvers": "3.9.1",
-    "@payloadcms/db-mongodb": "latest",
-    "@payloadcms/live-preview-react": "3.7.0",
-    "@payloadcms/next": "latest",
-    "@payloadcms/payload-cloud": "latest",
-    "@payloadcms/richtext-lexical": "latest",
     "@radix-ui/react-tooltip": "^1.1.6",
     "@tailwindcss/postcss": "next",
     "clsx": "2.1.1",
-    "graphql": "16.8.1",
     "lucide-react": "0.469.0",
     "next": "15.1.0",
-    "payload": "latest",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-fast-marquee": "1.6.5",
