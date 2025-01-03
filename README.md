@@ -6,6 +6,7 @@
 - **Deployment**: [Vercel](https://vercel.com)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com)
 - **Email**: [Resend](https://resend.com/)
+- **Analytics**: [OpenPanel](https://openpanel.dev/)
 
 ## Running Locally
 
