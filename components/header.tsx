@@ -9,7 +9,17 @@ import Link, { type LinkProps } from "next/link";
 // @icons
 import { RiCommandLine, RiSunLine } from "@remixicon/react";
 
+// @hooks
+import { usePathname } from "next/navigation";
+
+// @utils
+import { cn } from "@/lib/utils";
+
+const links = ["home", "about", "projects"];
+
 export function Header() {
+  const pathname = usePathname();
+
   return (
     <header className="flex justify-between">
       <Link
@@ -25,9 +35,19 @@ export function Header() {
         />
       </Link>
       <nav className="hidden h-12 items-center gap-1 sm:flex md:h-16">
-        <NavLink href="/">Home</NavLink>
-        <NavLink href="/about">About</NavLink>
-        <NavLink href="/projects">Projects</NavLink>
+        {links.map((link) => {
+          const isHome = link === "home";
+
+          return (
+            <NavLink
+              key={link}
+              href={isHome ? "/" : link}
+              isActive={pathname === (isHome ? "/" : `/${link}`)}
+            >
+              {link}
+            </NavLink>
+          );
+        })}
       </nav>
       <div className="flex">
         <button className="hover:bg-secondary/25 border-secondary text-foreground grid size-12 cursor-pointer place-items-center overflow-hidden border-l bg-transparent p-1 text-base font-normal transition-colors duration-200 hover:text-black md:size-16">
@@ -43,12 +63,18 @@ export function Header() {
 
 function NavLink({
   children,
+  isActive,
   ...props
-}: { children: React.ReactNode } & LinkProps) {
+}: { children: React.ReactNode; isActive?: boolean } & LinkProps) {
   return (
     <Link
       {...props}
-      className="text-foreground grid h-full place-items-center px-3 text-sm transition-colors duration-200 hover:text-black"
+      className={cn(
+        "text-foreground grid h-full place-items-center px-3 text-sm capitalize transition-colors duration-200 hover:text-black",
+        {
+          "text-black": isActive,
+        },
+      )}
     >
       {children}
     </Link>
