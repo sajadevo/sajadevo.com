@@ -1,40 +1,56 @@
-"use client";
+// @utils
+import { cn } from "@/lib/utils";
 
-// @hooks
-import { useOffsetX } from "@/lib/hooks";
+const lineStyle = "bg-secondary absolute";
+const dotStyle =
+  "bg-background border-secondary absolute size-3 rounded border";
 
 export function FrameLines() {
-  const offsetX = useOffsetX();
-
   return (
     <>
-      {/* top lines */}
-      <div className="absolute z-0 -top-10 lg:-top-20 border-l -left-px border-secondary h-10 lg:h-20" />
-      <div className="absolute z-0 -top-10 lg:-top-20 border-r -right-px border-secondary h-10 lg:h-20" />
+      {/* lines */}
+      <div className={cn(lineStyle, "top-12 left-0 h-px w-full md:top-16")} />
       <div
-        className="absolute z-0 top-0 h-px bg-secondary"
-        style={{
-          left: `-${offsetX}px`,
-          width: `calc(100% + ${offsetX * 2}px)`,
-        }}
+        className={cn(
+          lineStyle,
+          "top-0 right-6 h-full w-px sm:right-8 md:right-16",
+        )}
       />
-      {/* bottom lines */}
-      <div className="absolute z-0 -bottom-10 lg:-bottom-20 border-l -left-px border-secondary h-10 lg:h-20" />
-      <div className="absolute z-0 -bottom-10 lg:-bottom-20 border-r -right-px border-secondary h-10 lg:h-20" />
       <div
-        className="absolute z-0 bottom-0 h-px bg-secondary"
-        style={{
-          left: `-${offsetX}px`,
-          width: `calc(100% + ${offsetX * 2}px)`,
-        }}
+        className={cn(lineStyle, "bottom-12 left-0 h-px w-full md:bottom-16")}
       />
-      {/* top dots */}
-      <div className="absolute z-10 top-[0.5px] -left-[0.5px] size-[9px] bg-white border border-secondary -translate-y-1/2 -translate-x-1/2" />
-      <div className="absolute z-10 top-[0.5px] -right-[0.5px] size-[9px] bg-white border border-secondary -translate-y-1/2 translate-x-1/2" />
+      <div
+        className={cn(
+          lineStyle,
+          "top-0 left-6 h-full w-px sm:left-8 md:left-16",
+        )}
+      />
 
-      {/* bottom dots */}
-      <div className="absolute z-10 bottom-[0.5px] -left-[0.5px] size-[9px] bg-white border border-secondary translate-y-1/2 -translate-x-1/2" />
-      <div className="absolute z-10 bottom-[0.5px] -right-[0.5px] size-[9px] bg-white border border-secondary translate-y-1/2 translate-x-1/2" />
+      {/* dots */}
+      <div
+        className={cn(
+          dotStyle,
+          "top-12 left-6 -translate-x-1/2 -translate-y-1/2 sm:left-8 md:top-16 md:left-16",
+        )}
+      />
+      <div
+        className={cn(
+          dotStyle,
+          "top-12 right-6 -translate-y-1/2 translate-x-1/2 sm:right-8 md:top-16 md:right-16",
+        )}
+      />
+      <div
+        className={cn(
+          dotStyle,
+          "bottom-12 left-6 -translate-x-1/2 translate-y-1/2 sm:left-8 md:bottom-16 md:left-16",
+        )}
+      />
+      <div
+        className={cn(
+          dotStyle,
+          "right-6 bottom-12 translate-x-1/2 translate-y-1/2 sm:right-8 md:right-16 md:bottom-16",
+        )}
+      />
     </>
   );
 }
