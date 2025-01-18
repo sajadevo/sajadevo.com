@@ -2,10 +2,12 @@
 
 @theme {
   /* colors */
-  --color-background: #f9fafb;
-  --color-foreground: #6b7280;
-  --color-secondary: #e5e7eb;
-  --color-primary: #030712;
+  --color-white: #fcfcfc;
+  --color-black: #010101;
+  --color-background: #f8f8f8;
+  --color-foreground: #585858;
+  --color-secondary: #e7e7e7;
+  --color-primary: #010101;
 
   /* breakpoints */
   --breakpoint-xxl: 1400px;
