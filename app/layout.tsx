@@ -1,5 +1,5 @@
 // @components
-import { Footer, FrameLines } from "@/components";
+import { Header, Footer, FrameLines } from "@/components";
 import { OpenPanelComponent } from "@openpanel/nextjs";
 
 // @utils
@@ -10,6 +10,11 @@ import localFont from "next/font/local";
 
 // @styles
 import "./globals.css";
+
+const georgiaSerif = localFont({
+  src: "./fonts/Georgia.ttf",
+  variable: "--font-georgia-serif",
+});
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,16 +38,14 @@ export default function RootLayout({
         trackOutgoingLinks={true}
       />
       <body
-        className={`${geistSans.variable} antialiased p-6 sm:p-10 lg:p-20 bg-background relative overflow-x-hidden`}
+        className={`${georgiaSerif.variable} ${geistSans.variable} bg-background relative overflow-x-hidden px-6 antialiased sm:px-8 md:px-16`}
       >
-        <div
-          id="main-content"
-          className="min-h-screen relative max-w-5xl mx-auto border-x bg-white border-secondary"
-        >
-          <FrameLines />
+        <FrameLines />
+        <Header />
+        <main className="min-h-[calc(100vh-48px)] md:min-h-[calc(100vh-65px)]">
           {children}
-          <Footer />
-        </div>
+        </main>
+        <Footer />
       </body>
     </html>
   );
