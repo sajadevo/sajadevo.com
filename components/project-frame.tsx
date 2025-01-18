@@ -25,25 +25,25 @@ export function ProjectFrame({
       href={url}
       target="_blank"
       className={cn(
-        "group/project relative shrink-0 aspect-[4/3] h-60 sm:h-80 md:h-104 lg:h-116 xl:h-128 bg-white border border-secondary p-4 sm:p-6 hover:border-primary transition-all duration-300 ease-in",
-        className
+        "group/project border-secondary hover:border-primary relative aspect-[4/3] h-60 shrink-0 border bg-white p-4 transition-all duration-200 ease-in sm:h-80 sm:p-6 md:h-104 lg:h-116 xl:h-128",
+        className,
       )}
     >
-      <Dot className="top-0 left-0 -translate-y-1/2 -translate-x-1/2" />
+      <Dot className="top-0 left-0 -translate-x-1/2 -translate-y-1/2" />
       <Dot className="top-0 right-0 -translate-y-1/2 translate-x-1/2" />
-      <Dot className="bottom-0 left-0 translate-y-1/2 -translate-x-1/2" />
-      <Dot className="bottom-0 right-0 translate-y-1/2 translate-x-1/2" />
-      <div className="relative size-full overflow-hidden rounded-lg md:rounded-[10px] border border-secondary group-hover/project:border-transparent transition-colors">
+      <Dot className="bottom-0 left-0 -translate-x-1/2 translate-y-1/2" />
+      <Dot className="right-0 bottom-0 translate-x-1/2 translate-y-1/2" />
+      <div className="border-secondary relative size-full overflow-hidden rounded-lg border transition-colors group-hover/project:border-transparent md:rounded-[10px]">
         <Image
           src={img}
           alt={title}
           width={1280}
           height={1280}
-          className="size-full group-hover/project:blur-xs group-hover/project:scale-105 group-hover/project:brightness-50 transition-all duration-300 ease-in"
+          className="size-full transition-all duration-200 ease-in group-hover/project:scale-105 group-hover/project:blur-xs group-hover/project:brightness-50"
         />
       </div>
-      <div className="absolute left-10 bottom-9 sm:left-12 md:left-14 sm:bottom-11 md:bottom-13 w-[calc(100%-80px)] opacity-0 translate-y-4 group-hover/project:translate-y-0 group-hover/project:opacity-100 transition-all duration-300 ease-in">
-        <h2 className="text-base md:text-xl font-medium text-white inline-flex items-center gap-2">
+      <div className="absolute bottom-9 left-10 w-[calc(100%-80px)] translate-y-4 opacity-0 transition-all duration-200 ease-in group-hover/project:translate-y-0 group-hover/project:opacity-100 sm:bottom-11 sm:left-12 md:bottom-13 md:left-14">
+        <h2 className="inline-flex items-center gap-2 text-base font-medium text-white md:text-xl">
           {title}
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -59,7 +59,7 @@ export function ProjectFrame({
             <path d="M7 17 17 7" />
           </svg>
         </h2>
-        <p className="text-white/80 text-sm max-w-sm md:max-w-md md:text-base text-balance mt-2 sm:block hidden">
+        <p className="mt-2 hidden max-w-sm text-sm text-balance text-white/80 sm:block md:max-w-md md:text-base">
           {description}
         </p>
       </div>
@@ -71,8 +71,8 @@ function Dot({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "absolute z-10 size-[9px] bg-white border border-secondary transition-all duration-300 ease-in group-hover/project:border-primary",
-        className
+        "border-secondary group-hover/project:border-primary absolute z-10 size-[9px] border bg-white transition-all duration-200 ease-in",
+        className,
       )}
     />
   );
