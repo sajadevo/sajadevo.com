@@ -15,14 +15,14 @@ import { Contra } from "@/icons";
 export function Hero() {
   return (
     <section className="p-8 sm:p-10 lg:p-20">
-      <div className="max-w-2xl mx-auto">
-        <div className="relative size-26 md:size-28 lg:size-32 ">
+      <div className="mx-auto max-w-2xl">
+        <div className="relative size-26 md:size-28 lg:size-32">
           <Image
             src="/avatar.png"
             alt="sajadevo avatar"
             width={1024}
             height={1024}
-            className="size-full border border-secondary object-cover object-center rounded-full"
+            className="border-secondary size-full rounded-full border object-cover object-center"
           />
           <TooltipProvider delayDuration={0}>
             <Tooltip>
@@ -30,14 +30,14 @@ export function Hero() {
                 <Link
                   href="https://tiny.supply?ref=sajadevo"
                   target="_blank"
-                  className="absolute bottom-2 right-2"
+                  className="absolute right-2 bottom-2"
                 >
                   <Image
                     src="https://framerusercontent.com/images/HAsr1urDKnVXkS4v4m7XoFC7GE.svg"
                     alt="tiny supply"
                     width={250}
                     height={250}
-                    className="size-6 bg-secondary border border-secondary rounded-full"
+                    className="bg-secondary border-secondary size-6 rounded-full border"
                   />
                 </Link>
               </TooltipTrigger>
@@ -45,29 +45,29 @@ export function Hero() {
             </Tooltip>
           </TooltipProvider>
         </div>
-        <h1 className="text-primary font-medium text-2xl xs:text-3xl md:text-4xl lg:text-5xl mt-8 leading-tight">
+        <h1 className="xs:text-3xl mt-8 text-2xl leading-tight font-medium text-black md:text-4xl lg:text-5xl">
           Hey, I&apos;m Sajad.
           <br />
           Developer & Designer
         </h1>
-        <p className="text-foreground text-balance text-base md:text-lg mt-4">
+        <p className="text-foreground mt-4 text-base text-balance md:text-lg">
           A web developer and designer with 7+ year experience helping startups
           and early-stage companies to build their websites and apps.
         </p>
-        <div className="flex items-center flex-col xs:flex-row gap-3 mt-8">
+        <div className="xs:flex-row mt-8 flex flex-col items-center gap-3">
           <Link
             href="https://cal.com/sajadevo/talk-with-sajad"
             target="_blank"
-            className="w-full xs:w-auto"
+            className="xs:w-auto w-full"
           >
             <Button className="w-full">Book a call</Button>
           </Link>
           <Link
             href="https://contra.com/sajadevo"
             target="_blank"
-            className="w-full xs:w-auto"
+            className="xs:w-auto w-full"
           >
-            <Button variant="secondary" className="gap-2 w-full">
+            <Button variant="secondary" className="w-full gap-2">
               <Contra className="size-4 shrink-0" /> Hire me on Contra
             </Button>
           </Link>

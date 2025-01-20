@@ -1,6 +1,6 @@
 // @components
 import Link from "next/link";
-import { Button } from "@/components";
+import { Button } from "@/components/button";
 
 // @icons
 import { Contra } from "@/icons";
@@ -27,7 +27,7 @@ export default async function Home() {
   return (
     <div className="grid min-h-[calc(100vh-48px)] place-items-center md:min-h-[calc(100vh-65px)]">
       <div className="mx-auto max-w-4xl px-6 pt-12 pb-24 sm:px-8 sm:pt-16 sm:pb-36">
-        <h1 className="text-primary xs:text-3xl font-serif text-3xl leading-tight sm:text-4xl md:text-5xl">
+        <h1 className="xs:text-3xl font-serif text-3xl leading-tight text-black sm:text-4xl md:text-5xl">
           Hey, I&apos;m Sajad.
           <br />
           Developer & Designer

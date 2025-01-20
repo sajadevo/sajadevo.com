@@ -1,5 +1,8 @@
 // @components
-import { Header, Footer, FrameLines } from "@/components";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
+import { Providers } from "@/components/providers";
+import { FrameLines } from "@/components/frame-lines";
 import { OpenPanelComponent } from "@openpanel/nextjs";
 
 // @utils
@@ -30,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <OpenPanelComponent
         clientId={process.env.OPENPANEL_CLIENT_ID!}
         trackScreenViews={true}
@@ -40,12 +43,14 @@ export default function RootLayout({
       <body
         className={`${georgiaSerif.variable} ${geistSans.variable} bg-background relative overflow-x-hidden px-6 antialiased sm:px-8 md:px-16`}
       >
-        <FrameLines />
-        <Header />
-        <main className="min-h-[calc(100vh-48px)] md:min-h-[calc(100vh-65px)]">
-          {children}
-        </main>
-        <Footer />
+        <Providers>
+          <FrameLines />
+          <Header />
+          <main className="min-h-[calc(100vh-48px)] md:min-h-[calc(100vh-65px)]">
+            {children}
+          </main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

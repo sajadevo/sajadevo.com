@@ -5,6 +5,8 @@ import React from "react";
 // @components
 import Image from "next/image";
 import Link, { type LinkProps } from "next/link";
+import { Button } from "@/components/button";
+import { ThemeToggle } from "@/components/theme-toggle";
 import {
   Dialog,
   DialogTrigger,
@@ -12,10 +14,10 @@ import {
   DialogPortal,
   DialogClose,
 } from "@/components/dialog";
-import { Button } from "@/components/button";
+import { Sajad } from "@/components/sajad";
 
 // @icons
-import { RiCommandLine, RiSunLine, RiCloseLine } from "@remixicon/react";
+import { RiCommandLine, RiCloseLine, RiArrowRightLine } from "@remixicon/react";
 
 // @hooks
 import { usePathname } from "next/navigation";
@@ -34,15 +36,9 @@ export function Header() {
     <header className="flex justify-between">
       <Link
         href="/"
-        className="border-secondary hover:bg-secondary/25 size-12 border-r bg-transparent p-2 transition-colors duration-200 md:size-16 md:p-3"
+        className="border-secondary hover:bg-secondary/25 dark:hover:bg-secondary/50 size-12 border-r bg-transparent p-2 transition-colors duration-200 md:size-16 md:p-3"
       >
-        <Image
-          src="/avatar.svg"
-          alt="avatar"
-          width={64}
-          height={64}
-          className="size-full"
-        />
+        <Sajad className="text-primary size-full" />
       </Link>
       <nav className="hidden h-12 items-center gap-1 sm:flex md:h-16">
         {links.map((link) => {
@@ -60,13 +56,11 @@ export function Header() {
         })}
       </nav>
       <div className="flex">
-        <button className="hover:bg-secondary/25 border-secondary text-foreground grid size-12 cursor-pointer place-items-center overflow-hidden border-l bg-transparent p-1 text-base font-normal transition-colors duration-200 hover:text-black md:size-16">
-          <RiSunLine className="size-4 transition-colors duration-200 md:size-5" />
-        </button>
+        <ThemeToggle />
         <Dialog>
           <DialogTrigger asChild>
-            <button className="hover:bg-secondary/25 border-secondary text-foreground grid size-12 cursor-pointer place-items-center overflow-hidden border-l bg-transparent p-1 text-base font-normal transition-colors duration-200 hover:text-black sm:hidden md:size-16">
-              <RiCommandLine className="size-4 transition-colors duration-200 md:size-5" />
+            <button className="hover:bg-secondary/25 dark:hover:bg-secondary/50 border-secondary text-foreground grid size-12 cursor-pointer place-items-center overflow-hidden border-l bg-transparent p-1 text-base font-normal transition-all duration-200 hover:text-black sm:hidden md:size-16">
+              <RiCommandLine className="size-4 md:size-5" />
             </button>
           </DialogTrigger>
           <DialogPortal>
@@ -79,8 +73,8 @@ export function Header() {
                 <RiCloseLine className="size-5" />
               </Button>
             </DialogClose>
-            <div className="fixed top-1/2 left-1/2 z-50 size-3/4 -translate-x-1/2 -translate-y-1/2">
-              <div className="border-secondary relative grid size-full place-items-center border">
+            <div className="fixed top-1/2 left-1/2 z-50 w-1/2 -translate-x-1/2 -translate-y-1/2">
+              <div className="border-secondary relative size-full border">
                 {/* dots */}
                 <div
                   className={cn(
@@ -106,7 +100,22 @@ export function Header() {
                     "right-0 bottom-0 translate-x-1/2 translate-y-1/2",
                   )}
                 />
-                hello
+                {/* menu */}
+                <div className="divide-secondary divide-y">
+                  {links.map((link) => {
+                    const isHome = link === "home";
+
+                    return (
+                      <MobileNavLink
+                        key={link}
+                        href={isHome ? "/" : link}
+                        isActive={pathname === (isHome ? "/" : `/${link}`)}
+                      >
+                        {link}
+                      </MobileNavLink>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </DialogPortal>
@@ -132,6 +141,27 @@ function NavLink({
       )}
     >
       {children}
+    </Link>
+  );
+}
+
+function MobileNavLink({
+  children,
+  isActive,
+  ...props
+}: { children: React.ReactNode; isActive?: boolean } & LinkProps) {
+  return (
+    <Link
+      {...props}
+      className={cn(
+        "group/nav-link text-foreground hover:bg-secondary/25 dark:hover:bg-secondary/50 flex h-full w-full items-center justify-between gap-4 py-4 pr-4 pl-5 text-xl capitalize transition-all duration-200 hover:text-black",
+        {
+          "text-black": isActive,
+        },
+      )}
+    >
+      {children}
+      <RiArrowRightLine className="size-5 translate-x-1/2 opacity-0 transition-all duration-200 group-hover/nav-link:translate-x-0 group-hover/nav-link:opacity-100" />
     </Link>
   );
 }

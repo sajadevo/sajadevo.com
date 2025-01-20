@@ -9,11 +9,11 @@ import { Codepen, Figma, PencilRuler } from "lucide-react";
 export function Services() {
   return (
     <section className="p-8 sm:p-10 lg:p-20">
-      <div className="max-w-2xl mx-auto">
-        <h2 className="text-xl md:text-2xl text-black font-medium mb-10">
+      <div className="mx-auto max-w-2xl">
+        <h2 className="mb-10 text-xl font-medium text-black md:text-2xl">
           What I do
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <ServiceCard
             icon={Codepen}
             title="Web Development"
@@ -30,28 +30,28 @@ export function Services() {
             title="Product Design"
             description="Delivering functional and visually engaging products that meet business goals and user needs."
           />
-          <div className="border border-secondary flex flex-col justify-center items-center border-dashed rounded-[10px] p-6 text-center">
+          <div className="border-secondary flex flex-col items-center justify-center rounded-[10px] border border-dashed p-6 text-center">
             <div className="flex items-center justify-center gap-2">
               <Image
                 src="/avatar.png"
                 alt="sajadevo avatar"
                 width={256}
                 height={256}
-                className="size-10 border border-secondary object-cover object-center rounded-full"
+                className="border-secondary size-10 rounded-full border object-cover object-center"
               />
-              <span className="font-medium text-foreground">+</span>
-              <div className="size-10 rounded-full border text-xs bg-background font-medium text-primary border-secondary grid place-items-center">
+              <span className="text-foreground font-medium">+</span>
+              <div className="bg-background border-secondary grid size-10 place-items-center rounded-full border text-xs font-medium text-black">
                 You
               </div>
             </div>
-            <p className="text-foreground max-w-40 text-base mx-auto my-4">
+            <p className="text-foreground mx-auto my-4 max-w-40 text-base">
               Currently accepting projects for Q1 2025
             </p>
             <Link
               href="https://cal.com/sajadevo/talk-with-sajad"
               target="_blank"
             >
-              <Button className="h-9 px-3 text-sm rounded-lg">
+              <Button className="h-9 rounded-lg px-3 text-sm">
                 Book a call
               </Button>
             </Link>

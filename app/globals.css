@@ -14,6 +14,17 @@
   --breakpoint-xs: 480px;
 }
 
+@variant dark (&:where(.dark, .dark *));
+
+.dark {
+  --color-white: #010101;
+  --color-black: #fcfcfc;
+  --color-background: #010101;
+  --color-foreground: #a4a4a4;
+  --color-secondary: #151515;
+  --color-primary: #fcfcfc;
+}
+
 ::selection {
   @apply bg-primary text-white;
 }
