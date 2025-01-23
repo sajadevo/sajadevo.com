@@ -45,7 +45,7 @@ export function Hero() {
             </Tooltip>
           </TooltipProvider>
         </div>
-        <h1 className="xs:text-3xl mt-8 text-2xl leading-tight font-medium text-black md:text-4xl lg:text-5xl">
+        <h1 className="xs:text-3xl mt-8 text-2xl leading-tight font-normal text-black md:text-4xl lg:text-5xl">
           Hey, I&apos;m Sajad.
           <br />
           Developer & Designer

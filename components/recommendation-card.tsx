@@ -20,8 +20,8 @@ export function RecommendationCard({
   return (
     <div
       className={cn(
-        "rounded-xl p-6 max-w-75 sm:max-w-100 mr-6 shrink-0 w-full space-y-6 bg-background border border-secondary",
-        className
+        "bg-background border-secondary mr-6 w-full max-w-75 shrink-0 space-y-6 rounded-xl border p-6 sm:max-w-100",
+        className,
       )}
     >
       <div className="flex items-center gap-3">
@@ -33,8 +33,8 @@ export function RecommendationCard({
           className="size-10"
         />
         <div className="space-y-0.5">
-          <p className="text-base font-medium text-black">{name}</p>
-          <p className="text-sm text-foreground">{role}</p>
+          <p className="text-base font-normal text-black">{name}</p>
+          <p className="text-foreground text-sm">{role}</p>
         </div>
       </div>
       <p className="text-foreground text-base">{feedback}</p>

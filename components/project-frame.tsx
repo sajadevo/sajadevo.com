@@ -43,7 +43,7 @@ export function ProjectFrame({
         />
       </div>
       <div className="absolute bottom-9 left-10 w-[calc(100%-80px)] translate-y-4 opacity-0 transition-all duration-200 ease-in group-hover/project:translate-y-0 group-hover/project:opacity-100 sm:bottom-11 sm:left-12 md:bottom-13 md:left-14">
-        <h2 className="inline-flex items-center gap-2 text-base font-medium text-white md:text-xl">
+        <h2 className="inline-flex items-center gap-2 text-base font-normal text-white md:text-xl">
           {title}
           <svg
             xmlns="http://www.w3.org/2000/svg"

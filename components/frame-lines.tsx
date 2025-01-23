@@ -1,9 +1,9 @@
 // @utils
 import { cn } from "@/lib/utils";
 
-const lineStyle = "bg-secondary absolute";
+const lineStyle = "bg-secondary absolute z-50";
 const dotStyle =
-  "bg-background border-secondary absolute size-3 rounded border";
+  "bg-background border-secondary absolute size-3 rounded border z-50";
 
 export function FrameLines() {
   return (

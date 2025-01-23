@@ -70,12 +70,12 @@ export function Contact() {
 
   return (
     <section className="px-8 pt-8 sm:px-10 sm:pt-10 lg:px-20 lg:pt-20">
-      <div className="max-w-2xl mx-auto">
-        <h2 className="text-xl md:text-2xl text-black font-medium mb-6">
+      <div className="mx-auto max-w-2xl">
+        <h2 className="mb-6 text-xl font-normal text-black md:text-2xl">
           Let&apos;s Connect
         </h2>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div className="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2">
             <div className="w-full">
               <Input
                 placeholder="Your name"
@@ -83,7 +83,7 @@ export function Contact() {
                 {...register("name")}
               />
               {errors.name?.message && (
-                <p className="text-sm text-red-500 mt-2">
+                <p className="mt-2 text-sm text-red-500">
                   {errors.name?.message}
                 </p>
               )}
@@ -96,7 +96,7 @@ export function Contact() {
                 {...register("email")}
               />
               {errors.email?.message && (
-                <p className="text-sm text-red-500 mt-2">
+                <p className="mt-2 text-sm text-red-500">
                   {errors.email?.message}
                 </p>
               )}
@@ -110,7 +110,7 @@ export function Contact() {
               {...register("message")}
             />
             {errors.message?.message && (
-              <p className="text-sm text-red-500 mt-2">
+              <p className="mt-2 text-sm text-red-500">
                 {errors.message?.message}
               </p>
             )}
@@ -119,7 +119,7 @@ export function Contact() {
             type="submit"
             disabled={isLoading}
             className={cn("w-full", {
-              "bg-green-600 border-green-600 pointer-events-none": isSuccess,
+              "pointer-events-none border-green-600 bg-green-600": isSuccess,
             })}
           >
             {isSuccess && (
@@ -131,7 +131,7 @@ export function Contact() {
                 strokeWidth={1.5}
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="size-5 mx-auto"
+                className="mx-auto size-5"
               >
                 <circle cx={12} cy={12} r={10} />
                 <path d="m9 12 2 2 4-4" />
@@ -146,7 +146,7 @@ export function Contact() {
                 strokeWidth={1.5}
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="size-5 animate-spin mx-auto"
+                className="mx-auto size-5 animate-spin"
               >
                 <path d="M12 2v4" />
                 <path d="m16.2 7.8 2.9-2.9" />
@@ -161,7 +161,7 @@ export function Contact() {
             {!isLoading && !isSuccess && "Send Message"}
           </Button>
           {error && (
-            <p className="text-sm text-red-500 mt-6 text-center">{error}</p>
+            <p className="mt-6 text-center text-sm text-red-500">{error}</p>
           )}
         </form>
       </div>

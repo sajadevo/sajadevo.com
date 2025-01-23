@@ -8,13 +8,13 @@ export function Recommendations() {
   return (
     <section>
       <div className="px-8 pt-8 sm:px-10 sm:pt-10 lg:px-20 lg:pt-20">
-        <div className="max-w-2xl relative z-10 mx-auto">
-          <h2 className="text-xl md:text-2xl text-black font-medium mb-6">
+        <div className="relative z-10 mx-auto max-w-2xl">
+          <h2 className="mb-6 text-xl font-normal text-black md:text-2xl">
             Recommendations
           </h2>
         </div>
       </div>
-      <div className="-mx-96 border-x border-secondary py-2">
+      <div className="border-secondary -mx-96 border-x py-2">
         <Marquee autoFill pauseOnHover>
           {new Array(10).fill(0).map((_, key) => (
             <RecommendationCard

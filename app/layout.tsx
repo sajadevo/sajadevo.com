@@ -14,9 +14,10 @@ import localFont from "next/font/local";
 // @styles
 import "./globals.css";
 
-const georgiaSerif = localFont({
-  src: "./fonts/Georgia.ttf",
-  variable: "--font-georgia-serif",
+const geistMono = localFont({
+  src: "./fonts/GeistMonoVF.woff",
+  variable: "--font-geist-mono",
+  weight: "100 900",
 });
 
 const geistSans = localFont({
@@ -41,7 +42,7 @@ export default function RootLayout({
         trackOutgoingLinks={true}
       />
       <body
-        className={`${georgiaSerif.variable} ${geistSans.variable} bg-background relative overflow-x-hidden px-6 antialiased sm:px-8 md:px-16`}
+        className={`${geistMono.variable} ${geistSans.variable} bg-background relative overflow-x-hidden px-6 antialiased sm:px-8 md:px-16`}
       >
         <Providers>
           <FrameLines />

@@ -25,7 +25,7 @@ import { usePathname } from "next/navigation";
 // @utils
 import { cn } from "@/lib/utils";
 
-const links = ["home", "about", "projects"];
+const links = ["home", "about", "projects", "uses"];
 const dotStyle =
   "bg-background border-secondary absolute size-3 rounded border";
 
@@ -36,7 +36,7 @@ export function Header() {
     <header className="flex justify-between">
       <Link
         href="/"
-        className="border-secondary hover:bg-secondary/25 dark:hover:bg-secondary/50 size-12 border-r bg-transparent p-2 transition-colors duration-200 md:size-16 md:p-3"
+        className="border-secondary hover:bg-secondary/25 size-12 border-r bg-transparent p-2 transition-colors duration-200 md:size-16 md:p-3"
       >
         <Sajad className="text-primary size-full" />
       </Link>
@@ -59,7 +59,7 @@ export function Header() {
         <ThemeToggle />
         <Dialog>
           <DialogTrigger asChild>
-            <button className="hover:bg-secondary/25 dark:hover:bg-secondary/50 border-secondary text-foreground grid size-12 cursor-pointer place-items-center overflow-hidden border-l bg-transparent p-1 text-base font-normal transition-all duration-200 hover:text-black sm:hidden md:size-16">
+            <button className="hover:bg-secondary/25 border-secondary text-foreground grid size-12 cursor-pointer place-items-center overflow-hidden border-l bg-transparent p-1 text-base font-normal transition-all duration-200 hover:text-black sm:hidden md:size-16">
               <RiCommandLine className="size-4 md:size-5" />
             </button>
           </DialogTrigger>
@@ -154,7 +154,7 @@ function MobileNavLink({
     <Link
       {...props}
       className={cn(
-        "group/nav-link text-foreground hover:bg-secondary/25 dark:hover:bg-secondary/50 flex h-full w-full items-center justify-between gap-4 py-4 pr-4 pl-5 text-xl capitalize transition-all duration-200 hover:text-black",
+        "group/nav-link text-foreground hover:bg-secondary/25 flex h-full w-full items-center justify-between gap-4 py-4 pr-4 pl-5 text-xl capitalize transition-all duration-200 hover:text-black",
         {
           "text-black": isActive,
         },

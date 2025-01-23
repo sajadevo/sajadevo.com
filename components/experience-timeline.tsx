@@ -17,11 +17,11 @@ export function ExperienceTimeline({
 }) {
   return (
     <div className="space-y-4">
-      <div className="flex sm:items-center flex-col sm:flex-row gap-4 sm:gap-6">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
         <Link
           href={companyWebsite}
           target="_blank"
-          className="size-10 shrink-0 rounded-full border border-secondary grid place-items-center"
+          className="border-secondary grid size-10 shrink-0 place-items-center rounded-full border"
         >
           <Image
             src={companyLogo}
@@ -32,11 +32,11 @@ export function ExperienceTimeline({
           />
         </Link>
         <div className="space-y-1">
-          <p className="text-sm text-foreground">{date}</p>
-          <h3 className="text-lg font-medium text-black">{role}</h3>
+          <p className="text-foreground text-sm">{date}</p>
+          <h3 className="text-lg font-normal text-black">{role}</h3>
         </div>
       </div>
-      <p className="text-foreground sm:pl-16 text-base text-balance">
+      <p className="text-foreground text-base text-balance sm:pl-16">
         {description}
       </p>
     </div>

@@ -30,10 +30,10 @@ export default function About() {
   return (
     <div className="min-h-[calc(100vh-48px)] md:min-h-[calc(100vh-65px)]">
       <div className="mx-auto max-w-2xl px-6 pt-12 pb-24 sm:px-8 sm:pt-16 sm:pb-36">
-        <div className="border-secondary size-40 rounded-full border p-4">
+        <div className="border-secondary size-32 rounded-full border p-4 sm:size-36 md:size-40">
           <Sajad className="text-primary size-full" />
         </div>
-        <h2 className="mt-12 mb-4 font-serif text-2xl text-black">Bio</h2>
+        <h2 className="mt-12 mb-4 font-sans text-2xl text-black">Bio</h2>
         <p className="text-foreground text-base leading-relaxed">
           Hey I&apos;m Sajad, a self-taught frontend engineer and passionate
           creator of intuitive web experiences, crafting stunning web
@@ -60,11 +60,11 @@ export default function About() {
           craft, transforming concepts into seamless, user-friendly solutions
           that leave a lasting impression on every screen.
         </p>
-        <h2 className="mt-12 mb-4 font-serif text-2xl text-black">Career</h2>
+        <h2 className="mt-12 mb-4 font-sans text-2xl text-black">Career</h2>
         <div className="space-y-8">
           {career.map(({ title, company, url, location, date }, key) => (
             <div key={key}>
-              <h2 className="mb-1 text-lg font-medium text-black">{title}</h2>
+              <h2 className="mb-1 text-lg font-normal text-black">{title}</h2>
               <p className="text-foreground text-base text-balance">
                 <Link href={url} target="_blank" className="text-black">
                   {company}

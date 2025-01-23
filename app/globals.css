@@ -19,9 +19,9 @@
 .dark {
   --color-white: #010101;
   --color-black: #fcfcfc;
-  --color-background: #010101;
-  --color-foreground: #a4a4a4;
-  --color-secondary: #1f1f1f;
+  --color-background: #262626;
+  --color-foreground: #cdcdcd;
+  --color-secondary: #303030;
   --color-primary: #fcfcfc;
 }
 

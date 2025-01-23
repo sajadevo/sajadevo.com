@@ -31,15 +31,15 @@ const experiences = [
 export function Experience() {
   return (
     <section className="p-8 sm:p-10 lg:p-20">
-      <div className="max-w-2xl mx-auto">
-        <h2 className="text-xl md:text-2xl text-black font-medium mb-10">
+      <div className="mx-auto max-w-2xl">
+        <h2 className="mb-10 text-xl font-normal text-black md:text-2xl">
           My Experiences
         </h2>
         <div className="space-y-14">
           {experiences.map(
             (
               { role, date, description, companyWebsite, companyLogo }: any,
-              key
+              key,
             ) => (
               <ExperienceTimeline
                 key={key}
@@ -49,7 +49,7 @@ export function Experience() {
                 companyLogo={companyLogo}
                 companyWebsite={companyWebsite}
               />
-            )
+            ),
           )}
         </div>
       </div>

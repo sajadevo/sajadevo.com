@@ -10,7 +10,7 @@ export function Services() {
   return (
     <section className="p-8 sm:p-10 lg:p-20">
       <div className="mx-auto max-w-2xl">
-        <h2 className="mb-10 text-xl font-medium text-black md:text-2xl">
+        <h2 className="mb-10 text-xl font-normal text-black md:text-2xl">
           What I do
         </h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -39,8 +39,8 @@ export function Services() {
                 height={256}
                 className="border-secondary size-10 rounded-full border object-cover object-center"
               />
-              <span className="text-foreground font-medium">+</span>
-              <div className="bg-background border-secondary grid size-10 place-items-center rounded-full border text-xs font-medium text-black">
+              <span className="text-foreground font-normal">+</span>
+              <div className="bg-background border-secondary grid size-10 place-items-center rounded-full border text-xs font-normal text-black">
                 You
               </div>
             </div>
