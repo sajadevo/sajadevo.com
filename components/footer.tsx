@@ -14,7 +14,7 @@ import {
 
 export function Footer() {
   return (
-    <footer className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center justify-center gap-6 md:bottom-5.5">
+    <footer className="absolute bottom-3.5 left-1/2 flex -translate-x-1/2 items-center justify-center gap-6 md:bottom-5">
       <Link
         href="/contact"
         aria-label="Contact Sajad"

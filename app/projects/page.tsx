@@ -2,107 +2,153 @@
 import Link from "next/link";
 import Image from "next/image";
 
-const projects = [
+const featuredProjects = [
   {
     name: "DevResume",
-    img: "/projects/devresume.png",
     url: "https://www.devresume.xyz",
-    description: "Resume builder for developers",
+    description: "Portfolio builder for developers with GitHub",
   },
   {
     name: "Mintra App",
-    img: "/projects/mintra.png",
     url: "https://app.mintra.ai/",
-    description: "NFT marketplace and launchpad",
+    description: "NFT marketplace and launchpad for creators",
   },
   {
     name: "Material Tailwind",
-    img: "/projects/material-tailwind.png",
+    url: "https://www.material-tailwind.com/v3",
+    description: "React & Tailwind CSS components library",
+  },
+];
+
+const projects = [
+  {
+    name: "DevResume",
+    url: "https://www.devresume.xyz",
+    description: "Portfolio builder for developers with GitHub",
+  },
+  {
+    name: "Mintra App",
+    url: "https://app.mintra.ai/",
+    description: "NFT marketplace and launchpad for creators",
+  },
+  {
+    name: "Material Tailwind",
     url: "https://www.material-tailwind.com/v3",
     description: "React & Tailwind CSS components library",
   },
   {
     name: "LookIntoHex",
-    img: "/projects/lookintohex.png",
     url: "https://www.lookintohex.com/",
     description: "HEX analytics and visualization tool",
   },
   {
+    name: "Shadcn + Tailwind v4",
+    url: "https://github.com/sajadevo/shadncn-tailwindcss-v4-starter",
+    description: "Starter kit for Shadcn with Tailwind CSS v4",
+  },
+  {
     name: "Reach App",
-    img: "/projects/get-reach-app.png",
     url: "https://www.getreach.xyz/",
     description: "Automated social finance protocol",
   },
   {
     name: "NF-Tim",
-    img: "/projects/nf-tim.png",
     url: "https://nf-tim.com/",
-    description: "NFT utility project for developers",
+    description: "NFT utility project for developers & designers",
   },
   {
     name: "Gerardo Portfolio",
-    img: "/projects/gerardo.png",
     url: "https://gerawrdog.com/",
     description: "Gerardo personal portfolio website",
   },
   {
     name: "CarPlazza",
-    img: "/projects/carplazza.png",
     url: "https://carplazza.com/",
     description: "Car marketplace and dealership",
   },
   {
     name: "Alexandra Prod",
-    img: "/projects/alexandraprod.png",
     url: "https://www.alexandraprod.com/",
-    description: "Natural wooden diy products store",
+    description: "Natural wooden DIY products store",
+  },
+  {
+    name: "Material Ripple Effects",
+    url: "https://github.com/sajadevo/material-ripple-effects",
+    description: "Material design ripple effect for your website",
   },
   {
     name: "Material Dashboard",
-    img: "/projects/material-dashboard.png",
     url: "https://www.creative-tim.com/product/material-dashboard-pro-react",
     description: "Dashboard template based on MUI and React",
   },
   {
     name: "Soft UI Dashboard",
-    img: "/projects/soft-ui-dashboard.png",
     url: "https://www.creative-tim.com/product/soft-ui-dashboard-pro-react",
     description: "Dashboard template based on MUI and React",
   },
   {
     name: "Argon Dashboard",
-    img: "/projects/argon-dashboard.png",
     url: "https://www.creative-tim.com/product/argon-dashboard-pro-material-ui",
     description: "Dashboard template based on MUI and React",
+  },
+  {
+    name: "Material Kit",
+    url: "https://www.creative-tim.com/product/material-kit-pro-react",
+    description: "UI kit template based on MUI and React",
   },
 ];
 
 export default function About() {
   return (
     <div className="min-h-[calc(100vh-48px)] md:min-h-[calc(100vh-65px)]">
-      <div className="grid grid-cols-1 pb-16 md:grid-cols-2 lg:grid-cols-3">
-        {projects.map(({ name, img, url, description }, key) => (
-          <Link
-            key={key}
-            href={url}
-            target="_blank"
-            className="group/project border-secondary relative size-full border-r border-b"
-          >
-            <Image
-              src={img}
-              alt={name}
-              width={1024}
-              height={1024}
-              className="size-full object-cover object-center opacity-0 transition-opacity duration-200 group-hover/project:opacity-100"
-            />
-            <div className="absolute top-1/2 left-1/2 w-[calc(100%-2rem)] -translate-1/2 text-center transition-opacity duration-200 group-hover/project:opacity-0">
-              <h2 className="mb-2 text-xl text-black">{name}</h2>
+      <div className="mx-auto max-w-4xl px-6 pt-12 pb-24 sm:px-8 sm:pt-16 sm:pb-36">
+        <h1 className="text-2xl leading-tight font-semibold text-black sm:text-3xl md:text-4xl">
+          What I&apos;ve done so far
+        </h1>
+        <p className="text-foreground mt-4 text-base text-balance md:leading-relaxed">
+          I&apos;m passionate about creating and sharing my journey through
+          building in public. Here, you can explore unique websites, apps, and
+          libraries I&apos;ve developed. Some of these projects are thriving,
+          while others have completed their lifecycle or pivoted into new ideas.
+        </p>
+        <h2 className="mt-12 mb-6 font-sans text-2xl font-semibold text-black">
+          Featured Projects
+        </h2>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {featuredProjects.map(({ name, url, description }) => (
+            <Link
+              key={name}
+              href={url}
+              className="border-secondary hover:bg-secondary/25 relative rounded-2xl border px-6 py-5 transition-all duration-200"
+            >
+              <h2 className="mb-2 font-sans text-lg font-medium text-black">
+                {name}
+              </h2>
               <p className="text-foreground text-base text-balance">
                 {description}
               </p>
-            </div>
-          </Link>
-        ))}
+            </Link>
+          ))}
+        </div>
+        <h2 className="mt-16 mb-6 font-sans text-2xl font-semibold text-black">
+          All Projects
+        </h2>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {projects.map(({ name, url, description }) => (
+            <Link
+              key={name}
+              href={url}
+              className="border-secondary hover:bg-secondary/25 relative rounded-2xl border px-6 py-5 transition-all duration-200"
+            >
+              <h2 className="mb-2 font-sans text-lg font-medium text-black">
+                {name}
+              </h2>
+              <p className="text-foreground text-base text-balance">
+                {description}
+              </p>
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );

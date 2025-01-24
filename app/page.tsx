@@ -27,7 +27,7 @@ export default async function Home() {
   return (
     <div className="grid min-h-[calc(100vh-48px)] place-items-center md:min-h-[calc(100vh-65px)]">
       <div className="mx-auto max-w-4xl px-6 pt-12 pb-24 sm:px-8 sm:pt-16 sm:pb-36">
-        <h1 className="xs:text-3xl text-3xl leading-tight text-black sm:text-4xl md:text-5xl">
+        <h1 className="text-3xl leading-tight font-semibold text-black sm:text-4xl md:text-5xl">
           Hey, I&apos;m Sajad.
           <br />
           Developer & Designer
@@ -61,7 +61,9 @@ export default async function Home() {
               key={title}
               className="border-secondary relative rounded-2xl border px-6 py-5"
             >
-              <h2 className="mb-2 font-sans text-lg text-black">{title}</h2>
+              <h2 className="mb-2 font-sans text-lg font-medium text-black">
+                {title}
+              </h2>
               <p className="text-foreground text-base text-balance">
                 {description}
               </p>
