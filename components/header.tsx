@@ -154,7 +154,7 @@ function MobileNavLink({
     <Link
       {...props}
       className={cn(
-        "group/nav-link text-foreground hover:bg-secondary/25 flex h-full w-full items-center justify-between gap-4 py-4 pr-4 pl-5 text-xl capitalize transition-all duration-200 hover:text-black",
+        "group/nav-link text-foreground hover:bg-secondary/25 flex h-full w-full items-center justify-between gap-4 py-4 pr-4 pl-5 text-xl font-medium capitalize transition-all duration-200 hover:text-black",
         {
           "text-black": isActive,
         },
