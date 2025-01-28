@@ -3,9 +3,6 @@
 import React from "react";
 
 // @components
-import Link, { type LinkProps } from "next/link";
-import { Button } from "@/components/button";
-import { ThemeToggle } from "@/components/theme-toggle";
 import {
   Dialog,
   DialogTrigger,
@@ -14,6 +11,9 @@ import {
   DialogClose,
 } from "@/components/dialog";
 import { Sajad } from "@/components/sajad";
+import { Button } from "@/components/button";
+import Link, { type LinkProps } from "next/link";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 // @icons
 import { RiCommandLine, RiCloseLine, RiArrowRightLine } from "@remixicon/react";
@@ -110,13 +110,14 @@ export function Header() {
                     const isHome = link === "home";
 
                     return (
-                      <MobileNavLink
-                        key={link}
-                        href={isHome ? "/" : link}
-                        isActive={pathname === (isHome ? "/" : `/${link}`)}
-                      >
-                        {link}
-                      </MobileNavLink>
+                      <DialogClose key={link} asChild>
+                        <MobileNavLink
+                          href={isHome ? "/" : link}
+                          isActive={pathname === (isHome ? "/" : `/${link}`)}
+                        >
+                          {link}
+                        </MobileNavLink>
+                      </DialogClose>
                     );
                   })}
                 </div>

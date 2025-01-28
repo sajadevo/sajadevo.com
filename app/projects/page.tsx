@@ -145,6 +145,7 @@ export default function About() {
             <Link
               key={name}
               href={url}
+              target="_blank"
               className="border-secondary hover:bg-secondary/25 relative rounded-2xl border px-6 py-5 transition-all duration-200"
             >
               <h2 className="mb-2 font-sans text-lg font-medium text-black">
@@ -164,6 +165,7 @@ export default function About() {
             <Link
               key={name}
               href={url}
+              target="_blank"
               className="border-secondary hover:bg-secondary/25 relative rounded-2xl border px-6 py-5 transition-all duration-200"
             >
               <h2 className="mb-2 font-sans text-lg font-medium text-black">
