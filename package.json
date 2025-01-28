@@ -1,11 +1,10 @@
 {
   "name": "sajadevo.com",
-  "version": "1.0.0",
-  "private": true,
+  "version": "2.0.0",
   "type": "module",
   "author": {
     "name": "sajad",
-    "url": "https://twitter.com/sajadevo_"
+    "url": "https://x.com/sajadevo_"
   },
   "scripts": {
     "dev": "next dev",
@@ -24,9 +23,9 @@
     "@tailwindcss/postcss": "next",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
-    "motion": "^12.0.0",
+    "motion": "12.0.0",
     "next": "15.1.0",
-    "next-themes": "^0.4.4",
+    "next-themes": "0.4.4",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-fast-marquee": "1.6.5",
