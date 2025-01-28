@@ -6,11 +6,11 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Sajad",
     short_name: "Sajad",
     description:
-      "A web developer and designer with 7+ year experience helping startups and early-stage companies to build their websites and apps.",
+      "I'm a passionate developer and designer interested in JavaScript, TypeScript, Rust, Product Design, Startups, Web 3.0 and OSS.",
     start_url: "/",
     display: "standalone",
-    background_color: "#f9fafb",
-    theme_color: "#f9fafb",
+    background_color: "#f8f8f8",
+    theme_color: "#f8f8f8",
     icons: [
       {
         src: "/favicon.ico",
