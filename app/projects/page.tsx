@@ -105,7 +105,7 @@ export default function About() {
         <h1 className="text-2xl leading-tight font-semibold text-black sm:text-3xl md:text-4xl">
           What I&apos;ve done so far
         </h1>
-        <p className="text-foreground mt-4 text-base text-balance md:leading-relaxed">
+        <p className="text-foreground mt-4 text-base text-balance sm:text-lg md:leading-relaxed">
           I&apos;m passionate about creating and sharing my journey through
           building in public. Here, you can explore unique websites, apps, and
           libraries I&apos;ve developed. Some of these projects are thriving,

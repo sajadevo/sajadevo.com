@@ -36,7 +36,7 @@ export default function About() {
         <h2 className="mt-12 mb-4 font-sans text-2xl font-semibold text-black">
           Bio
         </h2>
-        <p className="text-foreground text-base leading-relaxed">
+        <p className="text-foreground text-base leading-relaxed sm:text-lg">
           Hey I&apos;m Sajad, a self-taught frontend engineer and passionate
           creator of intuitive web experiences, crafting stunning web
           experiences and intuitive designs for over seven years, I&apos;m all

@@ -36,7 +36,7 @@ export default async function Home() {
           I&apos;m a passionate developer and designer interested in JavaScript,
           TypeScript, Rust, Product Design, Startups, Web 3.0 and OSS.
         </p>
-        <div className="xs:flex-row mt-8 flex flex-col items-center gap-2">
+        <div className="xs:flex-row mt-8 flex flex-col items-center gap-3">
           <Button className="xs:w-auto w-full" asChild>
             <Link
               href="https://cal.com/sajadevo/talk-with-sajad"
