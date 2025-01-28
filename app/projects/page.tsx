@@ -1,6 +1,8 @@
 // @components
 import Link from "next/link";
-import Image from "next/image";
+
+// @utils
+import { generateMetadata } from "@/lib/utils";
 
 const featuredProjects = [
   {
@@ -98,6 +100,30 @@ const projects = [
   },
 ];
 
+export const metadata = generateMetadata({
+  title: "Sajad ⋅ My Projects",
+  description: "Explore unique websites, apps, and libraries I've developed.",
+  keywords: [
+    "Sajad",
+    "Developer",
+    "Designer",
+    "Projects",
+    "Portfolio",
+    "Websites",
+    "Apps",
+    "Libraries",
+    "JavaScript",
+    "TypeScript",
+    "ReactJS",
+    "NextJS",
+    "TailwindCSS",
+    "MUI",
+    "Blockchain",
+    "NFT",
+    "Web3",
+  ],
+});
+
 export default function About() {
   return (
     <div className="min-h-[calc(100vh-48px)] md:min-h-[calc(100vh-65px)]">
@@ -111,7 +137,7 @@ export default function About() {
           libraries I&apos;ve developed. Some of these projects are thriving,
           while others have completed their lifecycle or pivoted into new ideas.
         </p>
-        <h2 className="mt-12 mb-6 font-sans text-2xl font-semibold text-black">
+        <h2 className="mt-12 mb-6 font-sans text-xl font-semibold text-black sm:text-2xl">
           Featured Projects
         </h2>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -130,7 +156,7 @@ export default function About() {
             </Link>
           ))}
         </div>
-        <h2 className="mt-16 mb-6 font-sans text-2xl font-semibold text-black">
+        <h2 className="mt-16 mb-6 font-sans text-xl font-semibold text-black sm:text-2xl">
           All Projects
         </h2>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">

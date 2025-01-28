@@ -2,6 +2,9 @@
 import Link from "next/link";
 import Image from "next/image";
 
+// @utils
+import { generateMetadata } from "@/lib/utils";
+
 const elements = [
   {
     name: 'MacBook Pro (14", 2023)',
@@ -80,6 +83,34 @@ const elements = [
   },
 ];
 
+export const metadata = generateMetadata({
+  title: "Sajad ⋅ What I Use",
+  description: "Behind the scenes, my workspace setup, tools, and gear.",
+  keywords: [
+    "Sajad",
+    "Developer",
+    "Designer",
+    "Workspace",
+    "Setup",
+    "Tools",
+    "Gear",
+    "MacBook Pro",
+    "Studio Display",
+    "Magic Keyboard",
+    "Magic Mouse",
+    "AirPods Max",
+    "Raycast",
+    "VS Code",
+    "Arc Browser",
+    "Warp",
+    "Figma",
+    "Notion",
+    "Cal.com",
+    "Screen Studio",
+    "CleanShot X",
+  ],
+});
+
 export default function Uses() {
   return (
     <div className="min-h-[calc(100vh-48px)] md:min-h-[calc(100vh-65px)]">
@@ -94,7 +125,7 @@ export default function Uses() {
             <div>
               <Image
                 src={img}
-                alt={name}
+                alt={`Image of ${name}`}
                 width={300}
                 height={300}
                 className="mx-auto h-24 w-auto"

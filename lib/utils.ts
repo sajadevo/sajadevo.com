@@ -15,19 +15,23 @@ export function generateMetadata(args?: Metadata): Metadata {
   const title = args?.title || "Sajad ⋅ Developer & Designer";
   const description =
     args?.description ||
-    "A web developer and designer with 7+ year experience helping startups and early-stage companies to build their websites and apps.";
+    "I'm a passionate developer and designer interested in JavaScript, TypeScript, Rust, Product Design, Startups, Web 3.0 and OSS.";
   const domain = new URL(
     isProd
       ? process.env.NEXT_PUBLIC_PROD_URL!
-      : process.env.NEXT_PUBLIC_DEV_URL!
+      : process.env.NEXT_PUBLIC_DEV_URL!,
   );
-  const productDemoImg = "/demo.png";
+  const productDemoImg = "/avatar.png";
 
   return {
     // general
     metadataBase: domain,
     title,
     description,
+    robots: "follow, index",
+    publisher: "Sajad Ahmad Nawabi",
+    authors: [{ name: "Sajad Ahmad Nawabi", url: "https://x.com/sajadevo_" }],
+    keywords: ["Sajad", "Developer", "Designer", "JavaScript", "TypeScript"],
     alternates: { canonical: domain, ...args?.alternates },
 
     // open-graph
@@ -46,7 +50,7 @@ export function generateMetadata(args?: Metadata): Metadata {
 
     // twitter
     twitter: {
-      card: "summary_large_image",
+      card: "summary",
       title,
       description,
       images: productDemoImg,

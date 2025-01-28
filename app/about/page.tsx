@@ -2,6 +2,9 @@
 import Link from "next/link";
 import { Sajad } from "@/components/sajad";
 
+// @utils
+import { generateMetadata } from "@/lib/utils";
+
 const career = [
   {
     title: "Senior Frontend Engineer",
@@ -26,12 +29,34 @@ const career = [
   },
 ];
 
+export const metadata = generateMetadata({
+  title: "Sajad ⋅ About Me",
+  description:
+    "Learn more about me, my career, and my journey as a developer and designer.",
+  keywords: [
+    "Sajad",
+    "Developer",
+    "Designer",
+    "Bio",
+    "Career",
+    "Frontend",
+    "Engineer",
+    "ReactJS",
+    "JavaScript",
+    "TypeScript",
+    "Rust",
+    "Open-Source",
+    "Web Developer",
+    "Web Designer",
+  ],
+});
+
 export default function About() {
   return (
     <div className="min-h-[calc(100vh-48px)] md:min-h-[calc(100vh-65px)]">
       <div className="mx-auto max-w-2xl px-6 pt-12 pb-24 sm:px-8 sm:pt-16 sm:pb-36">
         <div className="border-secondary size-32 rounded-full border p-4 sm:size-36 md:size-40">
-          <Sajad className="text-primary size-full" />
+          <Sajad className="text-primary size-full rounded-full" />
         </div>
         <h2 className="mt-12 mb-4 font-sans text-2xl font-semibold text-black">
           Bio
@@ -70,7 +95,11 @@ export default function About() {
             <div key={key}>
               <h3 className="mb-1 text-lg font-medium text-black">{title}</h3>
               <p className="text-foreground text-base text-balance">
-                <Link href={url} target="_blank" className="text-black">
+                <Link
+                  href={url}
+                  target="_blank"
+                  className="text-black underline underline-offset-2"
+                >
                   {company}
                 </Link>
                 &nbsp;&nbsp;•&nbsp;&nbsp;
