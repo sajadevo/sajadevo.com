@@ -124,7 +124,7 @@ export const metadata = generateMetadata({
   ],
 });
 
-export default function About() {
+export default function Projects() {
   return (
     <div className="min-h-[calc(100vh-48px)] md:min-h-[calc(100vh-65px)]">
       <div className="mx-auto max-w-4xl px-6 pt-12 pb-24 sm:px-8 sm:pt-16 sm:pb-36">

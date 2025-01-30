@@ -24,7 +24,7 @@ import { usePathname } from "next/navigation";
 // @utils
 import { cn } from "@/lib/utils";
 
-const links = ["home", "about", "projects", "uses"];
+const links = ["home", "about", "projects", "posts", "uses"];
 const dotStyle =
   "bg-background border-secondary absolute size-3 rounded border";
 
