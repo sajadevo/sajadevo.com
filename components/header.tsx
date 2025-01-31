@@ -24,7 +24,7 @@ import { usePathname } from "next/navigation";
 // @utils
 import { cn } from "@/lib/utils";
 
-const links = ["home", "about", "projects", "posts", "uses"];
+const links = ["home", "about", "projects", "blog", "uses"];
 const dotStyle =
   "bg-background border-secondary absolute size-3 rounded border";
 
@@ -47,7 +47,7 @@ export function Header() {
           return (
             <NavLink
               key={link}
-              href={isHome ? "/" : link}
+              href={isHome ? "/" : `/${link}`}
               isActive={pathname === (isHome ? "/" : `/${link}`)}
             >
               {link}
@@ -112,7 +112,7 @@ export function Header() {
                     return (
                       <DialogClose key={link} asChild>
                         <MobileNavLink
-                          href={isHome ? "/" : link}
+                          href={isHome ? "/" : `/${link}`}
                           isActive={pathname === (isHome ? "/" : `/${link}`)}
                         >
                           {link}
