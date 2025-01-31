@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @theme {
   /* colors */
@@ -36,4 +37,8 @@
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+.code-block pre *::selection {
+  @apply !bg-primary !text-white;
 }
