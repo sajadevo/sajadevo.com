@@ -1,5 +1,7 @@
 // @components
 import Link from "next/link";
+import { Typography } from "@/components/typography";
+import { FeatureCard } from "@/components/feature-card";
 
 // @utils
 import { generateMetadata } from "@/lib/utils";
@@ -128,32 +130,22 @@ export default function Projects() {
   return (
     <div className="min-h-[calc(100vh-48px)] md:min-h-[calc(100vh-65px)]">
       <div className="mx-auto max-w-4xl px-6 pt-12 pb-24 sm:px-8 sm:pt-16 sm:pb-36">
-        <h1 className="text-2xl leading-tight font-semibold text-black sm:text-3xl md:text-4xl">
-          What I&apos;ve done so far
-        </h1>
-        <p className="text-foreground mt-4 text-base text-balance sm:text-lg md:leading-relaxed">
+        <Typography variant="h1" asChild>
+          <h1>What I&apos;ve done so far</h1>
+        </Typography>
+        <Typography className="mt-4 text-balance">
           I&apos;m passionate about creating and sharing my journey through
           building in public. Here, you can explore unique websites, apps, and
           libraries I&apos;ve developed. Some of these projects are thriving,
           while others have completed their lifecycle or pivoted into new ideas.
-        </p>
-        <h2 className="mt-12 mb-6 font-sans text-xl font-semibold text-black sm:text-2xl">
-          Featured Projects
-        </h2>
+        </Typography>
+        <Typography variant="h2" className="mt-12 mb-6" asChild>
+          <h2>Featured Projects</h2>
+        </Typography>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {featuredProjects.map(({ name, url, description }) => (
-            <Link
-              key={name}
-              href={url}
-              target="_blank"
-              className="border-secondary hover:bg-secondary/25 relative rounded-2xl border px-6 py-5 transition-all duration-200"
-            >
-              <h2 className="mb-2 font-sans text-lg font-medium text-black">
-                {name}
-              </h2>
-              <p className="text-foreground text-base text-balance">
-                {description}
-              </p>
+            <Link key={name} href={url} target="_blank">
+              <FeatureCard title={name} description={description} />
             </Link>
           ))}
         </div>
@@ -162,18 +154,8 @@ export default function Projects() {
         </h2>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map(({ name, url, description }) => (
-            <Link
-              key={name}
-              href={url}
-              target="_blank"
-              className="border-secondary hover:bg-secondary/25 relative rounded-2xl border px-6 py-5 transition-all duration-200"
-            >
-              <h2 className="mb-2 font-sans text-lg font-medium text-black">
-                {name}
-              </h2>
-              <p className="text-foreground text-base text-balance">
-                {description}
-              </p>
+            <Link key={name} href={url} target="_blank">
+              <FeatureCard title={name} description={description} />
             </Link>
           ))}
         </div>

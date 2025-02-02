@@ -1,6 +1,7 @@
 // @components
 import Link from "next/link";
 import { Sajad } from "@/components/sajad";
+import { Typography } from "@/components/typography";
 
 // @utils
 import { generateMetadata } from "@/lib/utils";
@@ -58,10 +59,10 @@ export default function About() {
         <div className="border-secondary size-32 rounded-full border p-4 sm:size-36 md:size-40">
           <Sajad className="text-primary size-full rounded-full" />
         </div>
-        <h2 className="mt-12 mb-4 font-sans text-2xl font-semibold text-black">
-          Bio
-        </h2>
-        <p className="text-foreground text-base leading-relaxed sm:text-lg">
+        <Typography variant="h2" className="mt-12 mb-4" asChild>
+          <h2>Bio</h2>
+        </Typography>
+        <Typography>
           Hey I&apos;m Sajad, a self-taught frontend engineer and passionate
           creator of intuitive web experiences, crafting stunning web
           experiences and intuitive designs for over seven years, I&apos;m all
@@ -86,14 +87,14 @@ export default function About() {
           Driven by curiosity and an eye for detail, I continuously refine my
           craft, transforming concepts into seamless, user-friendly solutions
           that leave a lasting impression on every screen.
-        </p>
-        <h2 className="mt-12 mb-4 font-sans text-2xl font-semibold text-black">
-          Career
-        </h2>
+        </Typography>
+        <Typography variant="h2" className="mt-12 mb-4" asChild>
+          <h2>Career</h2>
+        </Typography>
         <div className="space-y-8">
           {career.map(({ title, company, url, location, date }, key) => (
             <div key={key}>
-              <h3 className="mb-1 text-lg font-medium text-black">{title}</h3>
+              <h3 className="mb-1 text-lg font-semibold text-black">{title}</h3>
               <p className="text-foreground text-base text-balance">
                 <Link
                   href={url}

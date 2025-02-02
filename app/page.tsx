@@ -1,6 +1,8 @@
 // @components
 import Link from "next/link";
 import { Button } from "@/components/button";
+import { Typography } from "@/components/typography";
+import { FeatureCard } from "@/components/feature-card";
 
 // @icons
 import { Contra } from "@/icons";
@@ -32,10 +34,10 @@ export default async function Home() {
           <br />
           Developer & Designer
         </h1>
-        <p className="text-foreground mt-4 text-lg text-balance md:leading-relaxed">
+        <Typography className="mt-4 text-balance">
           I&apos;m a passionate developer and designer interested in JavaScript,
           TypeScript, Rust, Product Design, Startups, Web 3.0 and OSS.
-        </p>
+        </Typography>
         <div className="xs:flex-row mt-8 flex flex-col items-center gap-3">
           <Button className="xs:w-auto w-full" asChild>
             <Link
@@ -57,17 +59,7 @@ export default async function Home() {
         </div>
         <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {services.map(({ title, description }) => (
-            <div
-              key={title}
-              className="border-secondary relative rounded-2xl border px-6 py-5"
-            >
-              <h2 className="mb-2 font-sans text-lg font-medium text-black">
-                {title}
-              </h2>
-              <p className="text-foreground text-base text-balance">
-                {description}
-              </p>
-            </div>
+            <FeatureCard key={title} title={title} description={description} />
           ))}
         </div>
       </div>
