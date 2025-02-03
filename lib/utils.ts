@@ -7,6 +7,14 @@ import type { Metadata } from "next";
 
 const isProd = process.env.NODE_ENV === "production";
 
+export function formatDate(date: string) {
+  return new Date(date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "2-digit",
+  });
+}
+
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }

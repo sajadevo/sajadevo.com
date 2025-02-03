@@ -2,7 +2,7 @@
 import Link from "next/link";
 
 // @utils
-import { cn } from "@/lib/utils";
+import { cn, formatDate } from "@/lib/utils";
 
 export function BlogPostCard({
   link,
@@ -41,7 +41,7 @@ export function BlogPostCard({
         {description}
       </p>
       <p className="text-foreground mt-auto text-sm">
-        {date}&nbsp;&nbsp;⋅&nbsp;&nbsp;{category}
+        {formatDate(date)}&nbsp;&nbsp;⋅&nbsp;&nbsp;{category}
       </p>
     </Link>
   );

@@ -1,10 +1,7 @@
 // @components
-import { Input } from "@/components/input";
 import { Typography } from "@/components/typography";
 import { BlogPostCard } from "@/components/blog-post-card";
-
-// @icons
-import { RiSearchLine } from "@remixicon/react";
+import { BlogPostsSearch } from "@/components/blog-posts-search";
 
 // @utils
 import fs from "node:fs";
@@ -31,12 +28,18 @@ export const metadata = generateMetadata({
   ],
 });
 
-export default async function Blog() {
-  const posts = await getBlogPosts();
+export default async function Blog({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const query = await searchParams;
+  const search = query.search as string;
+  const posts = await getBlogPosts(query.search as string);
 
   return (
     <div className="min-h-[calc(100vh-48px)] md:min-h-[calc(100vh-65px)]">
-      <div className="mx-auto max-w-4xl px-6 pt-12 pb-24 sm:px-8 sm:pt-16 sm:pb-36">
+      <div className="group mx-auto max-w-4xl px-6 pt-12 pb-24 sm:px-8 sm:pt-16 sm:pb-36">
         <Typography variant="h1" asChild>
           <h1>Learn with me</h1>
         </Typography>
@@ -46,39 +49,39 @@ export default async function Blog() {
           practices, and the latest trends in tech to help you build better and
           smarter projects.
         </Typography>
-        <div className="relative mt-12 mb-8 w-full">
-          <Input
-            className="peer rounded-full pl-10"
-            placeholder="Search posts"
-          />
-          <RiSearchLine className="text-foreground absolute top-1/2 left-4 size-4 -translate-y-1/2 transition-colors duration-200 peer-hover:text-black peer-focus:text-black" />
-        </div>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          {posts.map(({ title, description, date, category }, key) => {
-            const slug = title
-              .toLowerCase()
-              .replaceAll("?", "")
-              .replace(/[\s'",_.]/g, "-");
+        <BlogPostsSearch search={search} />
+        <div className="grid grid-cols-1 gap-4 group-has-[[data-pending]]:animate-pulse md:grid-cols-2">
+          {posts.length === 0 && query.search ? (
+            <p className="text-foreground col-span-full py-12 text-center text-base text-balance sm:text-lg md:leading-relaxed">
+              Oops! No posts found for your search.
+            </p>
+          ) : (
+            posts.map(({ title, description, date, category }, key) => {
+              const slug = title
+                .toLowerCase()
+                .replaceAll("?", "")
+                .replace(/[\s'",_.]/g, "-");
 
-            return (
-              <BlogPostCard
-                key={key}
-                link={`/blog/${slug}`}
-                title={title}
-                description={description}
-                date={date}
-                category={category}
-                isLarge={key === 0 && posts.length > 2}
-              />
-            );
-          })}
+              return (
+                <BlogPostCard
+                  key={key}
+                  link={`/blog/${slug}`}
+                  title={title}
+                  description={description}
+                  date={date}
+                  category={category}
+                  isLarge={key === 0 && posts.length > 2}
+                />
+              );
+            })
+          )}
         </div>
       </div>
     </div>
   );
 }
 
-async function getBlogPosts() {
+async function getBlogPosts(search?: string) {
   const posts = [];
   const basePath = process.cwd();
   const postsDirectory = fs.readdirSync("content/blog");
@@ -89,7 +92,17 @@ async function getBlogPosts() {
 
     const { data } = matter(rawContent);
 
-    posts.push(data);
+    const title = data.title.toLowerCase();
+
+    if (search) {
+      const searchWords = search.toLowerCase().split(" ");
+
+      if (searchWords.some((word) => title.includes(word))) {
+        posts.push(data);
+      }
+    } else {
+      posts.push(data);
+    }
   }
 
   const sortedPosts = posts.sort((a, b) => {

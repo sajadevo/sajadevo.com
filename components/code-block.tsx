@@ -62,7 +62,7 @@ export function CodeBlock({
       {...props}
       ref={codeRef}
       data-theme={resolvedTheme}
-      className="code-block border-secondary [&_pre_span[data-bright-ln]]:!text-foreground/50 relative rounded-2xl border [&_>_div]:!my-0 [&_pre]:!bg-transparent [&_pre]:!px-2 [&_pre]:!py-4 [&_pre]:font-mono [&_pre]:text-sm [&_pre]:leading-relaxed sm:[&_pre]:text-base [&_pre_span[data-bright-ln]]:!mr-4"
+      className="code-block border-secondary [&_pre_span[data-bright-ln]]:!text-foreground/50 relative my-6 rounded-2xl border [&_>_div]:!my-0 [&_pre]:!bg-transparent [&_pre]:!px-2 [&_pre]:!py-4 [&_pre]:font-mono [&_pre]:text-sm [&_pre]:leading-relaxed sm:[&_pre]:text-base [&_pre_span[data-bright-ln]]:!mr-4"
     >
       <Button
         variant="secondary"
