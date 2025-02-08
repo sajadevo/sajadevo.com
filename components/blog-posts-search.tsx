@@ -29,6 +29,7 @@ export function BlogPostsSearch({ search }: { search: string }) {
     startTransition(() => {
       router.push(`?search=${urlValue}`);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedSearchValue]);
 
   return (
