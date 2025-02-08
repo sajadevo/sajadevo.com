@@ -9,19 +9,12 @@ import { Button } from "@/components/button";
 import { RiCheckLine, RiFileCopyLine } from "@remixicon/react";
 
 // @hooks
-import { useTheme } from "next-themes";
 import { useCopyToClipboard } from "usehooks-ts";
-
-// @utils
-import prettier from "prettier/standalone";
-import parserBabel from "prettier/plugins/babel";
-import prettierPluginEstree from "prettier/plugins/estree";
 
 export function CodeBlock({
   children,
   ...props
 }: React.ComponentPropsWithoutRef<"div">) {
-  const { resolvedTheme } = useTheme();
   const [, copy] = useCopyToClipboard();
   const codeRef = React.useRef<any>(null);
 
@@ -36,21 +29,12 @@ export function CodeBlock({
     return null;
   }
 
-  async function copyCode() {
+  function copyCode() {
     setIsCopied(true);
 
     const code = codeRef.current.innerText;
-    const cleanedCode = code
-      .split("\n")
-      .map((line: string) => line.replace(/^\d+\s*/, "")) // Removes leading numbers
-      .join("\n");
 
-    const formattedCode = await prettier.format(cleanedCode, {
-      parser: "babel",
-      plugins: [parserBabel, prettierPluginEstree],
-    });
-
-    copy(formattedCode);
+    copy(code);
   }
 
   function resetCopy() {
@@ -61,8 +45,7 @@ export function CodeBlock({
     <div
       {...props}
       ref={codeRef}
-      data-theme={resolvedTheme}
-      className="code-block border-secondary [&_pre_span[data-bright-ln]]:!text-foreground/50 relative my-6 rounded-2xl border [&_>_div]:!my-0 [&_pre]:!bg-transparent [&_pre]:!px-2 [&_pre]:!py-4 [&_pre]:font-mono [&_pre]:text-sm [&_pre]:leading-relaxed sm:[&_pre]:text-base [&_pre_span[data-bright-ln]]:!mr-4"
+      className="border-secondary [&_pre_span[data-highlighted-line]]:border-primary [&_pre_span[data-highlighted-line]]:bg-primary/5 relative rounded-2xl border [&_pre]:my-0 [&_pre]:bg-transparent [&_pre]:px-0 [&_pre]:py-4 [&_pre]:font-mono [&_pre]:text-sm [&_pre]:leading-relaxed sm:[&_pre]:text-base [&_pre_code[data-language='plaintext']]:!text-black [&_pre_span[data-highlighted-line]]:block [&_pre_span[data-highlighted-line]]:border-l-2 [&_pre_span[data-line]]:px-5"
     >
       <Button
         variant="secondary"
