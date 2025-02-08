@@ -21,7 +21,6 @@
     "@radix-ui/react-tooltip": "1.1.6",
     "@remixicon/react": "4.6.0",
     "@tailwindcss/postcss": "4.0.1",
-    "bright": "1.0.0",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
     "gray-matter": "4.0.3",
@@ -34,8 +33,10 @@
     "react-dom": "19.0.0",
     "react-fast-marquee": "1.6.5",
     "react-hook-form": "7.54.1",
+    "rehype-pretty-code": "0.14.0",
     "remark-gfm": "4.0.0",
     "resend": "4.0.1",
+    "shiki": "2.3.2",
     "tailwind-merge": "2.5.5",
     "usehooks-ts": "3.1.0",
     "zod": "3.24.1"

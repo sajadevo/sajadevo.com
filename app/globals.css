@@ -39,6 +39,12 @@
   scrollbar-width: none;
 }
 
-.code-block pre *::selection {
-  @apply !bg-primary !text-white;
+code[data-theme],
+code[data-theme] span {
+  color: var(--shiki-light);
+}
+
+.dark code[data-theme],
+.dark code[data-theme] span {
+  color: var(--shiki-dark);
 }

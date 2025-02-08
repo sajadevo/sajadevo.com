@@ -2,12 +2,12 @@ import React from "react";
 
 // @components
 import Link from "next/link";
-import Image from "next/image";
-import { Code } from "bright";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { CodeBlock } from "@/components/code-block";
 import { Typography } from "@/components/typography";
 import { BlogPostCard } from "@/components/blog-post-card";
+import { BlogCopyLink } from "@/components/blog-copy-link";
+import { BrowserWindow } from "@/components/browser-window";
 
 // @icons
 import { RiArrowLeftLine } from "@remixicon/react";
@@ -18,12 +18,55 @@ import matter from "gray-matter";
 import remarkGfm from "remark-gfm";
 import { formatDate } from "@/lib/utils";
 import { notFound } from "next/navigation";
-import { BlogCopyLink } from "@/components/blog-copy-link";
+import rehypePrettyCode from "rehype-pretty-code";
+import { generateMetadata as generateMetadataFn } from "@/lib/utils";
 
-Code.theme = {
-  dark: "github-dark",
-  light: "github-light",
-};
+// @types
+import type { Metadata } from "next";
+
+const isProd = process.env.NODE_ENV === "production";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const { frontMatter } = await readMdxFile(slug);
+
+  const domain = new URL(
+    isProd
+      ? process.env.NEXT_PUBLIC_PROD_URL!
+      : process.env.NEXT_PUBLIC_DEV_URL!,
+  );
+
+  const imageUrl = `${domain}/api/og/blog?title=${encodeURIComponent(frontMatter.title)}`;
+
+  return generateMetadataFn({
+    title: frontMatter.title,
+    description: frontMatter.description,
+    keywords: frontMatter.keywords,
+    alternates: {
+      canonical: `${domain}/${slug}`,
+    },
+    openGraph: {
+      type: "article",
+      title: frontMatter.title,
+      description: frontMatter.description,
+      images: [
+        {
+          url: imageUrl,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: frontMatter.title,
+      description: frontMatter.description,
+      images: imageUrl,
+    },
+  });
+}
 
 export default async function Post({
   params,
@@ -46,7 +89,7 @@ export default async function Post({
 
   return (
     <div className="min-h-[calc(100vh-48px)] md:min-h-[calc(100vh-65px)]">
-      <div className="mx-auto max-w-4xl px-6 pb-24 pt-12 sm:px-8 sm:pb-36 sm:pt-16">
+      <div className="mx-auto max-w-4xl px-6 pt-12 pb-24 sm:px-8 sm:pt-16 sm:pb-36">
         <div className="mb-12">
           <Link
             href="/blog"
@@ -62,20 +105,36 @@ export default async function Post({
             {date}&nbsp;&nbsp;⋅&nbsp;&nbsp;{readTime} min read
           </Typography>
         </div>
-        <article className="prose prose-a:text-black prose-a:text-underline prose-strong:text-black prose-li:text-foreground prose-em:text-foreground prose-lead:text-foreground sm:prose-lg prose-p:text-foreground prose-headings:text-black prose-h2:text-xl sm:prose-h2:text-2xl prose-h3:text-lg sm:prose-h3:text-xl prose-h4:text-lg sm:prose-h4:text-xl prose-headings:font-semibold prose-strong:font-semibold mt-12 w-full max-w-full">
+        <article className="prose prose-a:text-black prose-a:text-underline prose-strong:text-black prose-li:text-foreground prose-em:text-foreground prose-lead:text-foreground sm:prose-lg prose-p:text-foreground prose-headings:text-black prose-h2:text-xl sm:prose-h2:text-2xl prose-h3:text-lg sm:prose-h3:text-xl prose-h4:text-lg sm:prose-h4:text-xl prose-headings:font-semibold prose-strong:font-semibold prose-code:text-black mt-12 w-full max-w-full">
           <MDXRemote
             source={source}
             options={{
               mdxOptions: {
                 remarkPlugins: [remarkGfm],
+                rehypePlugins: [
+                  [
+                    rehypePrettyCode,
+                    {
+                      keepBackground: false,
+                      theme: {
+                        dark: "github-dark",
+                        light: "github-light",
+                      },
+                    },
+                  ],
+                ],
               },
             }}
             components={{
-              pre: (props: typeof Code) => (
+              pre: (props) => (
                 <CodeBlock>
-                  <Code {...props} lineNumbers />
+                  <pre {...props} />
                 </CodeBlock>
               ),
+              a: (props) => (
+                <a {...props} target="_blank" rel="noopener noreferrer" />
+              ),
+              BrowserWindow,
             }}
           />
         </article>
@@ -103,7 +162,7 @@ export default async function Post({
           <>
             <Typography
               variant="h2"
-              className="mb-6 mt-16 max-w-md text-balance"
+              className="mt-16 mb-6 max-w-md text-balance"
               asChild
             >
               <h2>Continue your journey with these related posts</h2>
