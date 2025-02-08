@@ -1,0 +1,450 @@
+---
+title: MDX-Based Blog with Next.js
+date: 02-10-2025 # MM-DD-YYYY
+description: Learn how to build an interactive and content-driven blog using Next.js and MDX.
+category: web development
+keywords:
+  - next.js
+  - react
+  - mdx
+  - blog
+  - tailwindcss
+  - web development
+  - javascript
+  - typescript
+---
+
+Building a modern blog that is rich in content has never been easier, thanks to MDX and Next.js. With MDX, you can mix Markdown and React components effortlessly, making your blog more interactive and flexible. Whether you're a developer sharing technical insights or a writer who loves well-structured content, Next.js with MDX gives you the best of both worlds, fast performance, server-side rendering, and static site generation. In this guide, I'll walk you through setting up an MDX-powered blog with Next.js so you can create a dynamic, customizable blogging experience with ease.
+
+## Prerequisites
+
+You need to have some dependencies for this project:
+
+- [Next.js](https://nextjs.org/): React framework for building web applications.
+- [Tailwind CSS](https://tailwindcss.com/): CSS framework for rapidly building custom designs.
+- [Next MDX Remote](https://github.com/hashicorp/next-mdx-remote): For rendering MDX content in Next.js.
+- [Remark GFM](https://github.com/remarkjs/remark-gfm): For parsing GitHub Flavored Markdown in MDX.
+- [Gray Matter](https://github.com/jonschlinkert/gray-matter): For extracting front matter from markdown files.
+
+## Setting Up Next.js
+
+First, you need to create a new Next.js (App Router) project by running the following command:
+
+```bash
+npx create-next-app@latest my-mdx-blog
+```
+
+While installing Next.js, you'll be prompted with some questions to configure your project. Here are the recommended answers but feel free to customize them based on your preferences:
+
+```plaintext
+Would you like to use TypeScript? Yes
+Would you like to use ESLint? Yes
+Would you like to use Tailwind CSS? Yes
+Would you like your code inside a `src/` directory? No
+Would you like to use App Router? (recommended) Yes
+Would you like to use Turbopack for `next dev`? No
+Would you like to customize the import alias (`@/*` by default)? Yes
+What import alias would you like configured? @/*
+```
+
+## Installing Dependencies
+
+After setting up the Next.js project, navigate to the project directory and install the required dependencies:
+
+```bash
+npm i next-mdx-remote remark-gfm gray-matter
+```
+
+## Configuring MDX File
+
+Create a new directory named `content` in the root of your project. Inside the `content` directory, you can put all your blog posts in MDX format.
+
+```plaintext {2-3}
+app/
+content/
+  └── my-first-post.mdx
+public/
+.gitignore
+eslint.config.mjs
+next-env.d.ts
+next.config.ts
+package.json
+postcss.config.mjs
+tailwind.config.ts
+tsconfig.json
+```
+
+Once you've created the `content` directory, add the following content to the `my-first-post.mdx` file:
+
+```mdx
+---
+title: My First Post
+description: This is my first post on my new blog.
+---
+
+# My First Post
+
+Hello, world! This is my first post on my new blog. I'm so excited to get started with this new project. I hope you enjoy reading my posts as much as I enjoy writing them.
+```
+
+## Reading MDX Files using File System API
+
+Now, you need to list all the MDX files from the `content` directory. To achieve this, you need to use the Node.js File System API.
+
+- Navigate to the `app/page.tsx` file and add the following code:
+
+```tsx
+export default async function Page() {
+  return (
+    <div className="mx-auto max-w-2xl px-8 py-16">
+      <h1 className="text-2xl font-semibold text-black sm:text-4xl">Blog</h1>
+    </div>
+  );
+}
+```
+
+- Now, you need to list all the MDX files from the `content` directory:
+
+```tsx {2-3,5-9,19-40}
+// @utils
+import fs from "node:fs";
+import matter from "gray-matter";
+
+interface Post {
+  title: string;
+  description: string;
+  slug: string;
+}
+
+export default async function Page() {
+  return (
+    <div className="mx-auto max-w-2xl px-8 py-16">
+      <h1 className="text-2xl font-semibold text-black sm:text-4xl">Blog</h1>
+    </div>
+  );
+}
+
+async function getBlogPosts() {
+  const posts = [];
+  const basePath = process.cwd(); // Get the current working directory
+  const contentDirectory = fs.readdirSync("content"); // Read the content directory
+
+  // Loop through the content directory and get the content of each mdx file
+  for (const post of contentDirectory) {
+    const filePath = `${basePath}/content/${post}`; // Get each mdx file path
+    const rawContent = await fs.promises.readFile(filePath, "utf-8"); // Read the content of each mdx file
+
+    // Parse the content of each mdx file using gray-matter
+    const { data } = matter(rawContent);
+
+    // Push the parsed data to the posts array
+    posts.push({
+      ...data,
+      slug: post.replace(".mdx", ""), // Set a slug for each post based on their filename on the content directory
+    });
+  }
+
+  return posts as Post[];
+}
+```
+
+The `getBlogPosts` function will read each file from the `content` directory, parse the content of each MDX file using the `gray-matter` package and then return an array of posts.
+
+- Next, you need to display the list of blog posts on the page to do this, update the `app/page.tsx` file with the following code:
+
+```tsx {2,16,21-36}
+// @components
+import Link from "next/link";
+
+// @utils
+import fs from "node:fs";
+import matter from "gray-matter";
+
+interface Post {
+  title: string;
+  description: string;
+  slug: string;
+}
+
+export default async function Page() {
+  // Get all the blog posts from the content directory
+  const posts = await getBlogPosts();
+
+  return (
+    <div className="mx-auto max-w-2xl px-8 py-16">
+      <h1 className="text-2xl font-semibold text-black sm:text-4xl">Blog</h1>
+      <div className="mt-6 space-y-6">
+        {posts.map((post, index) => (
+          <Link
+            href={post.slug}
+            key={index}
+            className="block cursor-pointer rounded-xl border border-gray-200 px-5 py-4 hover:bg-gray-200/25"
+          >
+            <h2 className="mb-2 text-lg font-semibold text-black">
+              {post.title}
+            </h2>
+            <p className="text-balance text-base text-gray-700">
+              {post.description}
+            </p>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+async function getBlogPosts() {
+  const posts = [];
+  const basePath = process.cwd(); // Get the current working directory
+  const contentDirectory = fs.readdirSync("content"); // Read the content directory
+
+  // Loop through the content directory and get the content of each mdx file
+  for (const post of contentDirectory) {
+    const filePath = `${basePath}/content/${post}`; // Get each mdx file path
+    const rawContent = await fs.promises.readFile(filePath, "utf-8"); // Read the content of each mdx file
+
+    // Parse the content of each mdx file using gray-matter
+    const { data } = matter(rawContent);
+
+    // Push the parsed data to the posts array
+    posts.push({
+      ...data,
+      slug: post.replace(".mdx", ""), // Set a slug for each post based on their filename on the content directory
+    });
+  }
+
+  return posts as Post[];
+}
+```
+
+Now you have a list of blog posts. Clicking on a post will take you to the post page, where you can render the full content of the post.
+
+<BrowserWindow src="/demo/mdx-based-blog-with-next-js-demo-1" height="h-120" />
+
+## Rendering MDX Content using File System API
+
+To render the content of each blog post, we need to read the content of the MDX file and render it using [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote) package.
+
+- First, create a new directory named `[slug]` in the `app` directory and then create a new file named `page.tsx` inside the `[slug]` directory.
+
+```plaintext {2-3}
+app/
+  └── [slug]/
+      └── page.tsx
+content/
+public/
+.gitignore
+eslint.config.mjs
+next-env.d.ts
+next.config.ts
+package.json
+postcss.config.mjs
+tailwind.config.ts
+tsconfig.json
+```
+
+- Next, you need to build the structure of the blog post page by adding the following code to the `app/[slug]/page.tsx` file:
+
+```tsx
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  // Get the slug from the URL (e.g., /my-first-post)
+  const { slug } = await params;
+
+  return <div className="mx-auto max-w-2xl px-8 py-16"></div>;
+}
+```
+
+- Next, you need to configure the `next-mdx-remote` to render the MDX content.
+
+```tsx {2,5,17-26}
+// @components
+import { MDXRemote } from "next-mdx-remote/rsc";
+
+// @utils
+import remarkGfm from "remark-gfm";
+
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  // Get the slug from the URL (e.g., /my-first-post)
+  const { slug } = await params;
+
+  return (
+    <div className="mx-auto max-w-2xl px-8 py-16">
+      <article>
+        <MDXRemote
+          source={`# My First Post`}
+          options={{
+            mdxOptions: {
+              remarkPlugins: [remarkGfm],
+            },
+          }}
+        />
+      </article>
+    </div>
+  );
+}
+```
+
+- Next, you need to read the content of the MDX file and render it using `next-mdx-remote`.
+
+```tsx {6-8,19,25,37-53}
+// @components
+import { MDXRemote } from "next-mdx-remote/rsc";
+
+// @utils
+import remarkGfm from "remark-gfm";
+import fs from "node:fs";
+import matter from "gray-matter";
+import { notFound } from "next/navigation";
+
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  // Get the slug from the URL (e.g., /my-first-post)
+  const { slug } = await params;
+
+  // Read the content of the MDX file using the readMdxFile function
+  const source = await readMdxFile(slug);
+
+  return (
+    <div className="mx-auto max-w-2xl px-8 py-16">
+      <article>
+        <MDXRemote
+          source={source}
+          options={{
+            mdxOptions: {
+              remarkPlugins: [remarkGfm],
+            },
+          }}
+        />
+      </article>
+    </div>
+  );
+}
+
+async function readMdxFile(slug: string) {
+  const basePath = process.cwd(); // Get the current working directory
+  const filePath = `${basePath}/content/${slug}.mdx`; // Set the mdx file path
+
+  // Check if the mdx file exists, if not, return a 404 page
+  if (!fs.existsSync(filePath)) {
+    notFound();
+  }
+
+  // Read the content of the mdx file asynchronously
+  const rawContent = await fs.promises.readFile(filePath, "utf-8");
+
+  // Parse the content of the mdx file using gray-matter
+  const { content } = matter(rawContent);
+
+  return content;
+}
+```
+
+Now you can render the content of each blog post on the post page. The `readMdxFile` function reads the content of the MDX file based on the slug and returns the content to be rendered using `next-mdx-remote`. It then displays the full content of the post on the post page.
+
+<BrowserWindow
+  src="/demo/mdx-based-blog-with-next-js-demo-2"
+  url="http://localhost:3000/my-first-post"
+  height="h-120"
+/>
+
+## Styling the Blog with Tailwind CSS Typography
+
+To style the blog posts, you can use Tailwind CSS Typography. First, install the [@tailwindcss/typography](https://github.com/tailwindlabs/tailwindcss-typography) plugin:
+
+```bash
+npm install -D @tailwindcss/typography
+```
+
+Next, add the `@tailwindcss/typography` plugin to the `tailwind.config.ts` file:
+
+```ts {7}
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  theme: {
+    // ...
+  },
+  plugins: [
+    require("@tailwindcss/typography"),
+    // ...
+  ],
+};
+```
+
+Now you can use the typography styles provided by `@tailwindcss/typography` to style the blog posts. Update the `app/[slug]/page.tsx` file with the following code:
+
+```tsx {23}
+// @components
+import { MDXRemote } from "next-mdx-remote/rsc";
+
+// @utils
+import remarkGfm from "remark-gfm";
+import fs from "node:fs";
+import matter from "gray-matter";
+import { notFound } from "next/navigation";
+
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  // Get the slug from the URL (e.g., /my-first-post)
+  const { slug } = await params;
+
+  // Read the content of the MDX file using the readMdxFile function
+  const source = await readMdxFile(slug);
+
+  return (
+    <div className="mx-auto max-w-2xl px-8 py-16">
+      <article className="prose">
+        <MDXRemote
+          source={source}
+          options={{
+            mdxOptions: {
+              remarkPlugins: [remarkGfm],
+            },
+          }}
+        />
+      </article>
+    </div>
+  );
+}
+
+async function readMdxFile(slug: string) {
+  const basePath = process.cwd(); // Get the current working directory
+  const filePath = `${basePath}/content/${slug}.mdx`; // Set the mdx file path
+
+  // Check if the mdx file exists, if not, return a 404 page
+  if (!fs.existsSync(filePath)) {
+    notFound();
+  }
+
+  // Read the content of the mdx file asynchronously
+  const rawContent = await fs.promises.readFile(filePath, "utf-8");
+
+  // Parse the content of the mdx file using gray-matter
+  const { content } = matter(rawContent);
+
+  return content;
+}
+```
+
+The `prose` class provided by `@tailwindcss/typography` applies typography styles to the content of the blog post, making it more readable and visually appealing.
+
+<BrowserWindow
+  src="/demo/mdx-based-blog-with-next-js-demo-3"
+  url="http://localhost:3000/my-first-post"
+  height="h-120"
+/>
+
+If you'd like to look at the full source code, check out the [GitHub Repo Here](https://github.com/sajadevo/mdx-based-blog-with-nextjs).
