@@ -24,6 +24,14 @@ export function generateMetadata(args?: Metadata): Metadata {
   const description =
     args?.description ||
     "I'm a passionate developer and designer interested in JavaScript, TypeScript, Rust, Product Design, Startups, Web 3.0 and OSS.";
+  const keywords = args?.keywords || [
+    "Sajad",
+    "Developer",
+    "Designer",
+    "JavaScript",
+    "TypeScript",
+  ];
+
   const domain = new URL(
     isProd
       ? process.env.NEXT_PUBLIC_PROD_URL!
@@ -36,10 +44,10 @@ export function generateMetadata(args?: Metadata): Metadata {
     metadataBase: domain,
     title,
     description,
-    robots: "follow, index",
+    keywords,
+    robots: "follow, index, max-image-preview:large",
     publisher: "Sajad Ahmad Nawabi",
     authors: [{ name: "Sajad Ahmad Nawabi", url: "https://x.com/sajadevo_" }],
-    keywords: ["Sajad", "Developer", "Designer", "JavaScript", "TypeScript"],
     alternates: { canonical: domain, ...args?.alternates },
 
     // open-graph
@@ -48,6 +56,8 @@ export function generateMetadata(args?: Metadata): Metadata {
       url: domain,
       title,
       description,
+      locale: "en_US",
+      siteName: "Sajad ⋅ Developer & Designer",
       images: [
         {
           url: productDemoImg,
@@ -63,6 +73,13 @@ export function generateMetadata(args?: Metadata): Metadata {
       description,
       images: productDemoImg,
       ...args?.twitter,
+    },
+
+    // other
+    other: {
+      "mobile-web-app-capable": "yes",
+      "apple-mobile-web-app-title": "Sajad",
+      "apple-mobile-web-app-status-bar-style": "default",
     },
   };
 }
