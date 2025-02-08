@@ -120,6 +120,7 @@ export default function Uses() {
             key={name}
             href={link}
             target="_blank"
+            rel="noopener noreferrer"
             className="border-secondary hover:bg-secondary/25 grid min-h-64 place-items-center overflow-hidden border-r border-b p-4 transition-all duration-200"
           >
             <div>

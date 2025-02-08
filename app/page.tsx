@@ -43,6 +43,7 @@ export default async function Home() {
             <Link
               href="https://cal.com/sajadevo/talk-with-sajad"
               target="_blank"
+              rel="noopener noreferrer"
             >
               Book a call
             </Link>
@@ -52,7 +53,11 @@ export default async function Home() {
             className="xs:w-auto w-full gap-3"
             asChild
           >
-            <Link href="https://contra.com/sajadevo" target="_blank">
+            <Link
+              href="https://contra.com/sajadevo"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Contra className="size-4 shrink-0" /> Hire me on Contra
             </Link>
           </Button>

@@ -144,7 +144,12 @@ export default function Projects() {
         </Typography>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {featuredProjects.map(({ name, url, description }) => (
-            <Link key={name} href={url} target="_blank">
+            <Link
+              key={name}
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FeatureCard title={name} description={description} />
             </Link>
           ))}
@@ -154,7 +159,12 @@ export default function Projects() {
         </h2>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map(({ name, url, description }) => (
-            <Link key={name} href={url} target="_blank">
+            <Link
+              key={name}
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FeatureCard title={name} description={description} />
             </Link>
           ))}

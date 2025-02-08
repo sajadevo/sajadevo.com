@@ -99,6 +99,7 @@ export default function About() {
                 <Link
                   href={url}
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="text-black underline underline-offset-2"
                 >
                   {company}

@@ -31,10 +31,7 @@ export default function Error({
             Try agian
           </Button>
           <Button variant="secondary" className="xs:w-auto w-full" asChild>
-            <Link
-              href="https://cal.com/sajadevo/talk-with-sajad"
-              target="_blank"
-            >
+            <Link href="https://cal.com/sajadevo/talk-with-sajad">
               Return home
             </Link>
           </Button>
