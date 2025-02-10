@@ -18,8 +18,8 @@ export function BrowserWindow({
           <div className="size-2.5 rounded-full bg-[#FFBD44]" />
           <div className="size-2.5 rounded-full bg-[#00CA4E]" />
         </div>
-        <div className="bg-secondary text-foreground pointer-events-none mx-auto flex h-7 w-full max-w-md items-center justify-center rounded-lg font-mono text-xs select-none">
-          <p className="my-auto text-center">{url}</p>
+        <div className="bg-secondary text-foreground pointer-events-none mx-auto flex h-7 w-full max-w-md items-center justify-center truncate rounded-lg px-3 font-mono text-xs select-none">
+          <p className="my-auto inline-block truncate text-center">{url}</p>
         </div>
       </div>
       <iframe src={src} className={cn("h-[50vh] w-full", height)} />
