@@ -26,6 +26,7 @@ const geistSans = localFont({
   weight: "100 900",
 });
 
+export const dynamic = "force-static";
 export const metadata = generateMetadata();
 
 export default function RootLayout({
