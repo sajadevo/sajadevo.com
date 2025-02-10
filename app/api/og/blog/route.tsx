@@ -263,6 +263,7 @@ export async function GET(request: Request) {
       },
     );
   } catch (error: unknown) {
+    console.log(error);
     return new Response("Failed to generate OG image.", { status: 500 });
   }
 }
