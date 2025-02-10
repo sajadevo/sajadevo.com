@@ -246,12 +246,9 @@ async function getRelatedBlogPosts({
     const rawContent = await fs.promises.readFile(filePath, "utf-8");
 
     const { data } = matter(rawContent);
+    const postSlug = post.replace(/\.mdx$/, "");
 
-    const isSameSlug =
-      data.title
-        .toLowerCase()
-        .replaceAll("?", "")
-        .replace(/[\s'",_.]/g, "-") === slug;
+    const isSameSlug = postSlug === slug;
     const isSameCategory =
       data.category.toLowerCase() === category.toLowerCase();
 
