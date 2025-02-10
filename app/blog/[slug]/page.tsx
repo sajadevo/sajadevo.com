@@ -168,13 +168,8 @@ export default async function Post({
               <h2>Continue your journey with these related posts</h2>
             </Typography>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              {posts.map(({ title, description, date, category }, key) => {
-                const slug = title
-                  .toLowerCase()
-                  .replaceAll("?", "")
-                  .replace(/[\s'",_.]/g, "-");
-
-                return (
+              {posts.map(
+                ({ title, description, date, category, slug }, key) => (
                   <BlogPostCard
                     key={key}
                     link={`/blog/${slug}`}
@@ -184,8 +179,8 @@ export default async function Post({
                     category={category}
                     isLarge={key === 0}
                   />
-                );
-              })}
+                ),
+              )}
             </div>
           </>
         )}
@@ -242,7 +237,7 @@ async function getRelatedBlogPosts({
   slug: string;
   category: string;
 }) {
-  const posts = [];
+  const posts: BlogPost[] = [];
   const basePath = process.cwd();
   const postsDirectory = fs.readdirSync("content/blog");
 
@@ -261,7 +256,9 @@ async function getRelatedBlogPosts({
       data.category.toLowerCase() === category.toLowerCase();
 
     if (!isSameSlug && isSameCategory) {
-      posts.push(data);
+      const slug = post.replace(/\.mdx$/, "");
+
+      posts.push({ ...data, slug } as BlogPost);
     }
   }
 

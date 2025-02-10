@@ -4,9 +4,10 @@ import { BlogPostCard } from "@/components/blog-post-card";
 import { BlogPostsSearch } from "@/components/blog-posts-search";
 
 // @utils
-import fs from "node:fs";
-import matter from "gray-matter";
 import { generateMetadata } from "@/lib/utils";
+
+// @actions
+import { getBlogPosts } from "@/lib/actions";
 
 export const metadata = generateMetadata({
   title: "Sajad ⋅ Blog Posts",
@@ -56,61 +57,20 @@ export default async function Blog({
               Oops! No posts found for your search.
             </p>
           ) : (
-            posts.map(({ title, description, date, category }, key) => {
-              const slug = title
-                .toLowerCase()
-                .replaceAll("?", "")
-                .replace(/[\s'",_.]/g, "-");
-
-              return (
-                <BlogPostCard
-                  key={key}
-                  link={`/blog/${slug}`}
-                  title={title}
-                  description={description}
-                  date={date}
-                  category={category}
-                  isLarge={key === 0 && posts.length > 2}
-                />
-              );
-            })
+            posts.map(({ title, description, date, category, slug }, key) => (
+              <BlogPostCard
+                key={key}
+                link={`/blog/${slug}`}
+                title={title}
+                description={description}
+                date={date}
+                category={category}
+                isLarge={key === 0 && posts.length > 2}
+              />
+            ))
           )}
         </div>
       </div>
     </div>
   );
-}
-
-async function getBlogPosts(search?: string) {
-  const posts = [];
-  const basePath = process.cwd();
-  const postsDirectory = fs.readdirSync("content/blog");
-
-  for (const post of postsDirectory) {
-    const filePath = `${basePath}/content/blog/${post}`;
-    const rawContent = await fs.promises.readFile(filePath, "utf-8");
-
-    const { data } = matter(rawContent);
-
-    const title = data.title.toLowerCase();
-
-    if (search) {
-      const searchWords = search.toLowerCase().split(" ");
-
-      if (searchWords.some((word) => title.includes(word))) {
-        posts.push(data);
-      }
-    } else {
-      posts.push(data);
-    }
-  }
-
-  const sortedPosts = posts.sort((a, b) => {
-    return (
-      new Date(b.date.split("-").reverse().join("-")).getTime() -
-      new Date(a.date.split("-").reverse().join("-")).getTime()
-    );
-  });
-
-  return sortedPosts;
 }
