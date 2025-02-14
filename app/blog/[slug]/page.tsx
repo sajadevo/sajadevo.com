@@ -2,6 +2,7 @@ import React from "react";
 
 // @components
 import Link from "next/link";
+import { Alert } from "@/components/alert";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { CodeBlock } from "@/components/code-block";
 import { Typography } from "@/components/typography";
@@ -134,6 +135,7 @@ export default async function Post({
               a: (props) => (
                 <a {...props} target="_blank" rel="noopener noreferrer" />
               ),
+              Alert,
               BrowserWindow,
             }}
           />

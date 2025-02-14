@@ -1,0 +1,380 @@
+---
+title: Building a Native HTML Dialog
+date: 02-14-2025 # MM-DD-YYYY
+description: Learn how to build a fully functional native HTML dialog with ease.
+category: web development
+keywords:
+  - css
+  - html
+  - dialog
+  - javascript
+  - tailwindcss
+  - web development
+---
+
+<BrowserWindow
+  src="/demo/building-a-native-html-dialog-demo-1"
+  url="http://localhost:3000"
+  height="h-120"
+/>
+
+<br />
+
+The `<dialog>` element provides a powerful and accessible way to create modals and popups without relying on external libraries. In this guide, we'll explore how to build a fully functional native HTML dialog, covering its features, accessibility best practices, styling tips, and JavaScript interactions. Whether you're creating a simple alert or a complex modal, mastering `<dialog>` will enhance your web development workflow.
+
+## Prerequisites
+
+Before we dive into building a native HTML dialog, make sure you have a basic understanding of HTML, CSS, and JavaScript. Familiarity with Tailwind CSS is also recommended, as we'll be using it to style our dialog components. If you're new to Tailwind CSS, check out the official documentation to get started. [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+
+## Building the Dialog Markup
+
+To create a native HTML dialog, we'll start by defining the dialog element and its content. Here's a simple example of a dialog box with a title, description, and action buttons:
+
+```html
+<div>
+  <dialog>
+    <h2>Dialog Title</h2>
+    <p>
+      This is a simple dialog box using HTML and Tailwind CSS. You can close
+      this dialog box by clicking the cancel button.
+    </p>
+    <form method="dialog">
+      <button type="button">Cancel</button>
+      <button type="button">Confirm</button>
+    </form>
+  </dialog>
+</div>
+```
+
+## Styling the Dialog
+
+To style the dialog, we'll use Tailwind CSS classes to define the appearance and layout of the dialog components.
+
+```html {2,5,7-8,12,15,21}
+<div
+  class="container mx-auto grid h-screen place-items-center p-16 text-center"
+>
+  <dialog
+    class="fixed top-1/2 left-1/2 max-w-100 -translate-1/2 rounded-xl border border-gray-300 bg-white p-6 text-left backdrop:bg-black/80"
+  >
+    <h2 class="text-lg font-semibold text-black">Dialog Title</h2>
+    <p class="mt-2 text-gray-600">
+      This is a simple dialog box using HTML and Tailwind CSS. You can close
+      this dialog box by clicking the cancel button.
+    </p>
+    <form method="dialog" class="mt-4 flex justify-end gap-2">
+      <button
+        type="button"
+        class="h-9 cursor-pointer rounded-lg border border-gray-300 px-3.5 text-sm text-black transition-colors hover:bg-gray-50"
+      >
+        Cancel
+      </button>
+      <button
+        type="button"
+        class="h-9 cursor-pointer rounded-lg bg-black px-3.5 text-sm text-white transition-opacity hover:opacity-90"
+      >
+        Confirm
+      </button>
+    </form>
+  </dialog>
+</div>
+```
+
+## Adding JavaScript Interactions
+
+To make the dialog interactive, we'll use JavaScript to handle the opening and closing of dialog. We'll use the `showModal()` and `close()` methods to control the dialog visibility and use the `dataset` attributes to select the elements.
+
+- First, we'll define `dataset` attributes for the dialog and buttons to access them in JavaScript.
+
+```html {5,16}
+<div
+  class="container mx-auto grid h-screen place-items-center p-16 text-center"
+>
+  <dialog
+    data-name="dialog"
+    class="fixed top-1/2 left-1/2 max-w-100 -translate-1/2 rounded-xl border border-gray-300 bg-white p-6 text-left backdrop:bg-black/80"
+  >
+    <h2 class="text-lg font-semibold text-black">Dialog Title</h2>
+    <p class="mt-2 text-gray-600">
+      This is a simple dialog box using HTML and Tailwind CSS. You can close
+      this dialog box by clicking the cancel button.
+    </p>
+    <form method="dialog" class="mt-4 flex justify-end gap-2">
+      <button
+        type="button"
+        data-name="dialog-close-trigger"
+        class="h-9 cursor-pointer rounded-lg border border-gray-300 px-3.5 text-sm text-black transition-colors hover:bg-gray-50"
+      >
+        Cancel
+      </button>
+      <button
+        type="button"
+        class="h-9 cursor-pointer rounded-lg bg-black px-3.5 text-sm text-white transition-opacity hover:opacity-90"
+      >
+        Confirm
+      </button>
+    </form>
+  </dialog>
+</div>
+```
+
+- Next, we'll add JavaScript code to handle the dialog closing functionality when the cancel button is clicked. We'll use the `close()` method to close the dialog.
+
+```html {31-44}
+<div
+  class="container mx-auto grid h-screen place-items-center p-16 text-center"
+>
+  <dialog
+    data-name="dialog"
+    class="fixed top-1/2 left-1/2 max-w-100 -translate-1/2 rounded-xl border border-gray-300 bg-white p-6 text-left backdrop:bg-black/80"
+  >
+    <h2 class="text-lg font-semibold text-black">Dialog Title</h2>
+    <p class="mt-2 text-gray-600">
+      This is a simple dialog box using HTML and Tailwind CSS. You can close
+      this dialog box by clicking the cancel button.
+    </p>
+    <form method="dialog" class="mt-4 flex justify-end gap-2">
+      <button
+        type="button"
+        data-name="dialog-close-trigger"
+        class="h-9 cursor-pointer rounded-lg border border-gray-300 px-3.5 text-sm text-black transition-colors hover:bg-gray-50"
+      >
+        Cancel
+      </button>
+      <button
+        type="button"
+        class="h-9 cursor-pointer rounded-lg bg-black px-3.5 text-sm text-white transition-opacity hover:opacity-90"
+      >
+        Confirm
+      </button>
+    </form>
+  </dialog>
+</div>
+
+<script>
+  // Select the dialog element
+  const dialog = document.querySelector("[data-name=dialog]");
+
+  // Select the dialog close trigger button
+  const dialogCloseTrigger = document.querySelector(
+    "[data-name=dialog-close-trigger]",
+  );
+
+  // Close the dialog when the close trigger button is clicked
+  dialogCloseTrigger.addEventListener("click", () => {
+    dialog.close();
+  });
+</script>
+```
+
+- Now we have a functional dialog that closes when the cancel button is clicked. Now let's add the functionality to open the dialog when a button is clicked. We'll use the `showModal()` method to open the dialog.
+
+```html {4-9, 46-52}
+<div
+  class="container mx-auto grid h-screen place-items-center p-16 text-center"
+>
+  <button
+    data-name="dialog-trigger"
+    class="h-9 cursor-pointer rounded-lg border border-gray-300 px-3.5 text-sm text-black transition-colors hover:bg-gray-50"
+  >
+    Open Dialog
+  </button>
+  <dialog
+    data-name="dialog"
+    class="fixed top-1/2 left-1/2 max-w-100 -translate-1/2 rounded-xl border border-gray-300 bg-white p-6 text-left backdrop:bg-black/80"
+  >
+    <h2 class="text-lg font-semibold text-black">Dialog Title</h2>
+    <p class="mt-2 text-gray-600">
+      This is a simple dialog box using HTML and Tailwind CSS. You can close
+      this dialog box by clicking the cancel button.
+    </p>
+    <form method="dialog" class="mt-4 flex justify-end gap-2">
+      <button
+        type="button"
+        data-name="dialog-close-trigger"
+        class="h-9 cursor-pointer rounded-lg border border-gray-300 px-3.5 text-sm text-black transition-colors hover:bg-gray-50"
+      >
+        Cancel
+      </button>
+      <button
+        type="button"
+        class="h-9 cursor-pointer rounded-lg bg-black px-3.5 text-sm text-white transition-opacity hover:opacity-90"
+      >
+        Confirm
+      </button>
+    </form>
+  </dialog>
+</div>
+
+<script>
+  // Select the dialog element
+  const dialog = document.querySelector("[data-name=dialog]");
+
+  // Select the dialog close trigger button
+  const dialogCloseTrigger = document.querySelector(
+    "[data-name=dialog-close-trigger]",
+  );
+
+  // Select the dialog trigger button
+  const dialogTrigger = document.querySelector("[data-name=dialog-trigger]");
+
+  // Open the dialog when the trigger button is clicked
+  dialogTrigger.addEventListener("click", () => {
+    dialog.showModal();
+  });
+
+  // Close the dialog when the close trigger button is clicked
+  dialogCloseTrigger.addEventListener("click", () => {
+    dialog.close();
+  });
+</script>
+```
+
+Now you have a fully functional native HTML dialog that opens when the trigger button is clicked and closes when the cancel button is clicked.
+
+<BrowserWindow
+  src="/demo/building-a-native-html-dialog-demo-2"
+  url="http://localhost:3000"
+  height="h-120"
+/>
+
+## Adding Animation
+
+To enhance the user experience, we'll add animations to the dialog. We'll use Tailwind CSS to create smooth animations when the dialog opens and closes.
+
+- First, we'll define the animations in our stylesheet. We'll create `fade-in` and `fade-out` animations for the dialog backdrop and `come-in` and `go-out` animations for the dialog content.
+
+```css {3-41}
+@import "tailwindcss";
+
+@theme {
+  --animate-fade-in: fade-in 200ms linear;
+  --animate-fade-out: fade-out 200ms linear;
+  --animate-come-in: come-in 200ms linear;
+  --animate-go-out: go-out 200ms linear;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-out {
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes come-in {
+    from {
+      opacity: 0;
+      transform: translateY(-40px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes go-out {
+    to {
+      opacity: 0;
+      transform: translateY(-40px) scale(0.95);
+    }
+  }
+}
+```
+
+We created the animations using the `@keyframes` rule and then used the `--animate-*` theme variable to define the animation as utility classes.
+
+Learn more about Tailwind CSS animations in the official documentation. [Tailwind CSS Animations](https://tailwindcss.com/docs/animation#customizing-your-theme)
+
+- Next, we'll apply the animations to the dialog elements. We'll use the `backdrop:animate-fade-in` and `backdrop:animate-fade-out` classes for the dialog backdrop and the `open:animate-come-in` and `animate-go-out` classes for the dialog content.
+
+<Alert>
+  The `backdrop:` is used to style the backdrop of a dialog and the `open:` is
+  used to style the dialog when the dialog is open.
+</Alert>
+
+```html {12,56-67}
+<div
+  class="container mx-auto grid h-screen place-items-center p-16 text-center"
+>
+  <button
+    data-name="dialog-trigger"
+    class="h-9 cursor-pointer rounded-lg border border-gray-300 px-3.5 text-sm text-black transition-colors hover:bg-gray-50"
+  >
+    Open Dialog
+  </button>
+  <dialog
+    data-name="dialog"
+    class="open:animate-come-in backdrop:animate-fade-in fixed top-1/2 left-1/2 max-w-100 -translate-1/2 rounded-xl border border-gray-300 bg-white p-6 text-left backdrop:bg-black/80"
+  >
+    <h2 class="text-lg font-semibold text-black">Dialog Title</h2>
+    <p class="mt-2 text-gray-600">
+      This is a simple dialog box using HTML and Tailwind CSS. You can close
+      this dialog box by clicking the cancel button.
+    </p>
+    <form method="dialog" class="mt-4 flex justify-end gap-2">
+      <button
+        type="button"
+        data-name="dialog-close-trigger"
+        class="h-9 cursor-pointer rounded-lg border border-gray-300 px-3.5 text-sm text-black transition-colors hover:bg-gray-50"
+      >
+        Cancel
+      </button>
+      <button
+        type="button"
+        class="h-9 cursor-pointer rounded-lg bg-black px-3.5 text-sm text-white transition-opacity hover:opacity-90"
+      >
+        Confirm
+      </button>
+    </form>
+  </dialog>
+</div>
+
+<script>
+  // Select the dialog element
+  const dialog = document.querySelector("[data-name=dialog]");
+
+  // Select the dialog close trigger button
+  const dialogCloseTrigger = document.querySelector(
+    "[data-name=dialog-close-trigger]",
+  );
+
+  // Select the dialog trigger button
+  const dialogTrigger = document.querySelector("[data-name=dialog-trigger]");
+
+  // Open the dialog when the trigger button is clicked
+  dialogTrigger.addEventListener("click", () => {
+    dialog.showModal();
+  });
+
+  // Close the dialog when the close trigger button is clicked
+  dialogCloseTrigger.addEventListener("click", () => {
+    // Add the `go-out` animations to the dialog content
+    dialog.classList.add("!animate-go-out");
+
+    // Add the `fade-out` to the dialog backdrop
+    dialog.classList.add("backdrop:!animate-fade-out");
+
+    // Remove the animations and close the dialog after the animation ends
+    setTimeout(() => {
+      dialog.classList.remove("!animate-go-out");
+      dialog.classList.remove("backdrop:!animate-fade-out");
+      dialog.close();
+    }, 150);
+  });
+</script>
+```
+
+Now you have a fully functional native HTML dialog with smooth animations when opening and closing the dialog.
+
+<BrowserWindow
+  src="/demo/building-a-native-html-dialog-demo-1"
+  url="http://localhost:3000"
+  height="h-120"
+/>

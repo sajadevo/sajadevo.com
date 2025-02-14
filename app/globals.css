@@ -13,6 +13,45 @@
   /* breakpoints */
   --breakpoint-xxl: 1400px;
   --breakpoint-xs: 480px;
+
+  /* animations */
+  --animate-bnhd-fade-in: bnhd-fade-in 200ms linear;
+  --animate-bnhd-fade-out: bnhd-fade-out 200ms linear;
+  --animate-bnhd-come-in: bnhd-come-in 200ms linear;
+  --animate-bnhd-go-out: bnhd-go-out 200ms linear;
+
+  @keyframes bnhd-fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes bnhd-fade-out {
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes bnhd-come-in {
+    from {
+      opacity: 0;
+      transform: translateY(-40px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes bnhd-go-out {
+    to {
+      opacity: 0;
+      transform: translateY(-40px) scale(0.95);
+    }
+  }
 }
 
 @variant dark (&:where(.dark, .dark *));
