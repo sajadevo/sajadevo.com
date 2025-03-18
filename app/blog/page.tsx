@@ -29,6 +29,8 @@ export const metadata = generateMetadata({
   ],
 });
 
+export const dynamic = "auto";
+
 export default async function Blog({
   searchParams,
 }: {
