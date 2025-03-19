@@ -40,6 +40,7 @@ export default async function Blog({
   const search = query.search as string;
   const posts = await getBlogPosts(query.search as string);
 
+  console.log(posts);
   return (
     <div className="min-h-[calc(100vh-48px)] md:min-h-[calc(100vh-65px)]">
       <div className="group mx-auto max-w-4xl px-6 pt-12 pb-24 sm:px-8 sm:pt-16 sm:pb-36">

@@ -34,10 +34,7 @@ export async function getBlogPosts(search?: string) {
   }
 
   const sortedPosts = posts.sort((a, b) => {
-    return (
-      new Date(b.date.split("-").reverse().join("-")).getTime() -
-      new Date(a.date.split("-").reverse().join("-")).getTime()
-    );
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
 
   return sortedPosts;

@@ -9,6 +9,7 @@ import { Typography } from "@/components/typography";
 import { BlogPostCard } from "@/components/blog-post-card";
 import { BlogCopyLink } from "@/components/blog-copy-link";
 import { BrowserWindow } from "@/components/browser-window";
+import { MyTechStack2025 } from "@/components/blog/my-tech-stack-2025";
 
 // @icons
 import { RiArrowLeftLine } from "@remixicon/react";
@@ -137,6 +138,7 @@ export default async function Post({
               ),
               Alert,
               BrowserWindow,
+              MyTechStack2025,
             }}
           />
         </article>
@@ -169,7 +171,7 @@ export default async function Post({
             >
               <h2>Continue your journey with these related posts</h2>
             </Typography>
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-2">
               {posts.map(
                 ({ title, description, date, category, slug }, key) => (
                   <BlogPostCard
