@@ -1,4 +1,4 @@
-export function Nodejs(props: React.SVGProps<SVGSVGElement>) {
+export function Drizzle(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       viewBox="0 0 72 72"

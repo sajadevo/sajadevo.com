@@ -3,7 +3,7 @@ import { Deno } from "@/icons/deno";
 import { Nextjs } from "@/icons/nextjs";
 import { Claude } from "@/icons/claude";
 import { Shadcn } from "@/icons/shadcn";
-import { Nodejs } from "@/icons/nodejs";
+import { Drizzle } from "@/icons/drizzle";
 import { Supabase } from "@/icons/supabase";
 import { TypeScript } from "@/icons/typescript";
 import { Tailwindcss } from "@/icons/tailwindcss";
@@ -34,8 +34,8 @@ const stack = [
     icon: Deno,
   },
   {
-    name: "Node.js",
-    icon: Nodejs,
+    name: "Drizzle",
+    icon: Drizzle,
   },
   {
     name: "Claude",
