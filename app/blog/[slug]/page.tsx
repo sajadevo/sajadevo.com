@@ -86,7 +86,7 @@ export default async function Post({
   const date = formatDate(frontMatter.date);
   const readTime = calculateReadTime(source);
   const postUrl = `https://sajadevo.com/blog/${slug}`;
-  const postGithubUrl = `https://github.com/sajadevo/sajadevo.com/contnet/blog/${slug}.mdx`;
+  const postGithubUrl = `https://github.com/sajadevo/sajadevo.com/blob/main/content/blog/${slug}.mdx`;
   const shareOnXUrl = `https://x.com/intent/tweet?url=${encodeURIComponent(postUrl)}&text=I+just+read+%22${encodeURIComponent(frontMatter.title)}%22+by+%40sajadevo%0A%0A`;
 
   return (
