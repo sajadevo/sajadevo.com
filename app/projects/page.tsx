@@ -8,6 +8,11 @@ import { generateMetadata } from "@/lib/utils";
 
 const featuredProjects = [
   {
+    name: "Themezly",
+    url: "https://themezly.xyz/",
+    description: "Next.js & Tailwind CSS templates marketplace",
+  },
+  {
     name: "DevResume",
     url: "https://www.devresume.xyz",
     description: "Portfolio builder for developers with GitHub",
@@ -17,14 +22,14 @@ const featuredProjects = [
     url: "https://app.mintra.ai/",
     description: "NFT marketplace and launchpad for creators",
   },
-  {
-    name: "Material Tailwind",
-    url: "https://www.material-tailwind.com/v3",
-    description: "React & Tailwind CSS components library",
-  },
 ];
 
 const projects = [
+  {
+    name: "Themezly",
+    url: "https://themezly.xyz/",
+    description: "Next.js & Tailwind CSS templates marketplace",
+  },
   {
     name: "DevResume",
     url: "https://www.devresume.xyz",
