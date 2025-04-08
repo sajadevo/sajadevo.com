@@ -100,14 +100,14 @@ export default async function Post({
             <RiArrowLeftLine className="size-4" />
             Blog
           </Link>
-          <Typography variant="h1" className="mb-4" asChild>
+          <Typography variant="h1" className="mb-4 text-balance" asChild>
             <h1>{frontMatter.title}</h1>
           </Typography>
           <Typography className="sm:text-base">
             {date}&nbsp;&nbsp;⋅&nbsp;&nbsp;{readTime} min read
           </Typography>
         </div>
-        <article className="prose prose-a:text-black prose-a:text-underline prose-strong:text-black prose-li:text-foreground prose-em:text-foreground prose-lead:text-foreground sm:prose-lg prose-p:text-foreground prose-headings:text-black prose-h2:text-xl sm:prose-h2:text-2xl prose-h3:text-lg sm:prose-h3:text-xl prose-h4:text-lg sm:prose-h4:text-xl prose-headings:font-semibold prose-strong:font-semibold prose-code:text-black mt-12 w-full max-w-full">
+        <article className="prose prose-a:text-black prose-a:text-underline prose-strong:text-black prose-li:text-foreground prose-em:text-foreground prose-lead:text-foreground sm:prose-lg prose-p:text-foreground prose-headings:text-black prose-h2:text-xl sm:prose-h2:text-2xl prose-h3:text-lg sm:prose-h3:text-xl prose-h4:text-lg sm:prose-h4:text-xl prose-headings:font-semibold prose-strong:font-semibold prose-code:text-black prose-thead:text-black prose-thead:text-sm prose-thead:font-medium prose-td:text-sm prose-td:text-foreground prose-td:px-4 prose-py-3 prose-th:py-3 prose-thead:border-secondary prose-td:content-center prose-th:px-4 prose-table:my-0 prose-th:content-center mt-12 w-full max-w-full">
           <MDXRemote
             source={source}
             options={{

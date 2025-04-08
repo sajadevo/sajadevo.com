@@ -6,7 +6,6 @@
 - **Deployment**: [Vercel](https://vercel.com)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com)
 - **Email**: [Resend](https://resend.com/)
-- **Analytics**: [OpenPanel](https://openpanel.dev/)
 
 ## Running Locally
 
@@ -30,8 +29,6 @@ NEXT_PUBLIC_DEV_URL=https://localhost:3000
 RESEND_API_KEY=
 RESEND_FROM_EMAIL=
 RESEND_TO_EMAIL=
-
-OPENPANEL_CLIENT_ID=
 ```
 
 ## Notes
