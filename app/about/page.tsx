@@ -9,6 +9,13 @@ import { generateMetadata } from "@/lib/utils";
 const career = [
   {
     title: "Senior Frontend Engineer",
+    company: "Aseel",
+    url: "https://aseelapp.com/",
+    location: "Virginia, United States",
+    date: "Apr 2025 - Present",
+  },
+  {
+    title: "Senior Frontend Engineer",
     company: "Mintra",
     url: "https://www.mintra.ai/",
     location: "Indiana, United States",
