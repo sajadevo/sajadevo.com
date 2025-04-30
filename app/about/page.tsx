@@ -19,14 +19,14 @@ const career = [
     company: "Creative Tim",
     url: "https://www.creative-tim.com",
     location: "Bucharest, Romania",
-    date: "Jan 2020 - Nov 2024 • 4 yrs 11 mos",
+    date: "Jan 2019 - Aug 2022 • 3 yrs 8 mos",
   },
   {
     title: "Web Developer",
     company: "MAK Media",
     url: "https://www.makmedia.tv",
     location: "Kabul, Afghanistan",
-    date: "Jan 2019 - Dec 2019 • 1 yrs 0 mos",
+    date: "Jan 2018 - Dec 2018 • 1 yr",
   },
 ];
 
