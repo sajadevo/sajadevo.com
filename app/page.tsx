@@ -48,7 +48,7 @@ export default async function Home() {
               Book a call
             </Link>
           </Button>
-          <div className="flex items-center gap-2 rounded-3xl bg-teal-500/15 px-3 py-1.5 text-center text-sm font-medium text-teal-900">
+          <div className="flex items-center gap-2 rounded-3xl bg-teal-500/15 px-3 py-1.5 text-center text-sm font-medium text-teal-900 dark:text-teal-100">
             <span className="relative flex size-2.5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-400 opacity-75"></span>
               <span className="relative inline-flex size-2.5 rounded-full bg-teal-500"></span>
