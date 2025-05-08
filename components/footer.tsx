@@ -37,7 +37,7 @@ export function Footer() {
         <RiTwitterXLine className="size-4 md:size-5" />
       </Link>
       <Link
-        href="https://linkedin.com/in/sajadevo_"
+        href="https://linkedin.com/in/sajadevo"
         aria-label="Sajad LinkedIn Profile"
         className="text-foreground transition-colors duration-200 hover:text-black"
       >
