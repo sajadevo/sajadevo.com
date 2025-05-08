@@ -15,7 +15,7 @@ const career = [
     date: "Aug 2022 - Dec 2024 • 2 yrs 5 mos",
   },
   {
-    title: "ReactJS Developer",
+    title: "Frontend Developer",
     company: "Creative Tim",
     url: "https://www.creative-tim.com",
     location: "Bucharest, Romania",
@@ -25,7 +25,7 @@ const career = [
     title: "Web Developer",
     company: "MAK Media",
     url: "https://www.makmedia.tv",
-    location: "Kabul, Afghanistan",
+    location: "Toronto, Canada",
     date: "Jan 2018 - Dec 2018 • 1 yr",
   },
 ];
@@ -71,7 +71,7 @@ export default function About() {
           <br />
           <br />I discovered my love for coding at the age of 14 and have been
           on an exciting journey ever since, honing my skills and turning ideas
-          into digital realities. Based in Kabul, Afghanistan, I&apos;ve had the
+          into digital realities. Based in Muscat, Oman, I&apos;ve had the
           privilege of working with companies across Europe and the United
           States, building sleek websites, captivating user interfaces, and
           thoughtful designs that resonate with global audiences.

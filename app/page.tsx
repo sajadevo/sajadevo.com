@@ -38,7 +38,7 @@ export default async function Home() {
           I&apos;m a passionate developer and designer interested in JavaScript,
           TypeScript, Rust, Product Design, Startups, Web 3.0 and OSS.
         </Typography>
-        <div className="xs:flex-row mt-8 flex flex-col items-center gap-3">
+        <div className="xs:flex-row mt-8 flex flex-col items-center gap-4">
           <Button className="xs:w-auto w-full" asChild>
             <Link
               href="https://cal.com/sajadevo/talk-with-sajad"
@@ -48,19 +48,13 @@ export default async function Home() {
               Book a call
             </Link>
           </Button>
-          <Button
-            variant="secondary"
-            className="xs:w-auto w-full gap-3"
-            asChild
-          >
-            <Link
-              href="https://contra.com/sajadevo"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Contra className="size-4 shrink-0" /> Hire me on Contra
-            </Link>
-          </Button>
+          <div className="flex items-center gap-2 rounded-3xl bg-teal-500/15 px-3 py-1.5 text-center text-sm font-medium text-teal-900">
+            <span className="relative flex size-2.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-400 opacity-75"></span>
+              <span className="relative inline-flex size-2.5 rounded-full bg-teal-500"></span>
+            </span>{" "}
+            Open to new opportunities
+          </div>
         </div>
         <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {services.map(({ title, description }) => (
