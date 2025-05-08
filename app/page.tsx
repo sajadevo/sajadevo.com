@@ -4,9 +4,6 @@ import { Button } from "@/components/button";
 import { Typography } from "@/components/typography";
 import { FeatureCard } from "@/components/feature-card";
 
-// @icons
-import { Contra } from "@/icons";
-
 const services = [
   {
     title: "Web Design",
