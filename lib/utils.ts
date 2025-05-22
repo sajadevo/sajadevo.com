@@ -1,11 +1,42 @@
-// @utils
 import { twMerge } from "tailwind-merge";
 import { clsx, type ClassValue } from "clsx";
-
-// @types
 import type { Metadata } from "next";
 
 const isProd = process.env.NODE_ENV === "production";
+
+export function getDateDifference(
+  startDate: Date | string,
+  endDate: Date | Date | string,
+) {
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+
+  let totalMonths =
+    (end.getFullYear() - start.getFullYear()) * 12 +
+    (end.getMonth() - start.getMonth());
+
+  const dayDiff = end.getDate() - start.getDate();
+
+  // Round up if the day difference is >= 15
+  if (dayDiff >= 15) {
+    totalMonths += 1;
+  }
+
+  let years = Math.floor(totalMonths / 12);
+  let months = totalMonths % 12;
+
+  const parts = [];
+
+  if (years > 0) {
+    parts.push(`${years} yr${years > 1 ? "s" : ""}`);
+  }
+
+  if (months > 0) {
+    parts.push(`${months} mo${months > 1 ? "s" : ""}`);
+  }
+
+  return parts.length > 0 ? parts.join(" ") : "Less than 1 mo";
+}
 
 export function formatDate(date: string) {
   return new Date(date).toLocaleDateString("en-US", {

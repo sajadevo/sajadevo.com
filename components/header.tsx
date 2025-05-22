@@ -19,7 +19,7 @@ export function Header() {
   }
 
   return (
-    <header className="fixed bottom-0 left-1/2 z-50 -translate-x-1/2 p-4 sm:top-0">
+    <header className="fixed bottom-0 left-1/2 z-50 h-max -translate-x-1/2 p-4 select-none sm:top-0">
       <div
         className={cn(
           "bg-background border-secondary flex w-max flex-col gap-2 rounded-full border p-1 sm:mx-auto",
