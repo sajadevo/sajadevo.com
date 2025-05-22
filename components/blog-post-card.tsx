@@ -27,20 +27,20 @@ export function BlogPostCard({
       {...props}
       href={link}
       className={cn(
-        "border-secondary hover:bg-secondary/25 relative flex flex-col rounded-2xl border px-6 py-5 transition-all duration-200",
+        "border-secondary hover:bg-secondary/50 relative flex flex-col rounded-2xl border px-6 py-5 transition-all duration-200",
         className,
         {
           "row-span-2": isLarge,
         },
       )}
     >
-      <div className="mb-2 font-sans text-lg font-semibold text-balance text-black">
+      <h2 className="text-primary mb-2 text-base text-balance sm:text-lg">
         {title}
-      </div>
-      <p className="text-foreground mb-6 text-base text-balance">
+      </h2>
+      <p className="text-foreground mb-6 text-sm text-balance sm:text-base">
         {description}
       </p>
-      <p className="text-foreground mt-auto text-sm">
+      <p className="text-foreground mt-auto text-sm capitalize">
         {formatDate(date)}&nbsp;&nbsp;⋅&nbsp;&nbsp;{category}
       </p>
     </Link>

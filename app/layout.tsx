@@ -38,15 +38,14 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID!} />
       <body
-        className={`${geistMono.variable} ${geistSans.variable} bg-background relative overflow-x-hidden px-6 antialiased sm:px-8 md:px-16`}
+        className={`${geistMono.variable} ${geistSans.variable} bg-background relative overflow-x-hidden antialiased`}
       >
         <Providers>
-          <FrameLines />
+          {/* <FrameLines /> */}
           <Header />
           <main className="min-h-[calc(100vh-48px)] md:min-h-[calc(100vh-65px)]">
             {children}
           </main>
-          <Footer />
         </Providers>
       </body>
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_MEASUREMENT_ID!} />

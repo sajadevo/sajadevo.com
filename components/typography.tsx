@@ -10,7 +10,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 const typographyVariants = cva("font-sans", {
   variants: {
     variant: {
-      default: "text-foreground text-base leading-relaxed sm:text-lg",
+      default: "text-foreground text-lg leading-relaxed",
       h1: "text-2xl leading-tight font-semibold text-black sm:text-3xl md:text-4xl",
       h2: "text-xl font-semibold text-black sm:text-2xl",
     },
@@ -35,7 +35,7 @@ export function Typography({
   ...props
 }: TypographyProps) {
   const Component = asChild ? Slot : "p";
-  const styles = cn(typographyVariants({ variant, className }));
+  const styles = cn(typographyVariants({ variant }), className);
 
   return <Component ref={ref} className={styles} {...props} />;
 }

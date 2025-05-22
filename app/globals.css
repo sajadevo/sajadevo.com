@@ -3,12 +3,10 @@
 
 @theme {
   /* colors */
-  --color-white: #fcfcfc;
-  --color-black: #010101;
-  --color-background: #f8f8f8;
+  --color-background: #fff;
   --color-foreground: #585858;
   --color-secondary: #e7e7e7;
-  --color-primary: #010101;
+  --color-primary: #111;
 
   /* breakpoints */
   --breakpoint-xxl: 1400px;
@@ -54,14 +52,26 @@
   }
 }
 
+@utility container {
+  max-width: 42rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@utility container-lg {
+  max-width: 52rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
 @variant dark (&:where(.dark, .dark *));
 
 .dark {
-  --color-white: #010101;
+  --color-white: #111;
   --color-black: #fcfcfc;
-  --color-background: #262626;
+  --color-background: #050505;
   --color-foreground: #cdcdcd;
-  --color-secondary: #303030;
+  --color-secondary: #232323;
   --color-primary: #fcfcfc;
 }
 
@@ -86,4 +96,8 @@ code[data-theme] span {
 .dark code[data-theme],
 .dark code[data-theme] span {
   color: var(--shiki-dark);
+}
+
+* {
+  @apply focus-visible:outline-primary;
 }
