@@ -41,7 +41,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="hover:bg-secondary/50 dark:hover:bg-secondary/70 text-foreground grid size-10 cursor-pointer place-items-center overflow-hidden rounded-full bg-transparent p-1 text-base font-normal transition-all duration-200 hover:text-black"
+      className="hover:bg-secondary/50 dark:hover:bg-secondary/70 text-foreground hover:text-primary grid size-10 cursor-pointer place-items-center overflow-hidden rounded-full bg-transparent p-1 text-base font-normal transition-all duration-200"
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
     >
       {theme === "dark" ? (

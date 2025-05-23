@@ -24,7 +24,7 @@ export function BlogCopyLink({ url }: { url: string }) {
       role="button"
       onClick={copyCode}
       onMouseLeave={resetCopy}
-      className="text-foreground cursor-pointer transition-colors hover:text-black"
+      className="text-foreground hover:text-primary cursor-pointer transition-colors"
     >
       {isCopied ? "Copied" : "Copy URL"}
     </p>

@@ -46,7 +46,7 @@ export function BlogPostsSearch({ search }: { search: string }) {
           setDebouncedSearchValue(target.value);
         }}
       />
-      <RiSearchLine className="text-foreground absolute top-1/2 left-4 size-4 -translate-y-1/2 transition-colors duration-200 peer-hover:text-black peer-focus:text-black" />
+      <RiSearchLine className="text-foreground peer-hover:text-primary peer-focus:text-primary absolute top-1/2 left-4 size-4 -translate-y-1/2 transition-colors duration-200" />
     </div>
   );
 }

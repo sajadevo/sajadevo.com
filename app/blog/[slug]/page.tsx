@@ -1,20 +1,13 @@
 import React from "react";
-
-// @components
 import Link from "next/link";
 import { Alert } from "@/components/alert";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { CodeBlock } from "@/components/code-block";
-import { Typography } from "@/components/typography";
 import { BlogPostCard } from "@/components/blog-post-card";
 import { BlogCopyLink } from "@/components/blog-copy-link";
 import { BrowserWindow } from "@/components/browser-window";
 import { MyTechStack2025 } from "@/components/blog/my-tech-stack-2025";
-
-// @icons
 import { RiArrowLeftLine } from "@remixicon/react";
-
-// @utils
 import fs from "node:fs";
 import matter from "gray-matter";
 import remarkGfm from "remark-gfm";
@@ -22,8 +15,6 @@ import { formatDate } from "@/lib/utils";
 import { notFound } from "next/navigation";
 import rehypePrettyCode from "rehype-pretty-code";
 import { generateMetadata as generateMetadataFn } from "@/lib/utils";
-
-// @types
 import type { Metadata } from "next";
 
 const isProd = process.env.NODE_ENV === "production";
@@ -90,24 +81,24 @@ export default async function Post({
   const shareOnXUrl = `https://x.com/intent/tweet?url=${encodeURIComponent(postUrl)}&text=I+just+read+%22${encodeURIComponent(frontMatter.title)}%22+by+%40sajadevo%0A%0A`;
 
   return (
-    <div className="min-h-[calc(100vh-48px)] md:min-h-[calc(100vh-65px)]">
-      <div className="mx-auto max-w-4xl px-6 pt-12 pb-24 sm:px-8 sm:pt-16 sm:pb-36">
-        <div className="mb-12">
-          <Link
-            href="/blog"
-            className="text-foreground mb-8 flex items-center gap-1.5 transition-colors duration-200 hover:text-black"
-          >
-            <RiArrowLeftLine className="size-4" />
-            Blog
-          </Link>
-          <Typography variant="h1" className="mb-4 text-balance" asChild>
-            <h1>{frontMatter.title}</h1>
-          </Typography>
-          <Typography className="sm:text-base">
-            {date}&nbsp;&nbsp;⋅&nbsp;&nbsp;{readTime} min read
-          </Typography>
-        </div>
-        <article className="prose prose-a:text-black prose-a:text-underline prose-strong:text-black prose-li:text-foreground prose-em:text-foreground prose-lead:text-foreground sm:prose-lg prose-p:text-foreground prose-headings:text-black prose-h2:text-xl sm:prose-h2:text-2xl prose-h3:text-lg sm:prose-h3:text-xl prose-h4:text-lg sm:prose-h4:text-xl prose-headings:font-semibold prose-strong:font-semibold prose-code:text-black prose-thead:text-black prose-thead:text-sm prose-thead:font-medium prose-td:text-sm prose-td:text-foreground prose-td:px-4 prose-py-3 prose-th:py-3 prose-thead:border-secondary prose-td:content-center prose-th:px-4 prose-table:my-0 prose-th:content-center mt-12 w-full max-w-full">
+    <div className="space-y-16 pt-16 pb-20 sm:pt-40 sm:pb-24">
+      <section className="container-lg">
+        <Link
+          href="/blog"
+          className="text-foreground hover:text-primary mb-12 flex items-center gap-1.5 transition-colors duration-200"
+        >
+          <RiArrowLeftLine className="size-4" />
+          Blog
+        </Link>
+        <h1 className="text-primary mb-4 text-base font-medium text-balance sm:text-lg">
+          {frontMatter.title}
+        </h1>
+        <p className="text-foreground text-base">
+          {date}&nbsp;&nbsp;⋅&nbsp;&nbsp;{readTime} min read
+        </p>
+      </section>
+      <section className="container-lg">
+        <article className="prose prose-a:text-primary prose-a:text-underline prose-strong:text-primary prose-th:text-sm prose-li:text-foreground prose-em:text-foreground prose-lead:text-foreground sm:prose-lg prose-p:text-foreground prose-headings:text-primary prose-headings:text-base sm:prose-headings:text-lg prose-headings:font-medium prose-code:text-primary prose-thead:text-primary prose-thead:text-sm prose-thead:font-medium prose-td:text-sm prose-td:text-foreground prose-td:px-4 prose-py-3 prose-th:py-3 prose-thead:border-secondary prose-td:content-center prose-th:px-4 prose-table:my-0 prose-th:content-center w-full max-w-full">
           <MDXRemote
             source={source}
             options={{
@@ -142,11 +133,13 @@ export default async function Post({
             }}
           />
         </article>
-        <div className="border-secondary bg-secondary/25 mt-16 flex flex-wrap items-center justify-between gap-x-16 gap-y-4 rounded-2xl border px-7 py-6">
+      </section>
+      <section className="container-lg">
+        <div className="border-secondary bg-secondary/50 flex flex-wrap items-center justify-between gap-x-16 gap-y-4 rounded-2xl border p-6">
           <Link
             href={shareOnXUrl}
             target="blank"
-            className="text-foreground transition-colors hover:text-black"
+            className="text-foreground hover:text-primary transition-colors"
           >
             Share on X
           </Link>
@@ -156,22 +149,22 @@ export default async function Post({
             <Link
               href={postGithubUrl}
               target="blank"
-              className="text-foreground transition-colors hover:text-black"
+              className="text-foreground hover:text-primary transition-colors"
             >
               Edit on GitHub
             </Link>
           </div>
         </div>
+      </section>
+      <section>
         {posts.length > 0 && (
           <>
-            <Typography
-              variant="h2"
-              className="mt-16 mb-6 max-w-md text-balance"
-              asChild
-            >
-              <h2>Continue your journey with these related posts</h2>
-            </Typography>
-            <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-2">
+            <div className="container mb-6">
+              <h2 className="text-foreground text-sm sm:text-base">
+                🔗 Related posts
+              </h2>
+            </div>
+            <div className="container-lg grid grid-cols-1 items-start gap-4 md:grid-cols-2">
               {posts.map(
                 ({ title, description, date, category, slug }, key) => (
                   <BlogPostCard
@@ -188,7 +181,7 @@ export default async function Post({
             </div>
           </>
         )}
-      </div>
+      </section>
     </div>
   );
 }

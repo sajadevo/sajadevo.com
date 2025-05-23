@@ -34,7 +34,7 @@ export function BlogPostCard({
         },
       )}
     >
-      <h2 className="text-primary mb-2 text-base text-balance sm:text-lg">
+      <h2 className="text-primary mb-2 text-base font-medium text-balance sm:text-lg">
         {title}
       </h2>
       <p className="text-foreground mb-6 text-sm text-balance sm:text-base">

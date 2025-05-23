@@ -63,7 +63,7 @@ export default async function Home() {
     <div className="space-y-16 pt-16 pb-20 sm:pt-40 sm:pb-24">
       {/* hero */}
       <section className="container">
-        <h1 className="text-primary text-base text-balance sm:text-lg">
+        <h1 className="text-primary text-base font-medium text-balance sm:text-lg">
           👋🏻, I&apos;m Sajad a developer and designer.
         </h1>
         <p className="text-foreground my-6 text-base text-balance sm:text-lg">
@@ -100,7 +100,7 @@ export default async function Home() {
           {latestProjects.map(({ img, name, desc, tags, href }, key) => (
             <div key={key}>
               <div className="container mb-6">
-                <h2 className="text-primary text-base text-balance sm:text-lg">
+                <h2 className="text-primary text-base font-medium text-balance sm:text-lg">
                   {name}
                 </h2>
                 <p className="text-foreground my-4 text-base text-balance sm:text-lg">
@@ -118,7 +118,7 @@ export default async function Home() {
                 <Link
                   href={href}
                   target="_blank"
-                  className="border-secondary block overflow-hidden rounded-2xl border sm:rounded-3xl"
+                  className="border-secondary block overflow-hidden rounded-2xl border"
                 >
                   <Image
                     src={img}

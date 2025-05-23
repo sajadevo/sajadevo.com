@@ -59,14 +59,12 @@ export default function About() {
     <div className="space-y-16 pt-16 pb-20 sm:pt-40 sm:pb-24">
       {/* about me */}
       <section className="container">
+        <h1 className="text-primary mb-6 text-base font-medium text-balance sm:text-lg">
+          Hey, I&apos;m Sajad, a self-taught Frontend Engineer and Designer with
+          7+ years of experience crafting intuitive, high-performing and
+          user-focused web experiences.
+        </h1>
         <p className="text-foreground text-base text-balance sm:text-lg">
-          <span className="text-primary">
-            Hey, I&apos;m Sajad, a self-taught Frontend Engineer and Designer
-            with 7+ years of experience crafting intuitive, high-performing and
-            user-focused web experiences.
-          </span>
-          <br />
-          <br />
           I discovered my love for coding at the age of 14 and have been on an
           exciting journey ever since, honing my skills and turning ideas into
           digital realities. Based in Muscat, Oman, I&apos;ve had the privilege
@@ -98,7 +96,7 @@ export default function About() {
         <div className="space-y-8">
           {career.map(({ title, company, url, location, date }, key) => (
             <div key={key} className="flex flex-col gap-1">
-              <h2 className="text-primary text-base text-balance sm:text-lg">
+              <h2 className="text-primary text-base font-medium text-balance sm:text-lg">
                 {title}
               </h2>
               <p className="text-foreground text-base text-balance">{date}</p>
@@ -107,7 +105,7 @@ export default function About() {
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-black underline underline-offset-2"
+                  className="text-primary underline underline-offset-2"
                 >
                   {company}
                 </Link>

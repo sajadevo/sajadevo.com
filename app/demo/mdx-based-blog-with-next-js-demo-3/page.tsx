@@ -1,7 +1,7 @@
 export default function Page() {
   return (
     <div className="mx-auto max-w-2xl px-8 py-16">
-      <article className="prose prose-headings:text-black text-foreground">
+      <article className="prose prose-headings:text-primary text-foreground">
         <h1>My First Post</h1>
         <p>
           Hello, world! This is my first post on my new blog. I'm so excited to

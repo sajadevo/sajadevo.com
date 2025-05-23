@@ -36,7 +36,7 @@ export default function Page() {
     <div className="container mx-auto grid h-screen place-items-center p-16 text-center">
       <button
         data-name="dialog-trigger"
-        className="border-secondary hover:bg-secondary/25 h-9 cursor-pointer rounded-lg border px-3.5 text-sm text-black transition-colors"
+        className="border-secondary hover:bg-secondary/25 text-primary h-9 cursor-pointer rounded-lg border px-3.5 text-sm transition-colors"
       >
         Open Dialog
       </button>
@@ -44,7 +44,7 @@ export default function Page() {
         data-name="dialog"
         className="open:animate-bnhd-come-in backdrop:animate-bnhd-fade-in border-secondary bg-background fixed top-1/2 left-1/2 max-w-100 -translate-1/2 rounded-xl border p-6 text-left backdrop:bg-black/80 dark:backdrop:bg-white/70"
       >
-        <h2 className="text-lg font-semibold text-black">Dialog Title</h2>
+        <h2 className="text-primary text-lg font-semibold">Dialog Title</h2>
         <p className="text-foreground mt-2">
           This is a simple dialog box using HTML and Tailwind CSS. You can close
           this dialog box by clicking the cancel button.
@@ -53,7 +53,7 @@ export default function Page() {
           <button
             type="button"
             data-name="dialog-close-trigger"
-            className="border-secondary hover:bg-secondary/25 h-9 cursor-pointer rounded-lg border px-3.5 text-sm text-black transition-colors"
+            className="border-secondary hover:bg-secondary/25 text-primary h-9 cursor-pointer rounded-lg border px-3.5 text-sm transition-colors"
           >
             Cancel
           </button>

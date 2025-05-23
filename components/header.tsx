@@ -61,7 +61,7 @@ export function Header() {
             <ThemeToggle />
             <button
               aria-label="open menu"
-              className="hover:bg-secondary/50 dark:hover:bg-secondary/70 text-foreground grid size-10 cursor-pointer place-items-center overflow-hidden rounded-full bg-transparent p-1 text-base font-normal transition-all duration-200 hover:text-black sm:hidden"
+              className="hover:bg-secondary/50 dark:hover:bg-secondary/70 text-foreground hover:text-primary grid size-10 cursor-pointer place-items-center overflow-hidden rounded-full bg-transparent p-1 text-base font-normal transition-all duration-200 sm:hidden"
               onClick={toggleMenu}
             >
               {isMenuOpen ? (
@@ -105,7 +105,7 @@ function NavLink({
     <Link
       {...props}
       className={cn(
-        "text-foreground hover:bg-secondary/50 dark:hover:bg-secondary/70 grid h-full min-h-10 place-items-center rounded-full px-3.5 text-sm capitalize transition-colors duration-200 hover:text-black",
+        "text-foreground hover:bg-secondary/50 dark:hover:bg-secondary/70 hover:text-primary grid h-full min-h-10 place-items-center rounded-full px-3.5 text-sm capitalize transition-colors duration-200",
         {
           "bg-secondary/50 dark:bg-secondary/70 text-primary": isActive,
         },

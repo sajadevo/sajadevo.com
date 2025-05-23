@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 
 const alertVariants = cva(
-  "rounded-2xl border border-dashed px-5 py-4 text-base font-medium text-black [&_*]:m-0 [&_*]:text-black",
+  "rounded-2xl border border-dashed px-5 py-4 text-base font-medium text-primary [&_*]:p-0 [&_*]:m-0 [&_*]:text-primary",
   {
     variants: {
       variant: {
