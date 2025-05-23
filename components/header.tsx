@@ -22,7 +22,7 @@ export function Header() {
     <header className="fixed bottom-0 left-1/2 z-50 h-max -translate-x-1/2 p-4 select-none sm:top-0">
       <div
         className={cn(
-          "bg-primary/70 border-primary/30 dark:border-primary/40 flex w-max flex-col gap-2 rounded-full border p-1 backdrop-blur-lg backdrop-saturate-200 sm:mx-auto",
+          "bg-primary/80 border-primary/40 dark:border-primary/50 flex w-max flex-col gap-2 rounded-full border p-1 backdrop-blur-lg backdrop-saturate-200 sm:mx-auto",
           {
             "rounded-3xl": isMenuOpen,
           },
