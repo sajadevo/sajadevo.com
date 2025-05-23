@@ -5,7 +5,7 @@ const career = [
   {
     title: "Senior Frontend Engineer",
     company: "Aseel",
-    url: "https://www.mintra.ai/",
+    url: "https://aseelapp.com/",
     location: "Virginia, United States",
     date: `Mar 2025 - Present • ${getDateDifference("2025-03-01", new Date())}`,
   },
