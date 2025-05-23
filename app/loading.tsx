@@ -1,4 +1,3 @@
-// @icons
 import { RiLoader2Line } from "@remixicon/react";
 
 export default function Loading() {

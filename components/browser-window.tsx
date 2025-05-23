@@ -1,4 +1,3 @@
-// @utils
 import { cn } from "@/lib/utils";
 
 export function BrowserWindow({

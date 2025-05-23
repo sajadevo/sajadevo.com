@@ -1,7 +1,4 @@
-// @fonts
 import localFont from "next/font/local";
-
-// @styles
 import "../globals.css";
 
 const geistMono = localFont({

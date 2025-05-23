@@ -1,14 +1,8 @@
 "use client";
 
 import React from "react";
-
-// @components
 import { Input } from "@/components/input";
-
-// @icons
 import { RiSearchLine } from "@remixicon/react";
-
-// @hooks
 import { useRouter } from "next/navigation";
 import { useDebounceValue } from "usehooks-ts";
 

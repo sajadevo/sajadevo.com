@@ -1,8 +1,6 @@
 "use client";
 
 import React from "react";
-
-// @hooks
 import { useCopyToClipboard } from "usehooks-ts";
 
 export function BlogCopyLink({ url }: { url: string }) {

@@ -1,6 +1,4 @@
 import React from "react";
-
-// @utils
 import { cn } from "@/lib/utils";
 
 export function Input({

@@ -1,4 +1,3 @@
-// @types
 import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
@@ -6,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Sajad",
     short_name: "Sajad",
     description:
-      "I'm a passionate developer and designer interested in JavaScript, TypeScript, Rust, Product Design, Startups, Web 3.0 and OSS.",
+      "I'm a developer and designer interested in JavaScript, TypeScript, Product Design, Startups, Web3.0 and Open Source.",
     start_url: "/",
     display: "standalone",
     background_color: "#f8f8f8",

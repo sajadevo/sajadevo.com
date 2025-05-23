@@ -22,8 +22,8 @@ export function getDateDifference(
     totalMonths += 1;
   }
 
-  let years = Math.floor(totalMonths / 12);
-  let months = totalMonths % 12;
+  const years = Math.floor(totalMonths / 12);
+  const months = totalMonths % 12;
 
   const parts = [];
 
@@ -54,7 +54,7 @@ export function generateMetadata(args?: Metadata): Metadata {
   const title = args?.title || "Sajad ⋅ Developer & Designer";
   const description =
     args?.description ||
-    "I'm a passionate developer and designer interested in JavaScript, TypeScript, Rust, Product Design, Startups, Web 3.0 and OSS.";
+    "I'm a developer and designer interested in JavaScript, TypeScript, Product Design, Startups, Web3.0 and Open Source.";
   const keywords = args?.keywords || [
     "Sajad",
     "Developer",

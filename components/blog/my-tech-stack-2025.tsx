@@ -1,4 +1,3 @@
-// @icons
 import { Deno } from "@/icons/deno";
 import { Nextjs } from "@/icons/nextjs";
 import { Claude } from "@/icons/claude";

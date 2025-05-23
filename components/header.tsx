@@ -22,7 +22,7 @@ export function Header() {
     <header className="fixed bottom-0 left-1/2 z-50 h-max -translate-x-1/2 p-4 select-none sm:top-0">
       <div
         className={cn(
-          "bg-background border-secondary flex w-max flex-col gap-2 rounded-full border p-1 sm:mx-auto",
+          "bg-primary/70 border-primary/30 dark:border-primary/40 flex w-max flex-col gap-2 rounded-full border p-1 backdrop-blur-lg backdrop-saturate-200 sm:mx-auto",
           {
             "rounded-3xl": isMenuOpen,
           },
@@ -33,14 +33,13 @@ export function Header() {
             href="/"
             aria-label="navigate to home"
             className={cn(
-              "hover:bg-secondary/50 dark:hover:bg-secondary/70 block size-10 rounded-full bg-transparent p-1.25 transition-colors duration-200",
+              "hover:bg-secondary/12 block size-10 rounded-full bg-transparent p-1.25 transition-colors duration-200",
               {
-                "bg-secondary/50 dark:bg-secondary/70 text-primary":
-                  pathname === "/",
+                "bg-secondary/12": pathname === "/",
               },
             )}
           >
-            <Sajad className="text-primary size-full rounded-full" />
+            <Sajad className="size-full rounded-full text-white" />
           </Link>
           <nav className="hidden items-center gap-0.5 sm:flex">
             {links.map((link) => {
@@ -61,7 +60,7 @@ export function Header() {
             <ThemeToggle />
             <button
               aria-label="open menu"
-              className="hover:bg-secondary/50 dark:hover:bg-secondary/70 text-foreground hover:text-primary grid size-10 cursor-pointer place-items-center overflow-hidden rounded-full bg-transparent p-1 text-base font-normal transition-all duration-200 sm:hidden"
+              className="hover:bg-secondary/12 grid size-10 cursor-pointer place-items-center overflow-hidden rounded-full bg-transparent p-1 text-base font-normal text-white/80 transition-all duration-200 hover:text-white sm:hidden"
               onClick={toggleMenu}
             >
               {isMenuOpen ? (
@@ -105,9 +104,9 @@ function NavLink({
     <Link
       {...props}
       className={cn(
-        "text-foreground hover:bg-secondary/50 dark:hover:bg-secondary/70 hover:text-primary grid h-full min-h-10 place-items-center rounded-full px-3.5 text-sm capitalize transition-colors duration-200",
+        "hover:bg-secondary/12 grid h-full min-h-10 place-items-center rounded-full px-3.5 text-sm font-medium text-white/80 capitalize transition-colors duration-200 hover:text-white",
         {
-          "bg-secondary/50 dark:bg-secondary/70 text-primary": isActive,
+          "bg-secondary/12 text-white": isActive,
         },
       )}
     >

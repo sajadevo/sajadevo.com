@@ -1,7 +1,4 @@
-// @components
 import Link from "next/link";
-
-// @utils
 import { cn, formatDate } from "@/lib/utils";
 
 export function BlogPostCard({

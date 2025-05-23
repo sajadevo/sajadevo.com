@@ -2,11 +2,7 @@
 
 import React from "react";
 import { flushSync } from "react-dom";
-
-// @icons
 import { RiSunLine, RiMoonLine } from "@remixicon/react";
-
-// @hooks
 import { useTheme } from "next-themes";
 
 export function ThemeToggle() {
@@ -41,7 +37,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="hover:bg-secondary/50 dark:hover:bg-secondary/70 text-foreground hover:text-primary grid size-10 cursor-pointer place-items-center overflow-hidden rounded-full bg-transparent p-1 text-base font-normal transition-all duration-200"
+      className="hover:bg-secondary/12 grid size-10 cursor-pointer place-items-center overflow-hidden rounded-full bg-transparent p-1 text-base font-normal text-white/80 transition-all duration-200 hover:text-white"
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
     >
       {theme === "dark" ? (

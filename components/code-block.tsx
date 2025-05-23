@@ -1,14 +1,8 @@
 "use client";
 
 import React from "react";
-
-// @components
 import { Button } from "@/components/button";
-
-// @icons
 import { RiCheckLine, RiFileCopyLine } from "@remixicon/react";
-
-// @hooks
 import { useCopyToClipboard } from "usehooks-ts";
 
 export function CodeBlock({

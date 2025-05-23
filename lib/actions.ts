@@ -1,9 +1,6 @@
 "use server";
 
-// @components
 import { EmailTemplate } from "@/components/email-template";
-
-// @utils
 import fs from "node:fs";
 import { Resend } from "resend";
 import matter from "gray-matter";

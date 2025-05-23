@@ -1,17 +1,8 @@
-// @components
 import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
 import { Providers } from "@/components/providers";
-import { FrameLines } from "@/components/frame-lines";
 import { GoogleTagManager, GoogleAnalytics } from "@next/third-parties/google";
-
-// @utils
 import { generateMetadata } from "@/lib/utils";
-
-// @fonts
 import localFont from "next/font/local";
-
-// @styles
 import "./globals.css";
 
 const geistMono = localFont({
