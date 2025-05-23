@@ -86,7 +86,7 @@ export default async function Home() {
           ))}
         </div>
         <div className="flex flex-wrap items-center gap-2">
-          <Button>
+          <Button asChild>
             <Link
               href="https://cal.com/sajadevo/30min?overlayCalendar=true"
               aria-label="Schedule a call with Sajad"
