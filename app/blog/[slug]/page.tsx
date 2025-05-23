@@ -98,7 +98,7 @@ export default async function Post({
         </p>
       </section>
       <section className="container-lg">
-        <article className="prose prose-a:text-primary prose-a:text-underline prose-strong:text-primary prose-th:text-sm prose-li:text-foreground prose-em:text-foreground prose-lead:text-foreground sm:prose-lg prose-p:text-foreground prose-headings:text-primary prose-headings:text-base sm:prose-headings:text-lg prose-headings:font-medium prose-code:text-primary prose-thead:text-primary prose-thead:text-sm prose-thead:font-medium prose-td:text-sm prose-td:text-foreground prose-td:px-4 prose-py-3 prose-th:py-3 prose-thead:border-secondary prose-td:content-center prose-th:px-4 prose-table:my-0 prose-th:content-center w-full max-w-full">
+        <article className="prose prose-a:text-primary prose-a:text-underline prose-strong:text-primary prose-th:text-sm prose-li:text-foreground prose-em:text-foreground prose-tr:border-secondary prose-lead:text-foreground sm:prose-lg prose-p:text-foreground prose-headings:text-primary prose-headings:text-base sm:prose-headings:text-lg prose-headings:font-medium prose-code:text-primary prose-thead:text-primary prose-thead:text-sm prose-thead:font-medium prose-td:text-sm prose-td:text-foreground prose-td:px-4 prose-py-3 prose-th:py-3 prose-thead:border-secondary prose-td:content-center prose-th:px-4 prose-table:my-0 prose-th:content-center w-full max-w-full">
           <MDXRemote
             source={source}
             options={{
