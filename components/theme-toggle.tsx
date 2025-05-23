@@ -34,13 +34,15 @@ export function ThemeToggle() {
     }).ready;
   }
 
+  const isDark = theme === "dark";
+
   return (
     <button
       onClick={toggleTheme}
-      className="hover:bg-secondary/12 grid size-10 cursor-pointer place-items-center overflow-hidden rounded-full bg-transparent p-1 text-base font-normal text-white/80 transition-all duration-200 hover:text-white"
-      aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+      className="hover:bg-secondary/12 grid size-10 cursor-pointer place-items-center overflow-hidden rounded-full bg-transparent p-1 text-base font-normal text-white/80 transition-all duration-300 hover:text-white"
+      aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
     >
-      {theme === "dark" ? (
+      {isDark ? (
         <RiMoonLine className="size-4" />
       ) : (
         <RiSunLine className="size-4" />

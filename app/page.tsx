@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Badge } from "@/components/badge";
 import { getBlogPosts } from "@/lib/actions";
 import { BlogPostCard } from "@/components/blog-post-card";
+import { Button } from "@/components/button";
 
 const social = [
   {
@@ -71,7 +72,7 @@ export default async function Home() {
           and eCommerce. I love working with JavaScript, TypeScript, Product
           Design, Startups, Web3.0 and Open Source.
         </p>
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="mb-12 flex flex-wrap items-center gap-2">
           {social.map(({ variant, label, href }) => (
             <Badge key={variant} variant={variant as any} asChild>
               <Link
@@ -83,9 +84,25 @@ export default async function Home() {
               </Link>
             </Badge>
           ))}
-          <Badge className="hover:bg-primary hover:text-white">
-            Contact Me
-          </Badge>
+        </div>
+        <div className="flex flex-wrap items-center gap-2">
+          <Button>
+            <Link
+              href="https://cal.com/sajadevo/30min?overlayCalendar=true"
+              aria-label="Schedule a call with Sajad"
+              target="_blank"
+            >
+              Schedule a call
+            </Link>
+          </Button>
+          <Button asChild variant="secondary">
+            <Link
+              href="mailto:sajadevvo@gmail.com"
+              aria-label="Send an email to Sajad"
+            >
+              Send an email
+            </Link>
+          </Button>
         </div>
       </section>
 
@@ -125,7 +142,7 @@ export default async function Home() {
                     alt={name}
                     width={1024}
                     height={1024}
-                    className="w-full transition-transform duration-200 hover:scale-105"
+                    className="w-full transition-transform duration-300 hover:scale-105"
                   />
                 </Link>
               </div>

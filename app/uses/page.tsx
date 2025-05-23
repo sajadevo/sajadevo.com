@@ -236,7 +236,7 @@ function ToolCard({
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        "border-secondary hover:bg-secondary/50 grid place-items-center overflow-hidden rounded-2xl border p-4 transition-all duration-200",
+        "border-secondary hover:bg-secondary/50 grid place-items-center overflow-hidden rounded-2xl border p-4 transition-all duration-300",
         wrapperClassName,
       )}
     >

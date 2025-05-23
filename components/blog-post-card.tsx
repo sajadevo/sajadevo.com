@@ -24,7 +24,7 @@ export function BlogPostCard({
       {...props}
       href={link}
       className={cn(
-        "border-secondary hover:bg-secondary/50 relative flex flex-col rounded-2xl border px-6 py-5 transition-all duration-200",
+        "border-secondary hover:bg-secondary/50 relative flex flex-col rounded-2xl border px-6 py-5 transition-all duration-300",
         className,
         {
           "row-span-2": isLarge,

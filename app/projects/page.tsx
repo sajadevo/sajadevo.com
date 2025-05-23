@@ -177,7 +177,7 @@ export default function Projects() {
                       alt={name}
                       width={1024}
                       height={1024}
-                      className="w-full transition-transform duration-200 hover:scale-105"
+                      className="w-full transition-transform duration-300 hover:scale-105"
                     />
                   </Link>
                 </div>

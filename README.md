@@ -5,7 +5,6 @@
 - **Framework**: [Next.js](https://nextjs.org/)
 - **Deployment**: [Vercel](https://vercel.com)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com)
-- **Email**: [Resend](https://resend.com/)
 
 ## Running Locally
 
@@ -26,9 +25,8 @@ Rename the `.env.example` file to `.env.local` and fill in the necessary environ
 NEXT_PUBLIC_PROD_URL=
 NEXT_PUBLIC_DEV_URL=https://localhost:3000
 
-RESEND_API_KEY=
-RESEND_FROM_EMAIL=
-RESEND_TO_EMAIL=
+NEXT_PUBLIC_MEASUREMENT_ID=
+NEXT_PUBLIC_GTM_ID=
 ```
 
 ## Notes

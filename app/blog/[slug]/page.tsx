@@ -85,7 +85,7 @@ export default async function Post({
       <section className="container-lg">
         <Link
           href="/blog"
-          className="text-foreground hover:text-primary mb-12 flex items-center gap-1.5 transition-colors duration-200"
+          className="text-foreground hover:text-primary mb-12 flex items-center gap-1.5 transition-colors duration-300"
         >
           <RiArrowLeftLine className="size-4" />
           Blog
