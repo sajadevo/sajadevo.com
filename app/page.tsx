@@ -36,14 +36,14 @@ const latestProjects = [
   {
     img: "/projects/mintra.png",
     href: "https://app.mintra.ai/",
-    name: "Mintra - NFT marketplace and launchpad",
+    name: "Mintra - NFT Marketplace & Launchpad",
     desc: "Mintra is Pulsechain's premiere on-chain, decentralized, fee-sharing NFT marketplace, staking app and launchpad.",
     tags: ["TypeScript", "Next.js", "Tailwind CSS", "Animation", "Web3.0"],
   },
   {
     img: "/projects/lookintohex.png",
     href: "https://www.lookintohex.com/",
-    name: "LookIntoHex - Analytics and visualization",
+    name: "LookIntoHex - Analytics & Visualization Tool",
     desc: "LookIntoHex is an analytics and visualization tool for on-chain crypto data.",
     tags: ["TypeScript", "Next.js", "Tailwind CSS", "Recharts", "D3", "Web3.0"],
   },

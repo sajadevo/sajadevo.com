@@ -1,109 +1,102 @@
-// @components
 import Link from "next/link";
-import { Typography } from "@/components/typography";
-import { FeatureCard } from "@/components/feature-card";
-
-// @utils
+import Image from "next/image";
+import { Badge } from "@/components/badge";
 import { generateMetadata } from "@/lib/utils";
-
-const featuredProjects = [
-  {
-    name: "Themezly",
-    url: "https://themezly.xyz/",
-    description: "Next.js & Tailwind CSS templates marketplace",
-  },
-  {
-    name: "DevResume",
-    url: "https://www.devresume.xyz",
-    description: "Portfolio builder for developers with GitHub",
-  },
-  {
-    name: "Mintra App",
-    url: "https://app.mintra.ai/",
-    description: "NFT marketplace and launchpad for creators",
-  },
-];
 
 const projects = [
   {
-    name: "Themezly",
-    url: "https://themezly.xyz/",
-    description: "Next.js & Tailwind CSS templates marketplace",
+    img: "/projects/mintra.png",
+    href: "https://app.mintra.ai/",
+    name: "Mintra - NFT marketplace & Launchpad",
+    desc: "Mintra is Pulsechain's premiere on-chain, decentralized, fee-sharing NFT marketplace, staking app and launchpad.",
+    tags: ["TypeScript", "Next.js", "Tailwind CSS", "Animation", "Web3.0"],
   },
   {
-    name: "DevResume",
-    url: "https://www.devresume.xyz",
-    description: "Portfolio builder for developers with GitHub",
+    img: "/projects/lookintohex.png",
+    href: "https://www.lookintohex.com/",
+    name: "LookIntoHex - Analytics & Visualization Tool",
+    desc: "LookIntoHex is an analytics and visualization tool for on-chain crypto data.",
+    tags: ["TypeScript", "Next.js", "Tailwind CSS", "Recharts", "D3", "Web3.0"],
   },
   {
-    name: "Mintra App",
-    url: "https://app.mintra.ai/",
-    description: "NFT marketplace and launchpad for creators",
+    img: "/projects/material-tailwind.png",
+    href: "https://www.material-tailwind.com/v3",
+    name: "Material Tailwind - Components Library",
+    desc: "An open-source components library for Tailwind CSS and React.js. With premium building blocks for rapid web development.",
+    tags: ["TypeScript", "React.js", "Tailwind CSS", "Open Source"],
   },
   {
-    name: "Material Tailwind",
-    url: "https://www.material-tailwind.com/v3",
-    description: "React & Tailwind CSS components library",
+    img: "/projects/dev-resume.png",
+    href: "https://www.devresume.xyz/",
+    name: "DevResume - Portfolio Builder",
+    desc: "An open-source tool that generates beautiful resume based on your GitHub profile data. It's a great way to showcase your skills, projects, and contributions in a visually appealing way.",
+    tags: ["TypeScript", "Next.js", "Tailwind CSS", "Supabase", "Open Source"],
   },
   {
-    name: "LookIntoHex",
-    url: "https://www.lookintohex.com/",
-    description: "HEX analytics and visualization tool",
+    img: "/projects/reach.png",
+    href: "https://www.getreach.xyz/",
+    name: "Reach - Social Finance Protocol",
+    desc: "Reach is a social finance protocol that allows users to create and manage their own social finance communities. It provides tools for community engagement and financial management.",
+    tags: ["TypeScript", "Next.js", "Tailwind CSS", "Web3.0", "Stripe"],
   },
   {
-    name: "Shadcn + Tailwind v4",
-    url: "https://github.com/sajadevo/shadncn-tailwindcss-v4-starter",
-    description: "Starter kit for Shadcn with Tailwind CSS v4",
+    img: "/projects/nf-tim.png",
+    href: "https://nf-tim.com/",
+    name: "NF-Tim - NFT Marketplace",
+    desc: "NFT utility project for Developers and Designers based on MultiversX.",
+    tags: ["JavaScript", "Next.js", "Tailwind CSS", "Web3.0"],
   },
   {
-    name: "Reach App",
-    url: "https://www.getreach.xyz/",
-    description: "Automated social finance protocol",
+    img: "/projects/car-plazza.png",
+    href: "https://carplazza.com/",
+    name: "Car Plazza - Car Marketplace",
+    desc: "Car Plazza is a car marketplace that allows users to buy and sell cars online. It provides a platform for car enthusiasts to connect and trade vehicles.",
+    tags: ["TypeScript", "Next.js", "Tailwind CSS", "Supabase", "Stripe"],
   },
   {
-    name: "NF-Tim",
-    url: "https://nf-tim.com/",
-    description: "NFT utility project for developers & designers",
+    img: "/projects/argon-dashboard.png",
+    href: "https://demos.creative-tim.com/argon-dashboard-pro-material-ui/#/dashboards/default",
+    name: "Argon Dashboard - Admin Dashboard",
+    desc: "Innovative Admin Template for MUI and React. It features a huge number of components built to fit together and look amazing.",
+    tags: ["React.js", "MUI"],
   },
   {
-    name: "Gerardo Portfolio",
-    url: "https://gerawrdog.com/",
-    description: "Gerardo personal portfolio website",
+    img: "/projects/soft-ui-dashboard.png",
+    href: "https://demos.creative-tim.com/soft-ui-dashboard-pro-react",
+    name: "Soft UI Dashboard - Admin Dashboard",
+    desc: "Innovative Admin Template for MUI and React. It features a huge number of components built to fit together and look amazing.",
+    tags: ["React.js", "MUI"],
   },
   {
-    name: "CarPlazza",
-    url: "https://carplazza.com/",
-    description: "Car marketplace and dealership",
+    img: "/projects/material-dashboard.png",
+    href: "https://demos.creative-tim.com/material-dashboard-pro-react",
+    name: "Material Dashboard - Admin Dashboard",
+    desc: "Innovative Admin Template for MUI and React. It features a huge number of components built to fit together and look amazing.",
+    tags: ["React.js", "MUI"],
   },
   {
-    name: "Alexandra Prod",
-    url: "https://www.alexandraprod.com/",
-    description: "Natural wooden DIY products store",
+    href: "https://github.com/sajadevo/shadncn-tailwindcss-v4-starter",
+    name: "Shadcn/ui + Tailwind CSS v4",
+    desc: "A starter template for building a web application using Shadcn/ui and Tailwind CSS v4.",
+    tags: [
+      "TypeScript",
+      "React.js",
+      "Tailwind CSS",
+      "Shadcn/ui",
+      "Open Source",
+    ],
   },
   {
+    href: "https://github.com/sajadevo/material-ripple-effects",
     name: "Material Ripple Effects",
-    url: "https://github.com/sajadevo/material-ripple-effects",
-    description: "Material design ripple effect for your website",
+    desc: "A library that makes you able to have material design ripple effect on any element you want.",
+    tags: ["JavaScript", "Open Source"],
   },
   {
-    name: "Material Dashboard",
-    url: "https://www.creative-tim.com/product/material-dashboard-pro-react",
-    description: "Dashboard template based on MUI and React",
-  },
-  {
-    name: "Soft UI Dashboard",
-    url: "https://www.creative-tim.com/product/soft-ui-dashboard-pro-react",
-    description: "Dashboard template based on MUI and React",
-  },
-  {
-    name: "Argon Dashboard",
-    url: "https://www.creative-tim.com/product/argon-dashboard-pro-material-ui",
-    description: "Dashboard template based on MUI and React",
-  },
-  {
-    name: "Material Kit",
-    url: "https://www.creative-tim.com/product/material-kit-pro-react",
-    description: "UI kit template based on MUI and React",
+    href: "https://www.alexandraprod.com/",
+    name: "Alexandra Prod - Wood Manufacturing",
+    desc: "Alexandra Prod is a wood manufacturing company that specializes in creating high-quality wooden products.",
+    tags: ["TypeScript", "Next.js", "Tailwind CSS", "Supabase", "Stripe"],
   },
 ];
 
@@ -133,48 +126,66 @@ export const metadata = generateMetadata({
 
 export default function Projects() {
   return (
-    <div className="min-h-[calc(100vh-48px)] md:min-h-[calc(100vh-65px)]">
-      <div className="mx-auto max-w-4xl px-6 pt-12 pb-24 sm:px-8 sm:pt-16 sm:pb-36">
-        <Typography variant="h1" asChild>
-          <h1>What I&apos;ve done so far</h1>
-        </Typography>
-        <Typography className="mt-4 text-balance">
-          I&apos;m passionate about creating and sharing my journey through
-          building in public. Here, you can explore unique websites, apps, and
-          libraries I&apos;ve developed. Some of these projects are thriving,
-          while others have completed their lifecycle or pivoted into new ideas.
-        </Typography>
-        <Typography variant="h2" className="mt-12 mb-6" asChild>
-          <h2>Featured Projects</h2>
-        </Typography>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {featuredProjects.map(({ name, url, description }) => (
-            <Link
-              key={name}
-              href={url}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FeatureCard title={name} description={description} />
-            </Link>
+    <div className="space-y-16 pt-16 pb-20 sm:pt-40 sm:pb-24">
+      <section className="container">
+        <h1 className="text-primary text-base text-balance sm:text-lg">
+          What I've done so far
+        </h1>
+        <p className="text-foreground my-6 text-base text-balance sm:text-lg">
+          I'm passionate about creating and sharing my journey through building
+          in public. Here, you can explore unique websites, apps, and libraries
+          I've developed. Some of these projects are thriving, while others have
+          completed their lifecycle or pivoted into new ideas.
+        </p>
+      </section>
+      <section>
+        <div className="space-y-12 sm:space-y-16">
+          {projects.map(({ img, name, desc, tags, href }, key) => (
+            <div key={key}>
+              <div className="container mb-6">
+                {img ? (
+                  <h2 className="text-primary text-base text-balance sm:text-lg">
+                    {name}
+                  </h2>
+                ) : (
+                  <Link href={href} target="_blank">
+                    <h2 className="text-primary text-base text-balance sm:text-lg">
+                      {name}
+                    </h2>
+                  </Link>
+                )}
+                <p className="text-foreground my-4 text-base text-balance sm:text-lg">
+                  {desc}
+                </p>
+                <div className="flex flex-wrap items-center gap-2">
+                  {tags.map((tag) => (
+                    <Badge key={tag} variant="outline">
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+              {img && (
+                <div className="container-lg">
+                  <Link
+                    href={href}
+                    target="_blank"
+                    className="border-secondary block overflow-hidden rounded-2xl border sm:rounded-3xl"
+                  >
+                    <Image
+                      src={img}
+                      alt={name}
+                      width={1024}
+                      height={1024}
+                      className="w-full transition-transform duration-200 hover:scale-105"
+                    />
+                  </Link>
+                </div>
+              )}
+            </div>
           ))}
         </div>
-        <h2 className="mt-16 mb-6 font-sans text-xl font-semibold text-black sm:text-2xl">
-          All Projects
-        </h2>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.map(({ name, url, description }) => (
-            <Link
-              key={name}
-              href={url}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FeatureCard title={name} description={description} />
-            </Link>
-          ))}
-        </div>
-      </div>
+      </section>
     </div>
   );
 }
