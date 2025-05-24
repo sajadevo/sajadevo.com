@@ -8,8 +8,8 @@ export default function manifest(): MetadataRoute.Manifest {
       "I'm a developer and designer interested in JavaScript, TypeScript, Product Design, Startups, Web3.0 and Open Source.",
     start_url: "/",
     display: "standalone",
-    background_color: "#f8f8f8",
-    theme_color: "#f8f8f8",
+    background_color: "#fff",
+    theme_color: "#fff",
     icons: [
       {
         src: "/favicon.ico",
