@@ -97,7 +97,7 @@ export default async function Home() {
           </Button>
           <Button asChild variant="secondary">
             <Link
-              href="mailto:sajadevvo@gmail.com"
+              href="mailto:hi@sajadevo.com"
               aria-label="Send an email to Sajad"
             >
               Send an email
