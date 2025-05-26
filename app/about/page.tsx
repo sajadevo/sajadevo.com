@@ -36,22 +36,6 @@ export const metadata = generateMetadata({
   title: "Sajad ⋅ About Me",
   description:
     "Learn more about me, my career, and my journey as a developer and designer.",
-  keywords: [
-    "Sajad",
-    "Developer",
-    "Designer",
-    "Bio",
-    "Career",
-    "Frontend",
-    "Engineer",
-    "ReactJS",
-    "JavaScript",
-    "TypeScript",
-    "Rust",
-    "Open-Source",
-    "Web Developer",
-    "Web Designer",
-  ],
 });
 
 export default function About() {

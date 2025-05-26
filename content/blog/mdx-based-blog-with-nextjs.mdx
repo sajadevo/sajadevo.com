@@ -3,15 +3,6 @@ title: MDX-Based Blog with Next.js
 date: 02-10-2025 # MM-DD-YYYY
 description: Learn how to build an interactive and content-driven blog using Next.js and MDX.
 category: web development
-keywords:
-  - next.js
-  - react
-  - mdx
-  - blog
-  - tailwindcss
-  - web development
-  - javascript
-  - typescript
 ---
 
 Building a modern blog that is rich in content has never been easier, thanks to MDX and Next.js. With MDX, you can mix Markdown and React components effortlessly, making your blog more interactive and flexible. Whether you're a developer sharing technical insights or a writer who loves well-structured content, Next.js with MDX gives you the best of both worlds, fast performance, server-side rendering, and static site generation. In this guide, I'll walk you through setting up an MDX-powered blog with Next.js so you can create a dynamic, customizable blogging experience with ease.
@@ -183,7 +174,7 @@ export default async function Page() {
             <h2 className="text-primary mb-2 text-lg font-semibold">
               {post.title}
             </h2>
-            <p className="text-base text-balance text-gray-700">
+            <p className="text-balance text-base text-gray-700">
               {post.description}
             </p>
           </Link>

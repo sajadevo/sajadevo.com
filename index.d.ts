@@ -4,5 +4,4 @@ interface BlogPost {
   slug: string;
   description: string;
   category: string;
-  keywords: string[];
 }

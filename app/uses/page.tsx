@@ -5,29 +5,6 @@ import { cn, generateMetadata } from "@/lib/utils";
 export const metadata = generateMetadata({
   title: "Sajad ⋅ What I Use",
   description: "Behind the scenes, my workspace setup, tools, and gear.",
-  keywords: [
-    "Sajad",
-    "Developer",
-    "Designer",
-    "Workspace",
-    "Setup",
-    "Tools",
-    "Gear",
-    "MacBook Pro",
-    "Studio Display",
-    "Magic Keyboard",
-    "Magic Mouse",
-    "AirPods Max",
-    "Raycast",
-    "VS Code",
-    "Arc Browser",
-    "Warp",
-    "Figma",
-    "Notion",
-    "Cal.com",
-    "Screen Studio",
-    "CleanShot X",
-  ],
 });
 
 export default function Uses() {

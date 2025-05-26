@@ -55,13 +55,6 @@ export function generateMetadata(args?: Metadata): Metadata {
   const description =
     args?.description ||
     "I'm a developer and designer interested in JavaScript, TypeScript, Product Design, Startups, Web3.0 and Open Source.";
-  const keywords = args?.keywords || [
-    "Sajad",
-    "Developer",
-    "Designer",
-    "JavaScript",
-    "TypeScript",
-  ];
 
   const domain = new URL(
     isProd
@@ -75,7 +68,6 @@ export function generateMetadata(args?: Metadata): Metadata {
     metadataBase: domain,
     title,
     description,
-    keywords,
     robots: "follow, index, max-image-preview:large",
     publisher: "Sajad Ahmad Nawabi",
     authors: [{ name: "Sajad Ahmad Nawabi", url: "https://x.com/sajadevo_" }],

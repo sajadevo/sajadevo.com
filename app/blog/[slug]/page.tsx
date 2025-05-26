@@ -38,7 +38,6 @@ export async function generateMetadata({
   return generateMetadataFn({
     title: frontMatter.title,
     description: frontMatter.description,
-    keywords: frontMatter.keywords,
     alternates: {
       canonical: `${domain}/${slug}`,
     },

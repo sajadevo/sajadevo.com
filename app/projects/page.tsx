@@ -103,25 +103,6 @@ const projects = [
 export const metadata = generateMetadata({
   title: "Sajad ⋅ My Projects",
   description: "Explore unique websites, apps, and libraries I've developed.",
-  keywords: [
-    "Sajad",
-    "Developer",
-    "Designer",
-    "Projects",
-    "Portfolio",
-    "Websites",
-    "Apps",
-    "Libraries",
-    "JavaScript",
-    "TypeScript",
-    "ReactJS",
-    "NextJS",
-    "TailwindCSS",
-    "MUI",
-    "Blockchain",
-    "NFT",
-    "Web3",
-  ],
 });
 
 export default function Projects() {

@@ -7,20 +7,6 @@ export const metadata = generateMetadata({
   title: "Sajad ⋅ Blog Posts",
   description:
     "Learn about web development and web designing through my blog posts.",
-  keywords: [
-    "Sajd Blog",
-    "Web Development",
-    "Web Designing",
-    "Software Development",
-    "Career",
-    "JavaScript",
-    "TypeScript",
-    "ReactJS",
-    "NextJS",
-    "TailwindCSS",
-    "Blockchain",
-    "Web3",
-  ],
 });
 
 export const dynamic = "auto";
