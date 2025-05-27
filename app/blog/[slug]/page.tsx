@@ -163,7 +163,7 @@ export default async function Post({
                 🔗 Related posts
               </h2>
             </div>
-            <div className="container-lg grid grid-cols-1 items-start gap-4 md:grid-cols-2">
+            <div className="container-lg grid grid-cols-1 gap-4 md:grid-cols-2">
               {posts.map(
                 ({ title, description, date, category, slug }, key) => (
                   <BlogPostCard

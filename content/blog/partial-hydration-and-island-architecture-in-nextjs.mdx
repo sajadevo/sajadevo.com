@@ -1,0 +1,99 @@
+---
+title: Partial Hydration and Island Architecture in Next.js
+date: 05-27-2025 # MM-DD-YYYY
+description: Learn about partial hydration and island architecture in your Next.js applications.
+category: web development
+---
+
+In the world of web development, performance and user experience are critical. As applications grow in complexity, traditional rendering methods can lead to inefficiencies.
+
+This is where partial hydration and island architecture come into play, especially in frameworks like Next.js.
+
+## Rethinking Client-Side Interactivity
+
+Hydration in traditional SPAs is costly. With React Server Components (RSC) and dynamic rendering, frameworks like Next.js are supporting a hybrid model where only parts of the page are hydrated. This is the core idea behind partial hydration and island architecture.
+
+## Why Hydration Is Expensive
+
+In a traditional React SPA, the entire HTML comes from SSR (or SSG), and then React rehydrates the entire app on the client, attaching event listeners and rebuilding the virtual DOM.
+
+This is wasteful for static or read-only components. Your `<header />` and `<footer />` rarely change, yet they still get hydrated and on large pages, this hydration becomes a performance bottleneck.
+
+## Using Partial Hydration
+
+Instead of hydrating the entire app, partial hydration selectively hydrates only the interactive parts. That means static content stays static, and only dynamic components are hydrated when needed, reducing the amount of JavaScript sent to the client and speeding up initial load times.
+
+Think of a blog post page:
+
+The static article content doesn't need client-side JavaScript, while a comment form or like button does. This is where **"islands"** come in, self-contained interactive components that hydrate independently, only when necessary.
+
+## How Next.js Supports This Today
+
+**1. React Server Components (RSC)**
+
+With Next.js App Router, server and client boundaries are clear:
+
+```tsx
+// app/page.tsx - Server Component (default)
+import LikeButton from "./like-button";
+
+export default function Page() {
+  return (
+    <>
+      <ArticleContent /> {/* server-rendered static content */}
+      <LikeButton /> {/* client-side island */}
+    </>
+  );
+}
+```
+
+```tsx
+// app/like-button.tsx - Client Component
+"use client";
+
+import { useState } from "react";
+
+export default function LikeButton() {
+  const [liked, setLiked] = useState(false);
+
+  return (
+    <button onClick={() => setLiked(!liked)}>
+      {liked ? "❤️ Liked" : "Like"}
+    </button>
+  );
+}
+```
+
+Only `LikeButton` is hydrated on the client and `ArticleContent` remains a static, server-rendered block.
+
+**2. Dynamic Imports for Lazy Islands**
+
+Want to delay hydration? Use `next/dynamic`:
+
+```tsx
+import dynamic from "next/dynamic";
+
+const LikeButton = dynamic(() => import("./like-button"), {
+  ssr: false, // This skips SSR and hydrates only on client
+  loading: () => <p>Loading...</p>,
+});
+```
+
+Using `ssr: false` means the component doesn't show up in the initial HTML, so use this for non-critical, below-the-fold UI.
+
+## When to Use Islands?
+
+Use `use client` components for:
+
+- Forms
+- Buttons with state
+- Interactive widgets
+- Tabs, dropdowns, modals
+
+Keep everything else as server components to avoid unnecessary JavaScript.
+
+## Final Thoughts
+
+Partial hydration and island architecture are the future of web performance. Next.js (thanks to RSCs) lets you opt-in to interactivity, and default to server-rendered performance.
+
+This approach makes less hydration, which means less JavaScript and faster apps. It's a win for both users and developers.
