@@ -223,6 +223,7 @@ function ToolCard({
           alt={`Image of ${name}`}
           width={300}
           height={300}
+          loading="lazy"
           className={`m-auto ${className}`}
         />
         <div className="text-foreground mt-4 text-center text-wrap">{name}</div>

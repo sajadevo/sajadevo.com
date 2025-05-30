@@ -158,6 +158,7 @@ export default function Projects() {
                       alt={name}
                       width={1024}
                       height={1024}
+                      loading="lazy"
                       className="w-full transition-transform duration-300 hover:scale-105"
                     />
                   </Link>
