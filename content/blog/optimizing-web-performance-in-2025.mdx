@@ -1,0 +1,185 @@
+---
+title: Optimizing Web Performance in 2025
+date: 05-30-2025 # MM-DD-YYYY
+description: Learn about optimizing web performance in 2025 for your Next.js applications.
+category: next.js
+---
+
+In 2025, web performance remains a critical aspect of user experience and SEO. As web applications become more complex, optimizing performance is essential to ensure fast load times, smooth interactions, and overall user satisfaction. If you're still chasing **Lighthouse** scores alone, you're playing last year's game.
+
+In 2025, optimizing performance means looking beyond FCP (First Contentful Paint) and CLS (Cumulative Layout Shift) into metrics like INP (Interaction to Next Paint) and architectural strategies like streaming, edge rendering, and client hint prioritization.
+
+In this guide, I'll walk you through modern performance optimization, with practical tips for building apps using Next.js 15 and React.
+
+## The Modern Web Vitals Landscape
+
+What's Changed in 2025?
+
+- ⏭️ INP (Interaction to Next Paint) is now a Core Web Vital (official as of March 2024).
+- 🚫 TBT (Total Blocking Time) still matters for synthetic testing but is no longer enough.
+- 🚀 Streaming, Partial Hydration, and Edge-first rendering are essential to performance at scale.
+
+Let's break it down.
+
+## What is INP (Interaction to Next Paint)?
+
+INP measures the time between a user interaction (like a click) and the next visible UI update. It's about responsiveness, not just speed. INP replaces FID (First Input Delay) as the go-to user interaction metric.
+
+- ✅ Good INP: under 200ms
+- ⚠️ Needs Improvement: 200 - 500ms
+- ❌ Poor: 500ms+
+
+## How to Monitor INP?
+
+Use these tools to monitor INP:
+
+- [Web Vitals JS library](https://github.com/GoogleChrome/web-vitals)
+
+```tsx
+import { onINP } from "web-vitals";
+
+onINP((metric) => {
+  console.log("INP:", metric.value);
+});
+```
+
+- Vercel Analytics (auto-tracks INP for Next.js apps)
+- Lighthouse User Flows
+- Chrome User Experience Report (CrUX)
+
+## How to Improve INP in React?
+
+There are several strategies to improve INP in your React applications. Here are some practical tips to help you optimize your app's performance:
+
+- Avoid deep prop drilling or massive renders in handlers.
+- Move logic to the server.
+- Split components with React.lazy() + Suspense.
+
+## Streaming SSR in Next.js 15
+
+With the App Router, streaming HTML is the default. You no longer need to configure this, just build server components, and Next.js will stream as soon as possible.
+
+**Why it matters:**
+
+- Faster time to first byte (TTFB)
+- Reduces largest contentful paint (LCP)
+- Enables progressive hydration and early data fetching
+
+Even better? Pair it with **edge caching**.
+
+## Edge Caching with Middleware + Vercel
+
+Your performance doesn't only depend on your code, location matters. Edge-first rendering reduces latency for global users.
+
+**How to implement edge caching:**
+
+- Use vercel edge functions
+
+```tsx
+// middleware.ts (runs on the edge!)
+import { NextResponse } from "next/server";
+
+export function middleware(req) {
+  const country = req.geo?.country;
+  const res = NextResponse.next();
+
+  // Add country-based header or routing
+  res.headers.set("x-user-location", country || "unknown");
+
+  return res;
+}
+```
+
+- Cache with response tags and ISR
+
+```tsx
+export async function generateStaticParams() {
+  const posts = await fetchPosts();
+
+  return posts.map((p) => ({ slug: p.slug }));
+}
+```
+
+- Add [revalidate](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate) option for ISR:
+
+```tsx
+export const revalidate = 60; // seconds
+```
+
+- Combine with [Vercel Cache-Control headers](https://vercel.com/docs/edge-network/caching)
+
+## Smarter Resource Loading
+
+In 2025, resource loading is more intelligent. Use these techniques to optimize loading:
+
+- Lazy load non-blocking content like images, videos and iframes.
+- Set resource priority, in Next.js, use the `priority` prop on `<Image>` components.
+
+```tsx
+<Image src="/hero.jpg" priority alt="Hero" />
+```
+
+- Use `<link rel="preload">` or next/font. Fonts load in parallel with HTML, no flash of unstyled text.
+
+```tsx
+import { GeistSans } from "geist/font/sans";
+
+const geist = GeistSans({ subsets: ["latin"], display: "swap" });
+```
+
+- Control prefetch behavior. Next.js automatically prefetches links in-viewport. For fine-tuning:
+
+```tsx
+<Link href="/blog" prefetch={false}>
+  Blog
+</Link>
+```
+
+## Prefetching Strategy Tips
+
+<div className="border-secondary overflow-scroll rounded-2xl border">
+  <table className="min-w-xl table-auto">
+    <thead>
+      <tr>
+        <th>Use Case</th>
+        <th>Strategy</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>LCP route transitions</td>
+        <td>Enable prefetch (default)</td>
+      </tr>
+      <tr>
+        <td>Rarely-used links (like settings)</td>
+        <td>Disable with prefetch={false}</td>
+      </tr>
+      <tr>
+        <td>Third-party assets</td>
+        <td>Use rel="preconnect" and dns-prefetch</td>
+      </tr>
+      <tr>
+        <td>Large modals or tools</td>
+        <td>Lazy load on trigger (not on route load)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+## Summary: Your 2025 Performance Checklist
+
+- Monitor INP in real users (not just Lighthouse).
+- Use React Server Components + `useTransition` to reduce interactivity delay.
+- Stream responses in the App Router by default.
+- Cache responses at the Edge with middleware + revalidation.
+- Optimize loading: lazy, priority, preconnect, Suspense.
+
+## Final Thoughts
+
+Frontend performance in 2025 is less about tweaking numbers and more about orchestrating architecture:
+
+- Get closer to the edge.
+- Prioritize UX over metrics.
+- Stream smart, hydrate selectively, and always ship light.
+
+If you're using Next.js 15, you're already sitting on the best tools, now it's up to how you use them.
