@@ -17,7 +17,7 @@ What's Changed in 2025?
 
 - ⏭️ INP (Interaction to Next Paint) is now a Core Web Vital (official as of March 2024).
 - 🚫 TBT (Total Blocking Time) still matters for synthetic testing but is no longer enough.
-- 🚀 Streaming, Partial Hydration, and Edge-first rendering are essential to performance at scale.
+- 🚀 Streaming, Partial Hydration, and Edge-First rendering are essential to performance at scale.
 
 Let's break it down.
 
@@ -53,7 +53,7 @@ There are several strategies to improve INP in your React applications. Here are
 
 - Avoid deep prop drilling or massive renders in handlers.
 - Move logic to the server.
-- Split components with React.lazy() + Suspense.
+- Split components with `React.lazy()` + Suspense.
 
 ## Streaming SSR in Next.js 15
 
@@ -61,8 +61,8 @@ With the App Router, streaming HTML is the default. You no longer need to config
 
 **Why it matters:**
 
-- Faster time to first byte (TTFB)
-- Reduces largest contentful paint (LCP)
+- Faster Time to First Byte (TTFB)
+- Reduces Largest Contentful Paint (LCP)
 - Enables progressive hydration and early data fetching
 
 Even better? Pair it with **edge caching**.
@@ -152,11 +152,11 @@ const geist = GeistSans({ subsets: ["latin"], display: "swap" });
       </tr>
       <tr>
         <td>Rarely-used links (like settings)</td>
-        <td>Disable with prefetch={false}</td>
+        <td>Disable with `prefetch={false}`</td>
       </tr>
       <tr>
         <td>Third-party assets</td>
-        <td>Use rel="preconnect" and dns-prefetch</td>
+        <td>Use `rel="preconnect"` and dns-prefetch</td>
       </tr>
       <tr>
         <td>Large modals or tools</td>
@@ -170,13 +170,13 @@ const geist = GeistSans({ subsets: ["latin"], display: "swap" });
 
 - Monitor INP in real users (not just Lighthouse).
 - Use React Server Components + `useTransition` to reduce interactivity delay.
-- Stream responses in the App Router by default.
+- Stream responses in the Next.js App Router by default.
 - Cache responses at the Edge with middleware + revalidation.
 - Optimize loading: lazy, priority, preconnect, Suspense.
 
 ## Final Thoughts
 
-Frontend performance in 2025 is less about tweaking numbers and more about orchestrating architecture:
+Frontend performance in 2025 is less about tweaking numbers and more about architecture alignment:
 
 - Get closer to the edge.
 - Prioritize UX over metrics.
