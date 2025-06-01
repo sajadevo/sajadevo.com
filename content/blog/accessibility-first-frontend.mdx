@@ -1,0 +1,221 @@
+---
+title: Accessibility-First Frontend
+date: 06-02-2025 # MM-DD-YYYY
+description: Learn how to design and develop accessible web applications with an accessibility-first approach. Designing for screen readers, motion sensitivity, and contrast preferences.
+category: web development
+---
+
+When I started building interfaces, accessibility felt like an afterthought. You ship fast, add a few `aria-*` attributes, and move on. But the deeper I got into building design systems, the more I realized how foundational accessibility is.
+
+Building accessible UIs isn't just about `aria-labels`, it's about design systems, keyboard-first thinking, semantic HTML, correct API patterns, and thinking about the users who rely on assistive technologies.
+
+Today, I want to share what building accessibility-first frontends really looks like, a deep dive into building accessible frontend apps beyond the basics, rooted in WCAG, ARIA guidelines, semantic HTML, and thoughtful component APIs. We'll lean on official specs from [W3C](https://www.w3.org/) and real-world insights from building production-grade UIs.
+
+## Accessibility is not an add-on. It's a design constraint
+
+Accessibility begins before the code. It starts with how we design interactions, structure our component APIs, and handle focus, motion, and visual contrast.
+
+The key principles of accessible design that you should consider based on the [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/WCAG21/quickref/):
+
+- **Perceivable**: UI must be presentable to users in ways they can perceive (e.g., screen readers, color contrast, text alternatives).
+- **Operable**: UI components must be usable with keyboards and other input devices.
+- **Understandable**: UI should be predictable and consistent. This includes using simple language, consistent navigation, and predictable behavior.
+- **Robust**: UI should be compatible with a wide range of user agents, including screen readers and old browsers.
+
+These are the four WCAG success principles, and you should keep them in mind throughout your design and development process.
+
+## Visual Design Tips from WCAG
+
+To create accessible visual designs, consider the following guidelines based on WCAG:
+
+- Maintain a contrast ratio of at least 4.5:1 for normal text and 3:1 for large text (see [WCAG contrast](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html))
+- Ensure text can be resized without loss of content or functionality.
+- Provide visible focus styles for interactive elements.
+- Maintain a consistent layout across your application.
+- Avoid fast, flashing animations or honor user motion preferences.
+- Use semantic HTML elements (like `<header>`, `<nav>`, `<main>`, and `<footer>`) to convey meaning and structure.
+
+## Semantics and Roles: The First Line of Accessibility
+
+The fastest path to accessibility is using native HTML elements correctly, they come with built-in accessibility features that work out of the box.
+
+For example, using `<button>` instead of a `<div>` with a click handler provides built-in keyboard support and focus management. Similarly, using `<form>`, `<input>`, and `<label>` elements ensures screen readers interpret your forms correctly.
+
+Avoid repurposing `<div>` or `<span>` unless you absolutely must, and if you do, add ARIA roles and keyboard interactivity (more on this below).
+
+## What the heck is ARIA?
+
+[ARIA (Accessible Rich Internet Applications)](https://www.w3.org/WAI/ARIA/apg/) is a set of attributes that allows you to describe UIs for assistive technologies when native HTML falls short.
+
+Use ARIA when:
+
+- You build custom UI components (e.g., combobox, modal, tooltip).
+- You need to describe relationships (e.g., `aria-labelledby`, `aria-controls`).
+- You want to mark dynamic content (e.g., `aria-live`, `aria-busy`).
+
+Be cautious, improper use of ARIA can harm accessibility, so always prefer native HTML semantics first and use ARIA to enhance when necessary.
+
+Here's a small example of a custom Dialog:
+
+```html
+<div role="dialog" aria-modal="true" aria-labelledby="dialog-title">
+  <h2 id="dialog-title">Subscribe</h2>
+  <p>Get updates directly to your inbox.</p>
+</div>
+```
+
+This example uses `role="dialog"` to indicate a dialog, `aria-modal="true"` to specify it is modal, and `aria-labelledby` to associate the dialog with its title.
+
+## Keyboard Navigation: Core of Operability
+
+Keyboard access is non-negotiable, not just for screen reader users, but also for power users, motor-impaired users, and accessibility testers. Here's a quick overview of required keyboard support for common UI components:
+
+<div className="border-secondary overflow-scroll rounded-2xl border">
+  <table className="min-w-xl table-auto">
+    <thead>
+      <tr>
+        <th>UI Component</th>
+        <th>Required Keyboard Support</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Button</td>
+        <td>Enter, Space</td>
+      </tr>
+      <tr>
+        <td>Dialog</td>
+        <td>Escape to close, Tab/Shift+Tab to navigate focus</td>
+      </tr>
+      <tr>
+        <td>Tabs</td>
+        <td>ArrowRight / ArrowLeft</td>
+      </tr>
+      <tr>
+        <td>Combobox</td>
+        <td>ArrowDown, ArrowUp, Enter, Escape</td>
+      </tr>
+      <tr>
+        <td>Listbox</td>
+        <td>Arrow keys, type-ahead search</td>
+      </tr>
+      <tr>
+        <td>Tooltip</td>
+        <td>Appear on focus/hover, close on Escape</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+Here's a simple example of trapping focus inside a dialog to keep keyboard navigation contained:
+
+```javascript
+function trapFocus(container) {
+  const focusable = container.querySelectorAll(
+    'button, [href], input, [tabindex]:not([tabindex="-1"])',
+  );
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+
+  container.addEventListener("keydown", (event) => {
+    if (event.key === "Tab") {
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+  });
+}
+```
+
+For more in-depth guidance, check out the [W3C Keyboard Interaction Guidelines](https://www.w3.org/WAI/ARIA/apg/patterns/).
+
+## Headless UI Libraries and API Design Patterns
+
+Libraries like [React Aria](https://react-spectrum.adobe.com/react-aria/), [Radix UI](https://www.radix-ui.com/), and [Base UI](https://base-ui.com/) provide unopinionated, accessibility-first building blocks. They separate behavior from style, allowing you to:
+
+- Implement your design system.
+- Stay fully accessible.
+- Maintain semantic control.
+
+### What Makes a Good Headless Component API?
+
+- Accepts semantic HTML structure.
+- Encourages correct ARIA roles out of the box.
+- Manages keyboard and focus logic.
+- Is composable (e.g., split buttons, nested popovers).
+
+## Screen Reader Considerations
+
+Screen readers are a primary way many users interact with the web, and they are using the accessibility tree, which is built from:
+
+- DOM + ARIA attributes.
+- HTML element roles.
+- Labeling relationships (like `aria-labelledby`, `<label for=...>`).
+
+Some tips for building screen reader-friendly components:
+
+- Use `aria-live="polite"` for dynamic updates (like toasts, cart changes).
+- Always ensure visible labels are connected with `for` or `aria-labelledby`.
+- Announce loading states with `aria-busy="true"`.
+
+For more, see the [WAI Live Regions Guide](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions).
+
+## Testing Accessibility
+
+Testing accessibility is crucial. Use both automated and manual testing methods to ensure your application meets accessibility standards.
+
+### Manual Testing:
+
+- Keyboard navigation only.
+- Use screen readers: NVDA (Windows), VoiceOver (Mac), or TalkBack (Android).
+- Enable high contrast mode in your OS.
+
+### Automated Testing:
+
+- [axe DevTools](https://www.deque.com/axe/devtools/)
+- [Lighthouse](https://web.dev/measure/)
+- [eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y)
+- [Pa11y](https://pa11y.org/)
+
+Keep in mind automation catches only about ~30-40% of issues. Manual checks and user testing with people with disabilities remain essential.
+
+## Modern HTML, CSS, and JS Features for A11y
+
+Modern web standards have introduced many features that enhance accessibility out of the box:
+
+### HTML Features
+
+- `<dialog>`: Native accessible modals with focus management. [Building a Native HTML Dialog](/blog/building-a-native-html-dialog)
+- `<details>` & `<summary>`: Expandable sections with built-in toggle a11y.
+- `inert` attribute: Disables interaction and focus in background content
+- `popover` attribute & Popover API: Declarative popovers with focus handling.
+- `<output>`: Semantic output for dynamic content results.
+
+### CSS Features
+
+- `:focus-visible`: shows outlines only during keyboard nav.
+- `@media (prefers-reduced-motion: reduce)`: disables transitions/animations.
+- `@media (forced-colors: active)`: detect Windows high contrast mode.
+- `@media (prefers-color-scheme)`: auto light/dark theme support.
+
+### JS Features
+
+- Use `requestIdleCallback()` for low-priority DOM updates.
+- Use `IntersectionObserver` instead of scroll listeners.
+- Use focus management libraries like [focus-trap](https://www.npmjs.com/package/focus-trap), or implement manually.
+
+## Final Thoughts
+
+Accessibility is not extra work; it's core to good design. Every dialog, listbox, and dropdown you build is an opportunity to design with empathy. If you can use semantic HTML, do it. If you must go custom, follow ARIA patterns, and always test with real users and tools.
+
+## Further Resources
+
+- [WCAG 2.2 Quick Reference](https://www.w3.org/WAI/WCAG22/quickref/)
+- [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- [Using ARIA - W3C Recommendation](https://www.w3.org/TR/using-aria/)
+- [Accessible Name and Description Computation](https://www.w3.org/TR/accname-1.2/)
+- [MDN Accessibility Docs](https://developer.mozilla.org/en-US/docs/Web/Accessibility)

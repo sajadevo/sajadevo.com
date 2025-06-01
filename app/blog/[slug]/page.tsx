@@ -164,7 +164,7 @@ export default async function Post({
               </h2>
             </div>
             <div
-              className={`container-lg grid grid-cols-1 md:grid-cols-2 ${posts.length <= 2 ? "gap-y-4 md:gap-x-4" : "gap-4"}`}
+              className={`container-lg grid grid-cols-1 md:grid-cols-2 ${posts.length <= 2 ? "gap-y-4 md:gap-x-4 md:gap-y-0" : "gap-4"}`}
             >
               {posts.map(
                 ({ title, description, date, category, slug }, key) => (
