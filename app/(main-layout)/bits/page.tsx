@@ -1,7 +1,9 @@
 import { BitsPreview } from "@/components/bits-preview";
 import { generateMetadata } from "@/lib/utils";
 import { formatCode } from "@/lib/format-code";
+
 import { nativeHtmlDialogCode } from "@/code/native-html-dialog";
+import { responsiveMenuCode } from "@/code/responsive-menu";
 
 export const metadata = generateMetadata({
   title: "Sajad ⋅ Bits",
@@ -27,8 +29,8 @@ export default async function Bits() {
             <BitsPreview
               src="/demo/bits/responsive-menu"
               title="Responsive Menu"
-              code={nativeHtmlDialogCode}
-              formattedCode={await formatCode(nativeHtmlDialogCode, "html")}
+              code={responsiveMenuCode}
+              formattedCode={await formatCode(responsiveMenuCode, "tsx")}
             />
             <BitsPreview
               src="/demo/bits/native-html-dialog"
