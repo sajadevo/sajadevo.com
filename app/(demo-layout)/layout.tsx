@@ -19,10 +19,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <body
-      className={`${geistMono.variable} ${geistSans.variable} bg-background`}
-    >
-      {children}
-    </body>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${geistMono.variable} ${geistSans.variable} bg-background`}
+      >
+        {children}
+      </body>
+    </html>
   );
 }
