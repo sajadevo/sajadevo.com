@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Button } from "@/components/button";
-import { Copy, Code, Eye, CopyCheck } from "lucide-react";
+import { Copy, Code, Eye, CopyCheck, Monitor, Smartphone } from "lucide-react";
 import { useCopyToClipboard } from "usehooks-ts";
 import { cn } from "@/lib/utils";
 import { CodeBlock } from "./code-block";
@@ -12,7 +12,7 @@ export function BitsPreview({
   title,
   code,
   formattedCode,
-  height = "50vh",
+  height = "h-[50vh]",
 }: {
   src: string;
   title: string;
@@ -20,9 +20,12 @@ export function BitsPreview({
   formattedCode: string;
   height?: string;
 }) {
+  const iframeRef = React.useRef<HTMLIFrameElement>(null);
+
   const [, copy] = useCopyToClipboard();
   const [mode, setMode] = React.useState("preview");
   const [isCopied, setIsCopied] = React.useState(false);
+  const [isMobileView, setIsMobileView] = React.useState(false);
 
   function handleModeChange() {
     setMode((cur) => (cur === "preview" ? "code" : "preview"));
@@ -37,6 +40,10 @@ export function BitsPreview({
     setIsCopied(false);
   }
 
+  function handleMobileViewChange() {
+    setIsMobileView((prev) => !prev);
+  }
+
   const isCodeMode = mode === "code";
 
   return (
@@ -46,6 +53,17 @@ export function BitsPreview({
           {title}
         </h2>
         <div className="flex items-center">
+          <Button
+            variant="secondary"
+            className="border-secondary h-12 rounded-none border-0 border-l"
+            onClick={handleMobileViewChange}
+          >
+            {isMobileView ? (
+              <Monitor className="size-4" />
+            ) : (
+              <Smartphone className="size-4" />
+            )}
+          </Button>
           <Button
             variant="secondary"
             className="border-secondary h-12 rounded-none border-0 border-l"
@@ -71,18 +89,21 @@ export function BitsPreview({
           </Button>
         </div>
       </div>
-      <div>
+      <div className={cn("h-[50vh] w-full", height)}>
         {isCodeMode ? (
           <CodeBlock noCopy className="border-0">
             <div
-              className={cn("h-[50vh] overflow-scroll", height)}
+              className={cn("h-full overflow-scroll", height)}
               dangerouslySetInnerHTML={{ __html: formattedCode }}
             />
           </CodeBlock>
         ) : (
           <iframe
+            ref={iframeRef}
             src={src}
-            className={cn("bg-secondary/50 h-[50vh] w-full", height)}
+            className={cn("size-full border-x border-transparent", {
+              "border-secondary mx-auto w-100": isMobileView,
+            })}
           />
         )}
       </div>
