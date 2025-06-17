@@ -8,7 +8,7 @@ import { RiCommandLine, RiCloseLine } from "@remixicon/react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
-const links = ["about", "projects", "blog", "uses"];
+const links = ["about", "projects", "blog", "bits", "uses"];
 
 export function Header() {
   const pathname = usePathname();
