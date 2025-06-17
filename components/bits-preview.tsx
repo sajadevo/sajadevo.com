@@ -71,7 +71,7 @@ export function BitsPreview({
           </Button>
         </div>
       </div>
-      <div className="p-2">
+      <div>
         {isCodeMode ? (
           <CodeBlock noCopy className="border-0">
             <div
@@ -82,10 +82,7 @@ export function BitsPreview({
         ) : (
           <iframe
             src={src}
-            className={cn(
-              "bg-secondary/50 h-[50vh] w-full rounded-t rounded-b-xl",
-              height,
-            )}
+            className={cn("bg-secondary/50 h-[50vh] w-full", height)}
           />
         )}
       </div>
