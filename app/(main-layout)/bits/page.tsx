@@ -25,6 +25,12 @@ export default async function Bits() {
         <div className="container-lg">
           <div className="flex flex-col gap-4 group-has-[[data-pending]]:animate-pulse">
             <BitsPreview
+              src="/demo/bits/responsive-menu"
+              title="Responsive Menu"
+              code={nativeHtmlDialogCode}
+              formattedCode={await formatCode(nativeHtmlDialogCode, "html")}
+            />
+            <BitsPreview
               src="/demo/bits/native-html-dialog"
               title="Native HTML Dialog"
               code={nativeHtmlDialogCode}

@@ -1,3 +1,4 @@
+import { Providers } from "@/components/providers";
 import localFont from "next/font/local";
 import "../globals.css";
 
@@ -13,7 +14,7 @@ const geistSans = localFont({
   weight: "100 900",
 });
 
-export default function RootLayout({
+export default function DemoLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -23,7 +24,7 @@ export default function RootLayout({
       <body
         className={`${geistMono.variable} ${geistSans.variable} bg-background`}
       >
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
