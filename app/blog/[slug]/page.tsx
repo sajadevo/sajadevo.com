@@ -7,7 +7,7 @@ import { BlogPostCard } from "@/components/blog-post-card";
 import { BlogCopyLink } from "@/components/blog-copy-link";
 import { BrowserWindow } from "@/components/browser-window";
 import { MyTechStack2025 } from "@/components/blog/my-tech-stack-2025";
-import { RiArrowLeftLine } from "@remixicon/react";
+import { ArrowLeft } from "lucide-react";
 import fs from "node:fs";
 import matter from "gray-matter";
 import remarkGfm from "remark-gfm";
@@ -86,7 +86,7 @@ export default async function Post({
           href="/blog"
           className="text-foreground hover:text-primary mb-12 flex items-center gap-1.5 transition-colors duration-300"
         >
-          <RiArrowLeftLine className="size-4" />
+          <ArrowLeft className="size-4" />
           Blog
         </Link>
         <h1 className="text-primary mb-4 text-base font-medium text-balance sm:text-lg">

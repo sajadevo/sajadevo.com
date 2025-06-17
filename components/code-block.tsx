@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Button } from "@/components/button";
-import { RiCheckLine, RiFileCopyLine } from "@remixicon/react";
+import { Copy, CopyCheck } from "lucide-react";
 import { useCopyToClipboard } from "usehooks-ts";
 import { cn } from "@/lib/utils";
 
@@ -55,9 +55,9 @@ export function CodeBlock({
           className="absolute top-1 right-1 size-8 border-0 p-1.5 hover:bg-transparent"
         >
           {isCopied ? (
-            <RiCheckLine className="size-4" />
+            <CopyCheck className="size-4" />
           ) : (
-            <RiFileCopyLine className="size-4" />
+            <Copy className="size-4" />
           )}
         </Button>
       )}

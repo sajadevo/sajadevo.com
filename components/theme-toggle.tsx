@@ -2,7 +2,7 @@
 
 import React from "react";
 import { flushSync } from "react-dom";
-import { RiSunLine, RiMoonLine } from "@remixicon/react";
+import { Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
 
 export function ThemeToggle() {
@@ -42,11 +42,7 @@ export function ThemeToggle() {
       className="hover:bg-secondary/12 grid size-10 cursor-pointer place-items-center overflow-hidden rounded-full bg-transparent p-1 text-base font-normal text-white/80 transition-all duration-300 hover:text-white"
       aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
     >
-      {isDark ? (
-        <RiMoonLine className="size-4" />
-      ) : (
-        <RiSunLine className="size-4" />
-      )}
+      {isDark ? <Moon className="size-4" /> : <Sun className="size-4" />}
     </button>
   );
 }

@@ -4,7 +4,7 @@ import React from "react";
 import { Sajad } from "@/components/sajad";
 import Link, { type LinkProps } from "next/link";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { RiCommandLine, RiCloseLine } from "@remixicon/react";
+import { Command, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
@@ -64,15 +64,15 @@ export function Header() {
               className="hover:bg-secondary/12 relative grid size-10 cursor-pointer place-items-center overflow-hidden rounded-full bg-transparent p-1 text-base font-normal text-white/80 transition-all duration-300 hover:text-white sm:hidden"
               onClick={toggleMenu}
             >
-              <RiCloseLine
+              <X
                 className={cn(
-                  "absolute size-4.5 scale-0 opacity-0 transition-all duration-300",
+                  "absolute size-4 scale-0 opacity-0 transition-all duration-300",
                   {
                     "scale-100 opacity-100": isMenuOpen,
                   },
                 )}
               />
-              <RiCommandLine
+              <Command
                 className={cn(
                   "absolute size-4 scale-0 opacity-0 transition-all duration-300",
                   {
