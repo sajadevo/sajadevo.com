@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 const links = ["product", "resources", "pricing", "blog"];
 
-export default function Header() {
+export default function ResponsiveMenu() {
   const mobileNavRef = React.useRef<HTMLElement>(null);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 

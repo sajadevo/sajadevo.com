@@ -2,7 +2,7 @@
 
 import React from "react";
 
-export default function Page() {
+export default function NativeHtmlDialog() {
   React.useEffect(() => {
     const dialog = document.querySelector(
       "[data-name=dialog]",
