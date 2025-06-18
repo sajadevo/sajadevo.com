@@ -8,7 +8,7 @@ import { clsx, type ClassValue } from "clsx";
 
 const links = ["product", "resources", "pricing", "blog"];
 
-export default function Header() {
+export function ResponsiveMenu() {
   const mobileNavRef = React.useRef<HTMLElement>(null);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
@@ -118,5 +118,4 @@ function NavLink({
   
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
-}
-`;
+}`;
