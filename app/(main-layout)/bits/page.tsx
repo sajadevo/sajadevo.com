@@ -4,6 +4,7 @@ import { formatCode } from "@/lib/format-code";
 
 import { nativeHtmlDialogCode } from "@/code/native-html-dialog";
 import { responsiveMenuCode } from "@/code/responsive-menu";
+import { animatedTabsCode } from "@/code/animated-tabs";
 
 export const metadata = generateMetadata({
   title: "Sajad ⋅ Bits",
@@ -29,8 +30,8 @@ export default async function Bits() {
             <BitsPreview
               src="/demo/bits/animated-tabs"
               title="Animated Tabs"
-              code={responsiveMenuCode}
-              formattedCode={await formatCode(responsiveMenuCode, "tsx")}
+              code={animatedTabsCode}
+              formattedCode={await formatCode(animatedTabsCode, "tsx")}
             />
             <BitsPreview
               src="/demo/bits/responsive-menu"

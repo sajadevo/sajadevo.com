@@ -37,19 +37,3 @@ export default function AnimatedTabs() {
     </div>
   );
 }
-
-function NavLink({
-  children,
-  ...props
-}: {
-  children: React.ReactNode;
-} & React.ComponentProps<"a">) {
-  return (
-    <a
-      {...props}
-      className="grid h-full min-h-10 place-items-center rounded-full px-3.5 text-sm text-white/80 capitalize transition-colors duration-300 hover:bg-white/10 hover:text-white dark:text-black/80 dark:hover:bg-black/10 dark:hover:text-black"
-    >
-      {children}
-    </a>
-  );
-}
