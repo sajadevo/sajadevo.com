@@ -2,10 +2,11 @@
 
 import React from "react";
 import { Button } from "@/components/button";
+import { CodeBlock } from "@/components/code-block";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/tooltip";
 import { Copy, Code, Eye, CopyCheck, Monitor, Smartphone } from "lucide-react";
 import { useCopyToClipboard } from "usehooks-ts";
 import { cn } from "@/lib/utils";
-import { CodeBlock } from "./code-block";
 
 export function BitsPreview({
   src,
@@ -53,40 +54,61 @@ export function BitsPreview({
           {title}
         </h2>
         <div className="flex items-center">
-          <Button
-            variant="secondary"
-            className="border-secondary h-12 rounded-none border-0 border-l"
-            onClick={handleMobileViewChange}
-          >
-            {isMobileView ? (
-              <Monitor className="size-4" />
-            ) : (
-              <Smartphone className="size-4" />
-            )}
-          </Button>
-          <Button
-            variant="secondary"
-            className="border-secondary h-12 rounded-none border-0 border-l"
-            onClick={handleModeChange}
-          >
-            {isCodeMode ? (
-              <Eye className="size-4" />
-            ) : (
-              <Code className="size-4" />
-            )}
-          </Button>
-          <Button
-            variant="secondary"
-            className="border-secondary h-12 rounded-none border-0 border-l"
-            onClick={copyCode}
-            onMouseLeave={resetCopy}
-          >
-            {isCopied ? (
-              <CopyCheck className="size-4" />
-            ) : (
-              <Copy className="size-4" />
-            )}
-          </Button>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="secondary"
+                className="border-secondary h-12 rounded-none border-0 border-l"
+                onClick={handleMobileViewChange}
+              >
+                {isMobileView ? (
+                  <Monitor className="size-4" />
+                ) : (
+                  <Smartphone className="size-4" />
+                )}
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Switch to {isMobileView ? "desktop" : "mobile"} view</p>
+            </TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="secondary"
+                className="border-secondary h-12 rounded-none border-0 border-l"
+                onClick={handleModeChange}
+              >
+                {isCodeMode ? (
+                  <Eye className="size-4" />
+                ) : (
+                  <Code className="size-4" />
+                )}
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Switch to {isCodeMode ? "preview" : "code"} mode</p>
+            </TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="secondary"
+                className="border-secondary h-12 rounded-none border-0 border-l"
+                onClick={copyCode}
+                onMouseLeave={resetCopy}
+              >
+                {isCopied ? (
+                  <CopyCheck className="size-4" />
+                ) : (
+                  <Copy className="size-4" />
+                )}
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>{isCopied ? "Copied!" : "Copy code"}</p>
+            </TooltipContent>
+          </Tooltip>
         </div>
       </div>
       <div className={cn("h-[50vh] w-full", height)}>
