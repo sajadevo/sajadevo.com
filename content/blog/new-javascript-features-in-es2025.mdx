@@ -1,0 +1,247 @@
+---
+title: New JavaScript Features in ES2025
+date: 06-22-2025 # MM-DD-YYYY
+description: Discover 9 new JavaScript features in ES2025 with real-world examples. From smarter imports and iterator helpers to regex upgrades and promise improvements, see how these updates can simplify your code.
+category: javascript
+---
+
+JavaScript just got another upgrade, and ES2025 is packed with goodies that will make your life as a developer smoother and maybe even a bit more fun. I went through all the new features and picked out the ones that I think you'll actually care about, and added real-world examples so you don't have to imagine how you'd use them. Let's dive in.
+
+## 1. Importing JSON Just Got Cleaner
+
+Ever needed to load a `.json` file and felt like the import looked a little odd or risky? Now you can import JSON with extra clarity using import attributes.
+
+```js
+import config from "./config.json" with { type: "json" };
+```
+
+**Real-life use case:**
+
+You're building a settings page and want to load `settings.json`. This new syntax helps the browser know you're importing JSON not a script, and it's more future-proof.
+
+<Alert type="info">
+  For more details, check out the offical proposal [Import
+  Attributes](https://github.com/tc39/proposal-import-attributes)
+</Alert>
+
+## 2. Iterator Helpers (Finally!)
+
+This one is huge. You can now use handy methods like `.map()`, `.filter()`, and `.take()` on any iterable, just like you do on arrays.
+
+```js
+const result = [1, 2, 3, 4, 5]
+  .values()
+  .filter((n) => n % 2 === 1)
+  .map((n) => n * 10)
+  .toArray(); // [10, 30, 50]
+```
+
+**Real-life use case:**
+
+Imagine you're working on a leaderboard, and you want the top 3 odd scores multiplied by 10. Now it's super clean and readable, no manual loops needed.
+
+<Alert type="info">
+  For more details, check out the offical proposal [Iterator
+  Helpers](https://github.com/tc39/proposal-iterator-helpers)
+</Alert>
+
+## 3. Set Operations Are Now Native
+
+If you've ever found yourself writing helper functions to compare sets, ES2025 just made your life a lot easier. JavaScript now supports native set operations. Here's what's new and what they do, with real-world examples to make it stick:
+
+Lets say you have two sets of people: attendees and speakers at a conference and you want to compare them.
+
+```js
+const attendees = new Set(["Sajad", "Alex", "John"]);
+const speakers = new Set(["Sajad", "Manuel"]);
+```
+
+- `intersection()`: Finds common items between two sets.
+
+```js
+attendees.intersection(speakers); // Set { 'Sajad' }
+
+// ℹ️ Show users who are both speaking and attending your event.
+```
+
+- `union()`: Combines all unique values from both sets.
+
+```js
+attendees.union(speakers); // Set { 'Sajad', 'Alex', 'John', 'Manuel' }
+
+// ℹ️ Build a contact list that includes everyone involved, no duplicates.
+```
+
+- `difference()`: Gets items in the first set that aren't in the second.
+
+```js
+attendees.difference(speakers); // Set { 'Alex', 'John' }
+
+// ℹ️ Find attendees who aren't speaking at the conference.
+```
+
+- `symmetricDifference()`: Finds items that are in either set but not both.
+
+```js
+attendees.symmetricDifference(speakers); // Set { 'Alex', 'John', 'Manuel' }
+
+// ℹ️ Highlight the people who are just attending or just speaking, but not both.
+```
+
+- `isSubsetOf()`: Checks if all items in one set are in another.
+
+```js
+attendees.isSubsetOf(speakers); // false
+
+// ℹ️ Before sending a reminder, check if a group of VIPs are all part of the full attendee list.
+```
+
+- `isSupersetOf()`: The reverse, does the first set contain everything in the second?
+
+```js
+attendees.isSupersetOf(speakers); // false
+
+// ℹ️ Useful in access control, confirm if a user's permissions include all required roles.
+```
+
+- `isDisjointFrom()`: Checks if two sets has no items in common.
+
+```js
+attendees.isDisjointFrom(speakers); // false
+
+// ℹ️ Before combining two groups for an activity, check if they're totally separate.
+```
+
+<Alert type="info">
+  For more details, check out the offical proposal [Set
+  Operations](https://github.com/tc39/proposal-set-methods)
+</Alert>
+
+## 4. Escape Regex Strings with One Method
+
+Have you ever tried to put a user's input into a regex and ended up breaking your whole pattern? Now you can easily escape special characters with a new method.
+
+```js
+RegExp.escape("c++"); // '/\x63\+\+/gi'
+```
+
+**Real-life use case:**
+
+You're building a search bar for a blog and someone types in `c++`. Without escaping, it breaks your regex. With this, it just works.
+
+<Alert type="info">
+  For more details, check out the offical proposal [RegExp
+  Escape](https://github.com/tc39/proposal-regex-escaping)
+</Alert>
+
+## 5. Inline Regex Flags
+
+You can now apply regex flags like `i` (case-insensitive) to just a part of your pattern.
+
+```js
+const pattern = /^Hi (?i:Sajad)$/;
+
+pattern.test("Hi sajad"); // true
+```
+
+**Real-life use case:**
+
+Maybe you want the name part to be case-insensitive, but keep the rest strict. This keeps your regex neat and powerful.
+
+<Alert type="info">
+  For more details, check out the offical proposal [Inline Regex
+  Flags](https://github.com/tc39/proposal-regexp-modifiers)
+</Alert>
+
+## 6. Duplicate Named Groups in Regex
+
+You can now reuse the same group name in different parts of a regex pattern.
+
+```js
+const text1 = "Graduated: 2019";
+const text2 = "Class of 2020";
+
+const pattern = /Graduated:\s(?<year>\d{4})|Class of (?<year>\d{4})/;
+
+const match1 = text1.match(pattern);
+const match2 = text2.match(pattern);
+
+console.log(match1?.groups?.year); // "2019"
+console.log(match2?.groups?.year); // "2020"
+```
+
+**Real-life use case:**
+
+You're trying to extract a graduation year from different resume formats. Instead of writing two separate regexes or checking multiple group names, you just use `groups.year` no matter which format matched.
+
+It makes your parsing logic way cleaner and easier to maintain.
+
+<Alert type="info">
+  For more details, check out the offical proposal [Duplicate Named
+  Groups](https://github.com/tc39/proposal-duplicate-named-capturing-groups)
+</Alert>
+
+## 7. Promise.try()
+
+You no longer need to wrap everything in a `new Promise()` just to catch synchronous errors in async flows.
+
+```js
+Promise.try(() => {
+  const userId = JSON.parse(localStorage.getItem("user"));
+
+  return fetch(`/api/user/${userId}`);
+}).then(handleUser);
+```
+
+**Real-life use case:**
+
+Perfect for situations where you mix sync code (like reading from `localStorage`) with async calls (like fetching from an API).
+
+<Alert type="info">
+  For more details, check out the offical proposal [Promise
+  Try](https://github.com/tc39/proposal-promise-try)
+</Alert>
+
+## 8. Float16 Support
+
+JavaScript now supports half-precision floats. Honestly, this won't matter unless you're working with binary data, 3D graphics, or similar.
+
+```js
+const f16 = new Float16Array([1.5, 2.25]);
+
+console.log(f16[0]); // → stored as float16
+```
+
+**Real-life use case:**
+
+If you're working on WebGL, image compression tools, or performance-heavy visualizations, this helps save memory and boost performance.
+
+<Alert type="info">
+  For more details, check out the offical proposal [Float16
+  Array](https://github.com/tc39/proposal-float16array)
+</Alert>
+
+## 9. Unicode Improvements for Regex
+
+Regex gets a `/v` flag that makes unicode matching smarter and more expressive.
+
+```js
+const emoji = /\p{Emoji}/v;
+
+emoji.test("🔥"); // true
+```
+
+**Real-life use case:**
+
+Let's say you're building a chat app and want to detect emojis accurately, this flag makes that job much easier and cleaner.
+
+<Alert type="info">
+  For more details, check out the offical proposal [Unicode Property
+  Escapes](https://github.com/tc39/proposal-regexp-v-flag)
+</Alert>
+
+## Final Thoughts
+
+ES2025 doesn't feel like a flashy release, but it's super practical. The improvements are small things that remove annoyances and make your code more readable and powerful.
+
+If you're already using tools like Babel or modern Node versions, you'll probably get to try these soon, if not already.
