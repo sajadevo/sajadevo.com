@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { Button } from "@/components/button";
 import { CodeBlock } from "@/components/code-block";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/tooltip";
@@ -46,12 +47,16 @@ export function BitsPreview({
   }
 
   const isCodeMode = mode === "code";
+  const titleAsId = title.replaceAll(" ", "-").toLowerCase();
 
   return (
-    <div className="border-secondary overflow-hidden rounded-2xl border">
+    <div
+      id={titleAsId}
+      className="border-secondary overflow-hidden rounded-2xl border"
+    >
       <div className="border-secondary flex h-12 items-center justify-between gap-4 border-b">
         <h2 className="text-primary px-4 text-sm font-medium sm:text-base">
-          {title}
+          <Link href={`#${titleAsId}`}>{title}</Link>
         </h2>
         <div className="flex items-center">
           <Tooltip>
