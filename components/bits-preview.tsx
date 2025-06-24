@@ -120,7 +120,10 @@ export function BitsPreview({
         {isCodeMode ? (
           <CodeBlock noCopy className="border-0">
             <div
-              className={cn("h-full overflow-scroll", height)}
+              className={cn(
+                "flex h-full flex-col overflow-scroll [&>figure]:my-auto",
+                height,
+              )}
               dangerouslySetInnerHTML={{ __html: formattedCode }}
             />
           </CodeBlock>
