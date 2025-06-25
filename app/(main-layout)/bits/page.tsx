@@ -5,7 +5,8 @@ import { formatCode } from "@/lib/format-code";
 import { nativeHtmlDialogCode } from "@/code/native-html-dialog";
 import { responsiveMenuCode } from "@/code/responsive-menu";
 import { animatedTabsCode } from "@/code/animated-tabs";
-import { cardWithAnimatedBorder } from "@/code/card-with-animated-border";
+import { cardWithAnimatedBorderCode } from "@/code/card-with-animated-border";
+import { animatedButtonCode } from "@/code/animated-button";
 
 export const metadata = generateMetadata({
   title: "Sajad ⋅ Bits",
@@ -29,10 +30,19 @@ export default async function Bits() {
         <div className="container-lg">
           <div className="flex flex-col gap-4 group-has-[[data-pending]]:animate-pulse">
             <BitsPreview
+              src="/demo/bits/animated-button"
+              title="Animated Button"
+              code={animatedButtonCode}
+              formattedCode={await formatCode(animatedButtonCode, "tsx")}
+            />
+            <BitsPreview
               src="/demo/bits/card-with-animated-border"
               title="Card with Animated Border"
-              code={cardWithAnimatedBorder}
-              formattedCode={await formatCode(cardWithAnimatedBorder, "html")}
+              code={cardWithAnimatedBorderCode}
+              formattedCode={await formatCode(
+                cardWithAnimatedBorderCode,
+                "html",
+              )}
             />
             <BitsPreview
               src="/demo/bits/animated-tabs"
