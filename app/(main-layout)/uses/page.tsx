@@ -94,9 +94,9 @@ export default function Uses() {
             wrapperClassName="min-h-44"
           />
           <ToolCard
-            link="https://arc.net/"
-            img="/uses/arc.png"
-            name="Arc Browser"
+            link="https://www.diabrowser.com/"
+            img="/uses/dia.png"
+            name="Dia Browser"
             className="size-20"
             wrapperClassName="min-h-44"
           />
