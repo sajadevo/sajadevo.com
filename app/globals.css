@@ -98,6 +98,22 @@ code[data-theme] span {
   color: var(--shiki-dark);
 }
 
+figure[data-rehype-pretty-code-figure] {
+  @apply relative;
+}
+
+figure[data-rehype-pretty-code-figure]:has(
+    figcaption[data-rehype-pretty-code-title]
+  )
+  div
+  > pre {
+  @apply border-secondary mt-10.5 rounded-t-none border-t;
+}
+
+figcaption[data-rehype-pretty-code-title] {
+  @apply bg-secondary/50 text-primary absolute top-2 left-2 z-10 m-0 w-max rounded-lg px-2.5 py-1 text-sm;
+}
+
 * {
   @apply focus-visible:outline-primary;
 }

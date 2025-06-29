@@ -52,12 +52,12 @@ export function CodeBlock({
           variant="secondary"
           onClick={copyCode}
           onMouseLeave={resetCopy}
-          className="absolute top-1 right-1 size-8 border-0 p-1.5 hover:bg-transparent"
+          className="bg-secondary/50 absolute top-2 right-2 size-7 rounded-lg border-0 p-1"
         >
           {isCopied ? (
-            <CopyCheck className="size-4" />
+            <CopyCheck className="size-3.5" />
           ) : (
-            <Copy className="size-4" />
+            <Copy className="size-3.5" />
           )}
         </Button>
       )}
