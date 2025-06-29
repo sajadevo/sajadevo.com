@@ -1,0 +1,226 @@
+---
+title: "Form Handling in React 19: The Modern, Minimal, and Reliable Way"
+date: 06-30-2025 # MM-DD-YYYY
+description: Discover how to build modern, type-safe forms in React 19 using useActionState and Zod.
+category: React.js
+---
+
+<BrowserWindow
+  src="/demo/form-handling-in-react-19"
+  url="http://localhost:3000"
+  height="h-120"
+/>
+
+In React 19, form handling has become simpler and more powerful with built-in support for server actions and the new `useActionState` hook. In this post, we'll build a modern, type-safe login form using `useActionState` for form submission and [Zod](https://zod.dev/) for server-side validation.
+
+## Prerequisites
+
+Before we begin, we need to have some dependencies:
+
+- [Zod](https://zod.dev/): for schema-based validation.
+- [Lucide Icons](https://lucide.dev/): for showing loading indicators.
+
+## Step 1: Setting Up the Form
+
+We'll start by creating a simple login form, which includes email and password fields together with a submit button.
+
+```tsx title="login-form.tsx"
+"use client";
+
+export function LoginForm() {
+  return (
+    <div className="grid min-h-screen w-full place-items-center">
+      <div className="w-full max-w-80">
+        <form className="w-full space-y-4" autoComplete="off">
+          <Input type="email" placeholder="Your email address" />
+          <Input type="password" placeholder="Your password" />
+          <Button>Login</Button>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+function Input(props: React.ComponentProps<"input">) {
+  return (
+    <input
+      {...props}
+      className="flex h-10 w-full items-center rounded-lg border border-black/10 bg-transparent px-3 text-sm font-normal text-black ring-3 ring-transparent transition-all duration-300 outline-none placeholder:text-black/50 focus-within:outline-none hover:border-black hover:bg-transparent hover:ring-black/10 focus:border-black focus:bg-transparent focus:ring-black/10 disabled:pointer-events-none disabled:opacity-70 disabled:select-none data-[error=true]:border-red-500 data-[error=true]:hover:border-red-500 data-[error=true]:hover:ring-red-500/10 data-[error=true]:focus:border-red-500 data-[error=true]:focus:ring-red-500/10"
+    />
+  );
+}
+
+function Button(props: React.ComponentProps<"button">) {
+  return (
+    <button
+      {...props}
+      className="inline-flex h-10 w-full shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-lg border border-black bg-black px-4 text-center text-sm font-medium whitespace-nowrap text-white transition-all duration-300 hover:opacity-90 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-70 disabled:select-none"
+    />
+  );
+}
+```
+
+## Step 2: Create the Server Action
+
+Now, let's create a server action that will handle the form submission. This action will validate the inputs using Zod and return appropriate responses.
+
+```ts title="action.ts"
+"use server";
+
+import { z } from "zod";
+
+export interface LoginFormData {
+  email: string;
+  password: string;
+}
+
+export interface ActionResponse {
+  success: boolean;
+  message: string;
+  errors?: {
+    [K in keyof LoginFormData]?: string[];
+  };
+}
+
+// define the zod schema for validation
+const formSchema = z.object({
+  email: z.string().email("Invalid email address"),
+  password: z.string().min(6, "Password must be at least 6 characters long"),
+});
+
+export async function submitForm(
+  prevState: ActionResponse | null,
+  formData: FormData,
+): Promise<ActionResponse> {
+  // simulate network delay for one second, this is just for demonstration purposes
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  try {
+    // get email and password from form data
+    const rawData: LoginFormData = {
+      email: formData.get("email") as string,
+      password: formData.get("password") as string,
+    };
+
+    // validate the form data
+    const validatedData = formSchema.safeParse(rawData);
+
+    if (!validatedData.success) {
+      return {
+        success: false,
+        message: "Validation failed",
+        errors: validatedData.error.flatten().fieldErrors,
+      };
+    }
+
+    return {
+      success: true,
+      message: "User logged in successfully",
+    };
+  } catch (error) {
+    return {
+      success: false,
+      message: "An unexpected error occurred",
+    };
+  }
+}
+```
+
+## Step 3: Hook It All Together
+
+Now, we can use the `useActionState` hook to handle form submission and manage the form states. This hook will automatically handle the form submission, validation, and error states.
+
+```tsx {3-5,7-10,13-16,18-19,24-58} title="login-form.tsx"
+"use client";
+
+import React from "react";
+import { Loader } from "lucide-react";
+import { submitForm, type ActionResponse } from "./action";
+
+const initialState: ActionResponse = {
+  success: false,
+  message: "",
+};
+
+export function LoginForm() {
+  const [state, action, isPending] = React.useActionState(
+    submitForm,
+    initialState,
+  );
+
+  const emailError = state?.errors?.email;
+  const passwordError = state?.errors?.password;
+
+  return (
+    <div className="grid min-h-screen w-full place-items-center">
+      <div className="w-full max-w-80">
+        <form action={action} className="w-full space-y-4" autoComplete="off">
+          <div className="space-y-2">
+            <Input
+              type="email"
+              name="email"
+              placeholder="Your email address"
+              disabled={isPending}
+              data-error={Boolean(emailError)}
+              required
+            />
+            {emailError && (
+              <p className="text-sm text-red-600">{emailError[0]}</p>
+            )}
+          </div>
+          <div className="space-y-2">
+            <Input
+              type="password"
+              name="password"
+              placeholder="Your password"
+              disabled={isPending}
+              data-error={Boolean(passwordError)}
+              required
+            />
+            {passwordError && (
+              <p className="text-sm text-red-600">{passwordError[0]}</p>
+            )}
+          </div>
+          <Button disabled={isPending}>
+            {isPending ? (
+              <Loader className="mx-auto size-4 animate-spin" />
+            ) : (
+              "Login"
+            )}
+          </Button>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+function Input(props: React.ComponentProps<"input">) {
+  return (
+    <input
+      {...props}
+      className="flex h-10 w-full items-center rounded-lg border border-black/10 bg-transparent px-3 text-sm font-normal text-black ring-3 ring-transparent transition-all duration-300 outline-none placeholder:text-black/50 focus-within:outline-none hover:border-black hover:bg-transparent hover:ring-black/10 focus:border-black focus:bg-transparent focus:ring-black/10 disabled:pointer-events-none disabled:opacity-70 disabled:select-none data-[error=true]:border-red-500 data-[error=true]:hover:border-red-500 data-[error=true]:hover:ring-red-500/10 data-[error=true]:focus:border-red-500 data-[error=true]:focus:ring-red-500/10"
+    />
+  );
+}
+
+function Button(props: React.ComponentProps<"button">) {
+  return (
+    <button
+      {...props}
+      className="inline-flex h-10 w-full shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-lg border border-black bg-black px-4 text-center text-sm font-medium whitespace-nowrap text-white transition-all duration-300 hover:opacity-90 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-70 disabled:select-none"
+    />
+  );
+}
+```
+
+Let's break down the key parts of the above code:
+
+- We use the `useActionState` hook to manage the form state and handle the action submission.
+- The `action` function is passed to the `form` element, which allows it to handle the form submission.
+- The `isPending` state indicates whether the form is currently being submitted, allowing us to disable the form fields and button during submission and display the loading indicator.
+- We handle validation errors by checking the `state.errors` object and displaying error messages below the respective input fields.
+- The `data-error` attribute is used to apply styles conditionally based on whether there are validation errors.
+
+## Final Thoughts
+
+With React 19's `useActionState` and Zod, form handling becomes more intuitive, type-safe, and scalable. This server-first approach avoids `onSubmit` boilerplate and makes your forms resilient, with proper validation and loading feedback out of the box.
