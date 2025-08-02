@@ -7,14 +7,14 @@ const career = [
     company: "Aseel",
     url: "https://aseelapp.com/",
     location: "Virginia, United States",
-    date: `Mar 2025 - Present • ${getDateDifference("2025-03-01", new Date())}`,
+    date: `Mar 2025 - Jul 2025 • ${getDateDifference("2025-03-01", new Date())}`,
   },
   {
     title: "Senior Frontend Engineer",
     company: "Mintra",
     url: "https://www.mintra.ai/",
     location: "Indiana, United States",
-    date: `Aug 2022 - Feb 2025 • ${getDateDifference("2022-08-01", "2025-02-30")}`,
+    date: `Aug 2022 - Dec 2024 • ${getDateDifference("2022-08-01", "2024-12-31")}`,
   },
   {
     title: "Frontend Engineer",
