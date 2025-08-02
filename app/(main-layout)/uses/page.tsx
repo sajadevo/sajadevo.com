@@ -80,9 +80,9 @@ export default function Uses() {
             wrapperClassName="min-h-44"
           />
           <ToolCard
-            link="https://vscode.com/"
-            img="/uses/vs-code.png"
-            name="VS Code"
+            link="https://zed.dev/"
+            img="/uses/zed.png"
+            name="Zed"
             className="size-20"
             wrapperClassName="min-h-44"
           />
