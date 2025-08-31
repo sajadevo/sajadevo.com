@@ -1,8 +1,12 @@
 import { Header } from "@/components/header";
 import { Providers } from "@/components/providers";
 import { GoogleTagManager, GoogleAnalytics } from "@next/third-parties/google";
+
 import { generateMetadata } from "@/lib/utils";
+
 import localFont from "next/font/local";
+import type { Metadata } from "next";
+
 import "../globals.css";
 
 const geistMono = localFont({
@@ -18,7 +22,7 @@ const geistSans = localFont({
 });
 
 export const dynamic = "force-static";
-export const metadata = generateMetadata();
+export const metadata: Metadata = generateMetadata();
 
 export default function MainLayout({
   children,

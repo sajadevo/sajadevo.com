@@ -1,14 +1,17 @@
 import { BitsPreview } from "@/components/bits-preview";
+
 import { generateMetadata } from "@/lib/utils";
 import { formatCode } from "@/lib/format-code";
 
-import { nativeHtmlDialogCode } from "@/code/native-html-dialog";
-import { responsiveMenuCode } from "@/code/responsive-menu";
 import { animatedTabsCode } from "@/code/animated-tabs";
-import { cardWithAnimatedBorderCode } from "@/code/card-with-animated-border";
+import { responsiveMenuCode } from "@/code/responsive-menu";
 import { animatedButtonCode } from "@/code/animated-button";
+import { nativeHtmlDialogCode } from "@/code/native-html-dialog";
+import { cardWithAnimatedBorderCode } from "@/code/card-with-animated-border";
 
-export const metadata = generateMetadata({
+import type { Metadata } from "next";
+
+export const metadata: Metadata = generateMetadata({
   title: "Sajad ⋅ Bits",
   description:
     "Explore fun ui components and micro-experiments I've built for web development and design",

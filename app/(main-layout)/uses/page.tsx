@@ -1,8 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
+
 import { cn, generateMetadata } from "@/lib/utils";
 
-export const metadata = generateMetadata({
+import type { Metadata } from "next";
+
+export const metadata: Metadata = generateMetadata({
   title: "Sajad ⋅ What I Use",
   description: "Behind the scenes, my workspace setup, tools, and gear.",
 });

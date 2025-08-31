@@ -1,7 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Badge } from "@/components/badge";
+
 import { generateMetadata } from "@/lib/utils";
+
+import type { Metadata } from "next";
 
 const projects = [
   {
@@ -100,7 +103,7 @@ const projects = [
   },
 ];
 
-export const metadata = generateMetadata({
+export const metadata: Metadata = generateMetadata({
   title: "Sajad ⋅ My Projects",
   description: "Explore unique websites, apps, and libraries I've developed.",
 });

@@ -1,9 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Badge } from "@/components/badge";
-import { getBlogPosts } from "@/lib/actions";
-import { BlogPostCard } from "@/components/blog-post-card";
 import { Button } from "@/components/button";
+import { BlogPostCard } from "@/components/blog-post-card";
+
+import { getBlogPosts } from "@/lib/actions";
 
 const social = [
   {

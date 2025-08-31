@@ -1,5 +1,7 @@
 import { Providers } from "@/components/providers";
+
 import localFont from "next/font/local";
+
 import "../globals.css";
 
 const geistMono = localFont({

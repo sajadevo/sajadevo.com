@@ -1,9 +1,12 @@
 import { BlogPostCard } from "@/components/blog-post-card";
 import { BlogPostsSearch } from "@/components/blog-posts-search";
-import { generateMetadata } from "@/lib/utils";
-import { getBlogPosts } from "@/lib/actions";
 
-export const metadata = generateMetadata({
+import { getBlogPosts } from "@/lib/actions";
+import { generateMetadata } from "@/lib/utils";
+
+import type { Metadata } from "next";
+
+export const metadata: Metadata = generateMetadata({
   title: "Sajad ⋅ Blog Posts",
   description:
     "Learn about web development and web designing through my blog posts.",

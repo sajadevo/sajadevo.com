@@ -7,7 +7,9 @@ import { BlogPostCard } from "@/components/blog-post-card";
 import { BlogCopyLink } from "@/components/blog-copy-link";
 import { BrowserWindow } from "@/components/browser-window";
 import { MyTechStack2025 } from "@/components/blog/my-tech-stack-2025";
+
 import { ArrowLeft } from "lucide-react";
+
 import fs from "node:fs";
 import matter from "gray-matter";
 import remarkGfm from "remark-gfm";
@@ -15,6 +17,7 @@ import { formatDate } from "@/lib/utils";
 import { notFound } from "next/navigation";
 import rehypePrettyCode from "rehype-pretty-code";
 import { generateMetadata as generateMetadataFn } from "@/lib/utils";
+
 import type { Metadata } from "next";
 
 const isProd = process.env.NODE_ENV === "production";

@@ -1,5 +1,8 @@
 import Link from "next/link";
+
 import { generateMetadata, getDateDifference } from "@/lib/utils";
+
+import type { Metadata } from "next";
 
 const career = [
   {
@@ -32,7 +35,7 @@ const career = [
   },
 ];
 
-export const metadata = generateMetadata({
+export const metadata: Metadata = generateMetadata({
   title: "Sajad ⋅ About Me",
   description:
     "Learn more about me, my career, and my journey as a developer and designer.",
