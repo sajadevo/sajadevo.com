@@ -7,6 +7,7 @@ import { animatedTabsCode } from "@/code/animated-tabs";
 import { responsiveMenuCode } from "@/code/responsive-menu";
 import { animatedButtonCode } from "@/code/animated-button";
 import { nativeHtmlDialogCode } from "@/code/native-html-dialog";
+import { animatedImageGalleryCode } from "@/code/animated-image-gallery";
 import { cardWithAnimatedBorderCode } from "@/code/card-with-animated-border";
 
 import type { Metadata } from "next";
@@ -32,6 +33,12 @@ export default async function Bits() {
       <section>
         <div className="container-lg">
           <div className="flex flex-col gap-4 group-has-[[data-pending]]:animate-pulse">
+            <BitsPreview
+              src="/demo/bits/animated-image-gallery"
+              title="Animated Image Gallery"
+              code={animatedImageGalleryCode}
+              formattedCode={await formatCode(animatedImageGalleryCode, "tsx")}
+            />
             <BitsPreview
               src="/demo/bits/animated-button"
               title="Animated Button"
