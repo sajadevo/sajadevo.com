@@ -4,6 +4,7 @@ import { generateMetadata } from "@/lib/utils";
 import { formatCode } from "@/lib/format-code";
 
 import { animatedTabsCode } from "@/code/animated-tabs";
+import { animatedFormCode } from "@/code/animated-form";
 import { responsiveMenuCode } from "@/code/responsive-menu";
 import { animatedButtonCode } from "@/code/animated-button";
 import { nativeHtmlDialogCode } from "@/code/native-html-dialog";
@@ -33,6 +34,12 @@ export default async function Bits() {
       <section>
         <div className="container-lg">
           <div className="flex flex-col gap-4 group-has-[[data-pending]]:animate-pulse">
+            <BitsPreview
+              src="/demo/bits/animated-form"
+              title="Animated Newsletter Form"
+              code={animatedFormCode}
+              formattedCode={await formatCode(animatedFormCode, "tsx")}
+            />
             <BitsPreview
               src="/demo/bits/animated-image-gallery"
               title="Animated Image Gallery"
