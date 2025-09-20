@@ -6,11 +6,18 @@ import type { Metadata } from "next";
 
 const career = [
   {
+    title: "Full Stack Engineer",
+    company: "Waterlily",
+    url: "https://www.waterlily.com/",
+    location: "California, United States",
+    date: `Mar 2025 - Present • ${getDateDifference("2025-07-07", new Date())}`,
+  },
+  {
     title: "Senior Frontend Engineer",
     company: "Aseel",
     url: "https://aseelapp.com/",
     location: "Virginia, United States",
-    date: `Mar 2025 - Jul 2025 • ${getDateDifference("2025-03-01", new Date())}`,
+    date: `Mar 2025 - Jul 2025 • ${getDateDifference("2025-03-01", "2025-07-31")}`,
   },
   {
     title: "Senior Frontend Engineer",
@@ -47,8 +54,8 @@ export default function About() {
       {/* about me */}
       <section className="container">
         <h1 className="text-primary mb-6 text-base font-medium text-balance sm:text-lg">
-          Hey, I&apos;m Sajad, a self-taught Frontend Engineer and Designer with
-          7+ years of experience crafting intuitive, high-performing and
+          Hey, I&apos;m Sajad, a self-taught Developer and Designer with 7+
+          years of experience crafting intuitive, high-performing and
           user-focused web experiences.
         </h1>
         <p className="text-foreground text-base text-balance sm:text-lg">
