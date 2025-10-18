@@ -10,7 +10,7 @@ const career = [
     company: "Waterlily",
     url: "https://www.waterlily.com/",
     location: "California, United States",
-    date: `Mar 2025 - Present • ${getDateDifference("2025-07-07", new Date())}`,
+    date: `Jul 2025 - Present • ${getDateDifference("2025-07-07", new Date())}`,
   },
   {
     title: "Senior Frontend Engineer",
@@ -47,6 +47,8 @@ export const metadata: Metadata = generateMetadata({
   description:
     "Learn more about me, my career, and my journey as a developer and designer.",
 });
+
+export const dynamic = "force-dynamic";
 
 export default function About() {
   return (
