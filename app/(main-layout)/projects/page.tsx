@@ -8,6 +8,13 @@ import type { Metadata } from "next";
 
 const projects = [
   {
+    img: "/projects/waterlily.png",
+    href: "https://www.waterlily.com/",
+    name: "Waterlily - AI-Powered Long-Term Care Planning",
+    desc: "An AI-powered platform to predict long-term care costs and needs, helping families plan confidently and protect their assets.",
+    tags: ["TypeScript", "React.js", "Tailwind CSS", "Node.js", "Redux", "AI", "AWS"],
+  },
+  {
     img: "/projects/mintra.png",
     href: "https://app.mintra.ai/",
     name: "Mintra - NFT marketplace & Launchpad",
