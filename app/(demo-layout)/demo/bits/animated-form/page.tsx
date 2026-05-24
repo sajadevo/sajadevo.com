@@ -211,4 +211,4 @@ function Button({
   );
 }
 
-const MotionButton = motion(Button);
+const MotionButton = motion.create(Button);

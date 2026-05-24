@@ -150,7 +150,7 @@ export default async function Home() {
                     alt={name}
                     width={1024}
                     height={1024}
-                    loading="lazy"
+                    loading={key === 0 ? "eager" : "lazy"}
                     className="w-full transition-transform duration-300 hover:scale-105"
                   />
                 </Link>
