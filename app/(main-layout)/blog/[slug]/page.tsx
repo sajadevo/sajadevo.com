@@ -137,7 +137,7 @@ export default async function Post({
         </article>
       </section>
       <section className="container-lg">
-        <div className="border-secondary bg-secondary/50 flex flex-wrap items-center justify-between gap-x-16 gap-y-4 rounded-2xl border p-6">
+        <div className="border-secondary bg-secondary/50 flex flex-wrap items-center justify-between gap-x-16 gap-y-4 rounded-xl border p-4">
           <Link
             href={shareOnXUrl}
             target="blank"
