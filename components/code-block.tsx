@@ -43,7 +43,7 @@ export function CodeBlock({
       {...props}
       ref={codeRef}
       className={cn(
-        "border-secondary [&_pre_span[data-highlighted-line]]:border-primary [&_pre_span[data-highlighted-line]]:bg-primary/5 [&_pre_code[data-language='plaintext']]:!text-primary relative rounded-2xl border [&_pre]:my-0 [&_pre]:bg-transparent [&_pre]:px-0 [&_pre]:py-4 [&_pre]:font-mono [&_pre]:text-sm [&_pre]:leading-relaxed sm:[&_pre]:text-base [&_pre_span[data-highlighted-line]]:block [&_pre_span[data-highlighted-line]]:border-l-2 [&_pre_span[data-line]]:px-5",
+        "border-secondary [&_pre_span[data-highlighted-line]]:border-primary [&_pre_span[data-highlighted-line]]:bg-primary/5 [&_pre_code[data-language='plaintext']]:!text-primary relative rounded-2xl border [&_pre]:my-0 [&_pre]:bg-transparent [&_pre]:px-0 [&_pre]:py-4 [&_pre]:font-mono [&_pre]:text-sm [&_pre]:leading-relaxed sm:[&_pre]:text-base [&_pre_span[data-highlighted-line]]:block [&_pre_span[data-highlighted-line]]:border-l-2 [&_pre_span[data-line]]:px-5 [&_pre]:[scrollbar-width:none] [&_pre]:[-ms-overflow-style:none] [&_pre::-webkit-scrollbar]:[display:none]",
         className,
       )}
     >

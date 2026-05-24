@@ -102,6 +102,17 @@ figure[data-rehype-pretty-code-figure] {
   @apply relative;
 }
 
+figure[data-rehype-pretty-code-figure] pre,
+.prose pre {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+figure[data-rehype-pretty-code-figure] pre::-webkit-scrollbar,
+.prose pre::-webkit-scrollbar {
+  display: none !important;
+}
+
 figure[data-rehype-pretty-code-figure]:has(
     figcaption[data-rehype-pretty-code-title]
   )
